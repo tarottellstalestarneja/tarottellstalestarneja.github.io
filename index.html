@@ -56,8 +56,26 @@ select option { color: #fff; background: #2b1b4e; }
     100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
 }
 
-/* Section spacing */
-section { margin-bottom: 20px; }
+/* Calendar Responsive */
+.calendar-container {
+    position: relative;
+    padding-bottom: 60%;
+    height: 0;
+    overflow: hidden;
+    background: #1a0f2a;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+.calendar-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 </style>
 </head>
 
@@ -199,7 +217,12 @@ My approach is not just about predictions. It is about clarity, emotional unders
 
 <h2 id="booking">📅 Booking</h2>
 <div class="narrow">
-<p style="text-align:center;color:#cbd5f5">Booking confirmation will be shared on WhatsApp after successful payment.</p>
+<p style="text-align:center;color:#cbd5f5">Check the calendar below for availability. Booking is confirmed after payment.</p>
+
+<!-- GOOGLE CALENDAR SECTION -->
+<div class="calendar-container">
+<iframe src="https://calendar.google.com/calendar/embed?src=tarottellstalestarneja%40gmail.com&ctz=Asia%2FKolkata" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</div>
 
 <div class="form-card">
 <input id="name" placeholder="Name">
@@ -257,9 +280,9 @@ I agree to the booking conditions
 <h2>❌ Cancel</h2>
 <div class="narrow">
 <div class="form-card">
-<p style="font-size:12px; color:#cbd5f5; text-align:center; margin-top:0;">(Note: Please send the WhatsApp message to confirm cancellation)</p>
+<p style="font-size:12px; color:#cbd5f5; text-align:center; margin-top:0;">(Note: Cancellation is subject to policy. No refunds applicable.)</p>
 <input id="cancelId" placeholder="Booking ID">
-<button class="btn" style="background:#ef4444; width:100%" onclick="cancelBooking()">Cancel</button>
+<button class="btn" style="background:#ef4444; width:100%" onclick="cancelBooking()">Cancel Booking</button>
 <button class="btn" style="background:#333; font-size:10px; margin-top:10px" onclick="clearAllData()">Reset Test Data</button>
 </div>
 </div>
@@ -308,6 +331,7 @@ const queryEl = document.getElementById('query');
 const dateEl = document.getElementById('date');
 const timeEl = document.getElementById('time');
 const locationEl = document.getElementById('location');
+const agreeEl = document.getElementById('agree'); // Defined Agree Element
 const payBtn = document.getElementById('payBtn');
 const paypalBtn = document.getElementById('paypalBtn');
 const note = document.getElementById('note');
@@ -320,20 +344,19 @@ function toggleMusic() {
     else { audio.pause(); btn.innerHTML = "🎵"; btn.classList.remove('playing'); }
 }
 
-// 1. Fetch Exchange Rate (Real-time INR to USD)
+// 1. Fetch Exchange Rate
 async function fetchExchangeRate() {
     try {
         const response = await fetch('https://open.er-api.com/v6/latest/INR');
         const data = await response.json();
         if (data && data.rates && data.rates.USD) {
             exchangeRate = data.rates.USD;
-            console.log("Exchange Rate Updated: 1 INR = " + exchangeRate + " USD");
         } else {
             throw new Error("Invalid data");
         }
     } catch (error) {
         console.error("Exchange API Failed, using fallback.", error);
-        exchangeRate = 1 / 83; // Fallback rate
+        exchangeRate = 1 / 83; 
     }
     updateSlots();
     render();
@@ -341,7 +364,7 @@ async function fetchExchangeRate() {
     checkPay();
 }
 
-// Slot Config (0=Sun, 1=Mon...)
+// Slot Config
 const slots = {
     1:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"],
     2:["4 PM","5 PM","6 PM","7 PM"],
@@ -354,8 +377,6 @@ const slots = {
 
 function addToCart(name, price, format) {
     const label = name + " (" + format + ")";
-    // Allow adding same category but different format (e.g. Health PDF and Health Live)
-    // But prevent adding exact same item twice
     if (cart.find(i => i.name === label)) return; 
     cart.push({ name: label, price: price });
     render(); toggleSections(); checkPay();
@@ -381,7 +402,6 @@ function render() {
         </div>`;
     });
 
-    // Discount Logic
     const pdfItems = cart.filter(i => i.name.includes('PDF') || i.name.includes('Monthly') || i.name.includes('Quarterly') || i.name.includes('Half-Yearly') || i.name.includes('Yearly') || i.name.includes('Chakra'));
     let discountINR = 0;
     if (pdfItems.length === 2) discountINR = pdfItems.reduce((a, b) => a + b.price, 0) * 0.1;
@@ -397,7 +417,6 @@ function render() {
             priceHTML += `<p class="discount-text">Discount Applied - ${discDisplay}</p>`;
         }
         
-        // FIXED SYNTAX ERROR HERE
         let totalDisplay = (loc === 'domestic') ? `₹${Math.round(finalINR)}` : `$${finalUSD.toFixed(2)}`;
         priceHTML += '<div class="total-text">Total: ' + totalDisplay + '</div>';
         
@@ -422,126 +441,99 @@ function updateSlots() {
     const parts = dateEl.value.split('-');
     const d = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
     timeEl.innerHTML = '';
-    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
     let availableSlots = (slots[d] || []);
     if (availableSlots.length === 0) { timeEl.innerHTML = '<option value="">No slots available for this day</option>'; return; }
     
     availableSlots.forEach(s => {
         const opt = document.createElement('option');
         opt.value = s;
-        const isBooked = bookings.find(b => b.date === dateEl.value && b.time === s);
-        if (isBooked) { opt.textContent = s + " (Booked)"; opt.disabled = true; } 
-        else { opt.textContent = s; }
+        opt.textContent = s;
         timeEl.appendChild(opt);
     });
+    // Reset time value to empty to force user selection
+    timeEl.value = "";
+    checkPay();
 }
 dateEl.addEventListener('change', updateSlots);
 
 function checkPay() {
-    const agreeEl = document.getElementById('agree');
     const loc = locationEl.value;
     const hasPDF = cart.some(i => i.name.includes('PDF') || i.name.includes('Monthly') || i.name.includes('Quarterly') || i.name.includes('Half-Yearly') || i.name.includes('Yearly') || i.name.includes('Chakra'));
     const hasLive = cart.some(i => i.name.includes('Live'));
 
+    // DEFAULT STATE: Disabled
     payBtn.disabled = true; paypalBtn.disabled = true;
     payBtn.style.opacity = 0.5; paypalBtn.style.opacity = 0.5;
     
+    // CHECK 1: Cart
     if (cart.length === 0) { note.innerText = "Please select a service"; return; }
-    if (agreeEl && !agreeEl.checked) { note.innerText = "Please accept booking conditions"; return; }
     
-    // Validation for PDF
-    if (hasPDF && (!nameEl.value || !emailEl.value || !mobileEl.value || !dobEl.value || !queryEl.value)) {
-        note.innerText = "Please fill all PDF details"; return;
+    // CHECK 2: Agreement (Global Check)
+    if (!agreeEl.checked) { note.innerText = "Please accept booking conditions"; return; }
+    
+    // CHECK 3: Basic Contact Details (Required for ALL bookings)
+    if (!nameEl.value || !emailEl.value || !mobileEl.value) { 
+        note.innerText = "Please fill Name, Email and Mobile"; 
+        return; 
     }
     
-    // Validation for Live
+    // CHECK 4: PDF Specifics
+    if (hasPDF) {
+        if (!dobEl.value || !queryEl.value) {
+            note.innerText = "Please fill DOB and Query for PDF reading"; 
+            return;
+        }
+    }
+    
+    // CHECK 5: Live Specifics
     if (hasLive) {
-        if (!dateEl.value || !timeEl.value) { note.innerText = "Please select a valid slot"; return; }
-        if (!nameEl.value || !emailEl.value || !mobileEl.value) { note.innerText = "Please fill contact details"; return; }
+        if (!dateEl.value) { 
+            note.innerText = "Please select a date"; 
+            return; 
+        }
+        if (!timeEl.value) { 
+            note.innerText = "Please select a time slot"; 
+            return; 
+        }
     }
 
+    // IF ALL PASS
     note.innerText = "";
     if (loc === 'domestic') { payBtn.disabled = false; payBtn.style.opacity = 1; } 
     else { paypalBtn.disabled = false; paypalBtn.style.opacity = 1; }
 }
 
+// Event Listeners
 [nameEl, emailEl, mobileEl, dobEl, queryEl].forEach(el => { if(el) el.addEventListener('input', checkPay); });
 if(dateEl) dateEl.addEventListener('change', checkPay);
 if(timeEl) timeEl.addEventListener('change', checkPay);
+if(agreeEl) agreeEl.addEventListener('change', checkPay); // ADDED LISTENER FOR CHECKBOX
 
 function generateBookingId() { return 'TTT-' + Date.now().toString().slice(-6); }
 
 // PAYMENT CLICK (Razorpay)
 payBtn.onclick = function() {
     let id = generateBookingId();
-    let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    const bookingData = { 
-        id: id, 
-        name: nameEl.value, 
-        email: emailEl.value, 
-        mobile: mobileEl.value, 
-        services: cart.map(i => i.name), 
-        date: dateEl.value || null, 
-        time: timeEl.value || null, 
-        dob: dobEl.value || null, 
-        query: queryEl.value || null, 
-        rescheduled: false 
-    };
-    
-    // Double check slot availability (locally)
-    if (bookingData.date && bookingData.time) {
-        if (bookings.find(b => b.date === bookingData.date && b.time === bookingData.time)) { 
-            alert('This slot was just booked. Please select another.'); 
-            updateSlots(); 
-            return; 
-        }
-    }
-    
-    bookings.push(bookingData);
-    localStorage.setItem('bookings', JSON.stringify(bookings));
-    
-    // Open Payment
     window.open(razorpayLink + '/' + window.finalINR, '_blank');
     
-    // Send WhatsApp
-    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${bookingData.name}%0AServices: ${bookingData.services.join(', ')}%0AAmount: ₹${window.finalINR}`;
-    if (bookingData.date && bookingData.time) { msg += `%0ADate: ${bookingData.date}%0ATime: ${bookingData.time}`; }
+    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${nameEl.value}%0AServices: ${cart.map(i => i.name).join(', ')}%0AAmount: ₹${window.finalINR}`;
+    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value}`; }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
     
     alert('Redirecting to Payment. Booking ID: ' + id);
-    updateSlots();
 }
 
 // PAYMENT CLICK (PayPal)
 paypalBtn.onclick = function() {
     let id = generateBookingId();
-    let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    const bookingData = { 
-        id: id, 
-        name: nameEl.value, 
-        email: emailEl.value, 
-        mobile: mobileEl.value, 
-        services: cart.map(i => i.name), 
-        date: dateEl.value || null, 
-        time: timeEl.value || null, 
-        dob: dobEl.value || null, 
-        query: queryEl.value || null, 
-        rescheduled: false 
-    };
     
-    bookings.push(bookingData);
-    localStorage.setItem('bookings', JSON.stringify(bookings));
-    
-    // Open Payment with USD amount
     window.open(paypalLink + '/' + window.finalUSD + 'USD', '_blank');
     
-    // Send WhatsApp
-    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${bookingData.name}%0AServices: ${bookingData.services.join(', ')}%0AAmount: $${window.finalUSD}`;
-    if (bookingData.date && bookingData.time) { msg += `%0ADate: ${bookingData.date}%0ATime: ${bookingData.time}`; }
+    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${nameEl.value}%0AServices: ${cart.map(i => i.name).join(', ')}%0AAmount: $${window.finalUSD}`;
+    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value}`; }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
     
     alert('Redirecting to PayPal. Booking ID: ' + id);
-    updateSlots();
 }
 
 // RESCHEDULE LOGIC
@@ -552,11 +544,8 @@ function updateRescheduleSlots() {
     const parts = rDate.split('-');
     const d = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
     rTime.innerHTML = '';
-    const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
     (slots[d] || []).forEach(s => {
-        if (!bookings.find(b => b.date === rDate && b.time === s)) {
-            const opt = document.createElement('option'); opt.value = s; opt.textContent = s; rTime.appendChild(opt);
-        }
+        const opt = document.createElement('option'); opt.value = s; opt.textContent = s; rTime.appendChild(opt);
     });
 }
 document.getElementById('rescheduleDate').addEventListener('change', updateRescheduleSlots);
@@ -567,18 +556,9 @@ function rescheduleBooking() {
     const t = document.getElementById('rescheduleTime').value;
     if (!id || !d || !t) { alert("Fill all fields"); return; }
     
-    let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    let b = bookings.find(x => x.id === id);
-    if (b) {
-        if(b.rescheduled) { alert("Already rescheduled once."); return; }
-        b.date = d; b.time = t; b.rescheduled = true;
-        localStorage.setItem('bookings', JSON.stringify(bookings));
-    }
-
     let msg = `🔁 *Reschedule Request*%0AID: ${id}%0ANew Date: ${d}%0ANew Time: ${t}`;
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
     alert('Please send the WhatsApp message to complete reschedule.');
-    updateSlots();
 }
 
 // CANCEL LOGIC
@@ -586,17 +566,11 @@ function cancelBooking() {
     const id = document.getElementById('cancelId').value.trim();
     if (!id) { alert("Enter Booking ID"); return; }
 
-    let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    const exists = bookings.find(b => b.id === id);
-    if(exists) {
-        bookings = bookings.filter(b => b.id !== id);
-        localStorage.setItem('bookings', JSON.stringify(bookings));
+    if (confirm("Are you sure you want to cancel? Please note: No refunds are applicable for cancelled bookings as per policy.")) {
+        let msg = `❌ *Cancellation Request*%0AID: ${id}`;
+        window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
+        alert('Please send the WhatsApp message to complete cancellation.');
     }
-
-    let msg = `❌ *Cancellation Request*%0AID: ${id}`;
-    window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-    alert('Please send the WhatsApp message to complete cancellation.');
-    updateSlots();
 }
 
 function clearAllData() {
