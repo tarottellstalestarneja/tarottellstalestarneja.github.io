@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="Hs5yIokTYy4GJPV_y-Jo7PItBsETQEGuF92paUTTl_Y" />
 <title>Tarot Tells Tales</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -15,16 +15,18 @@ body{margin:0;font-family:'Outfit',sans-serif;color:#f5f3ff;background:radial-gr
 .col{flex:1;min-width:260px}
 .card img, video{width:100%;height:100%;object-fit:cover}
 .card-content{padding:22px}
-.btn{padding:10px 16px;border-radius:25px;background:#7c3aed;color:#fff;border:none;cursor:pointer;margin:5px}
-input,select,textarea{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#2b1b4e;color:#fff;box-sizing:border-box}
-h1,h2{text-align:center}
+.btn{padding:10px 16px;border-radius:25px;background:#7c3aed;color:#fff;border:none;cursor:pointer;margin:5px;transition:0.2s}
+.btn:hover{opacity:0.9;transform:translateY(-1px)}
+.btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+input,select,textarea{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#2b1b4e;color:#fff;box-sizing:border-box;font-family:'Outfit',sans-serif}
+h1,h2{text-align:center;margin-top:35px}
 
 .narrow{max-width:420px;margin:0 auto}
 .form-card{background:#1a0f2a;margin:18px auto;padding:22px 22px 26px 22px;border-radius:14px;max-width:420px;line-height:1.6}
 .testimonial-grid{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:15px}
-.testimonial{background:#1a0f2a;padding:18px;border-radius:14px;width:200px;height:200px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5}
+.testimonial{background:#1a0f2a;padding:18px;border-radius:14px;width:200px;height:200px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5;font-size:14px}
 
-.form-card textarea{min-height:120px}
+.form-card textarea{min-height:120px;resize:vertical}
 
 .item-name{color:#e9d5ff;font-weight:500}
 .item-price{color:#a5f3fc;font-weight:600}
@@ -32,12 +34,13 @@ h1,h2{text-align:center}
 .total-text{color:#fcd34d;font-weight:700;font-size:22px}
 .rate-text{color:#a5f3fc;font-size:12px;text-align:center;opacity:0.8}
 
-.footer{text-align:center;color:#aaa;margin-top:30px}
+.footer{text-align:center;color:#aaa;margin-top:30px;padding-bottom:20px}
 
 .nav-link { color: #cbd5f5; text-decoration: none; cursor: pointer; transition: 0.3s; }
 .nav-link:hover { color: #a5f3fc; text-decoration: underline; }
 
 select option:disabled { color: #555; background: #1a1a1a; }
+select option { color: #fff; background: #2b1b4e; }
 
 .music-btn {
     position: fixed; bottom: 20px; right: 20px; background: #7c3aed;
@@ -52,6 +55,9 @@ select option:disabled { color: #555; background: #1a1a1a; }
     70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
     100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
 }
+
+/* Section spacing */
+section { margin-bottom: 20px; }
 </style>
 </head>
 
@@ -61,7 +67,7 @@ select option:disabled { color: #555; background: #1a1a1a; }
 
 <div class="container">
 
-<nav style="text-align:center;margin-bottom:10px;font-size:14px;color:#cbd5f5">
+<nav style="text-align:center;margin-bottom:10px;font-size:14px;color:#cbd5f5; position: sticky; top: 0; background: #020617; padding: 10px 0; z-index: 100;">
     <a href="#top" class="nav-link">Home</a> • 
     <a href="#about" class="nav-link">About</a> • 
     <a href="#categories" class="nav-link">Categories</a> • 
@@ -73,7 +79,7 @@ select option:disabled { color: #555; background: #1a1a1a; }
 <div id="top"></div>
 
 <h1 style="text-align:center;margin:10px 0 5px 0">🔮 Tarot Tells Tales</h1>
-<div style="text-align:center;margin-bottom:20px"><img src="logo.png" style="height:80px"></div>
+<div style="text-align:center;margin-bottom:20px"><img src="logo.png" style="height:80px; border-radius: 50%;" alt="Logo"></div>
 
 <h2 id="about">🌙 About Me</h2>
 <p style="text-align:center;max-width:800px;margin:auto;line-height:1.9">
@@ -84,16 +90,16 @@ My approach is not just about predictions. It is about clarity, emotional unders
 
 <h2>✨ Begin Your Journey</h2>
 <div class="card"><div class="row">
-<div class="col"><img src="begin-journey.jpg"></div>
+<div class="col"><img src="begin-journey.jpg" alt="Journey"></div>
 <div class="col card-content">
 <p>You don’t need perfect questions — just take the first step. Sometimes all we need is guidance, reassurance, or simply clarity in moments of confusion. Tarot helps you connect the dots, understand energies and move ahead with confidence. No questions? No problem — just choose a category and allow tarot to guide you.</p>
 </div></div></div>
 
 <h2 id="categories">🔮 Categories</h2>
 
-<!-- Categories (Health, Self Help, etc.) -->
+<!-- Categories -->
 <div class="card"><div class="row">
-<div class="col"><img src="health.jpg"></div>
+<div class="col"><img src="health.jpg" alt="Health"></div>
 <div class="col card-content">
 <h3>🧘 Health & Wellness</h3>
 <p>Gain insights into emotional and physical well-being and underlying energy blocks.</p>
@@ -102,7 +108,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 </div></div></div>
 
 <div class="card"><div class="row">
-<div class="col"><img src="selfhelp.jpg"></div>
+<div class="col"><img src="selfhelp.jpg" alt="Self Help"></div>
 <div class="col card-content">
 <h3>🌱 Self Help</h3>
 <p>Understand yourself better and overcome emotional blocks.</p>
@@ -110,7 +116,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 </div></div></div>
 
 <div class="card"><div class="row">
-<div class="col"><img src="lost.jpg"></div>
+<div class="col"><img src="lost.jpg" alt="Feeling Lost"></div>
 <div class="col card-content">
 <h3>🌫️ Feeling Lost</h3>
 <p>Find direction when life feels uncertain.</p>
@@ -118,7 +124,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 </div></div></div>
 
 <div class="card"><div class="row">
-<div class="col"><img src="relationships.jpg"></div>
+<div class="col"><img src="relationships.jpg" alt="Relationships"></div>
 <div class="col card-content">
 <h3>❤️ Relationships</h3>
 <p>Clarity on love, emotions and partner intentions.</p>
@@ -127,7 +133,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 </div></div></div>
 
 <div class="card"><div class="row">
-<div class="col"><img src="career.jpg"></div>
+<div class="col"><img src="career.jpg" alt="Career"></div>
 <div class="col card-content">
 <h3>💼 Career & Finance</h3>
 <p>Direction in career and financial decisions.</p>
@@ -136,7 +142,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 </div></div></div>
 
 <div class="card"><div class="row">
-<div class="col"><img src="pet-cuddle.jpg"></div>
+<div class="col"><img src="pet-cuddle.jpg" alt="Pet Reading"></div>
 <div class="col card-content">
 <h3>🐾 Pet Reading</h3>
 <p>Understand your pet’s emotions, behaviour and deeper bond with you. This reading also includes communication with departed pets.</p>
@@ -146,7 +152,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <h2>✨ Premium</h2>
 
 <div class="card"><div class="row">
-<div class="col"><img src="chakra.jpg"></div>
+<div class="col"><img src="chakra.jpg" alt="Chakra"></div>
 <div class="col card-content">
 <h3>🧿 Chakra Healing</h3>
 <p><b>PDF Reading</b> - Deep energy healing and balance.</p>
@@ -156,7 +162,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 </div></div></div>
 
 <div class="card"><div class="row">
-<div class="col"><img src="guidance.jpg"></div>
+<div class="col"><img src="guidance.jpg" alt="Guidance"></div>
 <div class="col card-content">
 <h3>🔮 Guidance (PDF Reading)</h3>
 <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly ₹1750</button>
@@ -166,7 +172,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 </div></div></div>
 
 <div class="card"><div class="row">
-<div class="col"><video src="name-analysis.mp4" autoplay muted loop></video></div>
+<div class="col"><video src="name-analysis.mp4" autoplay muted loop playsinline></video></div>
 <div class="col card-content">
 <h3>🔢 Name Analysis</h3>
 <p>Understand how your name influences your life path.</p>
@@ -197,8 +203,8 @@ My approach is not just about predictions. It is about clarity, emotional unders
 
 <div class="form-card">
 <input id="name" placeholder="Name">
-<input id="email" placeholder="Email">
-<input id="mobile" placeholder="Mobile">
+<input id="email" placeholder="Email" type="email">
+<input id="mobile" placeholder="Mobile" type="tel">
 <select id="location" onchange="render(); checkPay();">
     <option value="domestic">Inside India (INR)</option>
     <option value="international">Outside India (USD)</option>
@@ -217,38 +223,45 @@ I agree to the booking conditions
 </div>
 
 <div class="form-card" id="pdfSection" style="display:none">
-<input id="dob" placeholder="DOB">
-<textarea id="query" placeholder="Your query"></textarea>
+<input id="dob" placeholder="Date of Birth (DD/MM/YYYY)">
+<textarea id="query" placeholder="Your Query / Question"></textarea>
 </div>
 
 <div class="form-card" id="liveSection" style="display:none">
+<label style="font-size:12px; color:#aaa;">Select Date</label>
 <input type="date" id="date">
+<label style="font-size:12px; color:#aaa;">Select Time</label>
 <select id="time"></select>
 </div>
 
-<p id="note" style="text-align:center;color:#fbbf24"></p>
-<div style="text-align:center">
+<p id="note" style="text-align:center;color:#fbbf24; font-weight:bold;"></p>
+<div style="text-align:center; margin-top:15px;">
 <button class="btn" id="payBtn" disabled>💳 Pay via Razorpay</button>
 <button class="btn" id="paypalBtn" disabled style="background:#ffc439; color:#111;">Pay via PayPal</button>
+</div>
 </div>
 
 <!-- RESCHEDULE SECTION -->
 <h2>🔁 Reschedule</h2>
 <div class="narrow">
-<p style="font-size:12px; color:#cbd5f5; text-align:center;">(Note: Please send the WhatsApp message to confirm reschedule)</p>
+<div class="form-card">
+<p style="font-size:12px; color:#cbd5f5; text-align:center; margin-top:0;">(Note: Please send the WhatsApp message to confirm reschedule)</p>
 <input id="rescheduleId" placeholder="Booking ID">
 <input type="date" id="rescheduleDate">
 <select id="rescheduleTime"></select>
-<button class="btn" onclick="rescheduleBooking()">Reschedule</button>
+<button class="btn" onclick="rescheduleBooking()" style="width:100%">Reschedule</button>
+</div>
 </div>
 
 <!-- CANCEL SECTION -->
 <h2>❌ Cancel</h2>
 <div class="narrow">
-<p style="font-size:12px; color:#cbd5f5; text-align:center;">(Note: Please send the WhatsApp message to confirm cancellation)</p>
+<div class="form-card">
+<p style="font-size:12px; color:#cbd5f5; text-align:center; margin-top:0;">(Note: Please send the WhatsApp message to confirm cancellation)</p>
 <input id="cancelId" placeholder="Booking ID">
-<button class="btn" style="background:#ef4444" onclick="cancelBooking()">Cancel</button>
+<button class="btn" style="background:#ef4444; width:100%" onclick="cancelBooking()">Cancel</button>
 <button class="btn" style="background:#333; font-size:10px; margin-top:10px" onclick="clearAllData()">Reset Test Data</button>
+</div>
 </div>
 
 <h2>⚠️ Disclaimer</h2>
@@ -258,15 +271,17 @@ Tarot readings are based on intuitive guidance and are not absolute or legally b
 
 <h2>📝 Feedback</h2>
 <div class="narrow">
+<div class="form-card">
 <input id="feedMobile" type="tel" placeholder="Your Mobile Number">
 <input id="feedEmail" type="email" placeholder="Your Email Address">
-<textarea id="feedMsg" placeholder="Share your experience..." style="width:100%;padding:12px;border-radius:10px;min-height:100px"></textarea>
-<button class="btn" style="display:block;margin:10px auto" onclick="sendFeedback()">Submit Feedback</button>
+<textarea id="feedMsg" placeholder="Share your experience..." style="min-height:80px"></textarea>
+<button class="btn" style="width:100%" onclick="sendFeedback()">Submit Feedback</button>
+</div>
 </div>
 
 <h2 id="contact">📞 Contact</h2>
-<p style="text-align:center">
-WhatsApp: 9892223162<br>
+<p style="text-align:center; margin-bottom:40px;">
+WhatsApp: <a href="https://wa.me/919892223162" style="color:#a5f3fc">9892223162</a><br>
 Email: tarottellstalestarneja@gmail.com<br>
 Instagram: @tarottelltales
 </p>
@@ -305,16 +320,20 @@ function toggleMusic() {
     else { audio.pause(); btn.innerHTML = "🎵"; btn.classList.remove('playing'); }
 }
 
-// 1. Fetch Exchange Rate
+// 1. Fetch Exchange Rate (Real-time INR to USD)
 async function fetchExchangeRate() {
     try {
         const response = await fetch('https://open.er-api.com/v6/latest/INR');
         const data = await response.json();
-        if (data && data.rates && data.rates.USD) exchangeRate = data.rates.USD;
-        else throw new Error("Invalid data");
+        if (data && data.rates && data.rates.USD) {
+            exchangeRate = data.rates.USD;
+            console.log("Exchange Rate Updated: 1 INR = " + exchangeRate + " USD");
+        } else {
+            throw new Error("Invalid data");
+        }
     } catch (error) {
-        console.error("Exchange API failed, using fallback.", error);
-        exchangeRate = 1 / 83; 
+        console.error("Exchange API Failed, using fallback.", error);
+        exchangeRate = 1 / 83; // Fallback rate
     }
     updateSlots();
     render();
@@ -322,7 +341,7 @@ async function fetchExchangeRate() {
     checkPay();
 }
 
-// Slot Config
+// Slot Config (0=Sun, 1=Mon...)
 const slots = {
     1:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"],
     2:["4 PM","5 PM","6 PM","7 PM"],
@@ -335,7 +354,9 @@ const slots = {
 
 function addToCart(name, price, format) {
     const label = name + " (" + format + ")";
-    if (cart.find(i => i.name === label)) return;
+    // Allow adding same category but different format (e.g. Health PDF and Health Live)
+    // But prevent adding exact same item twice
+    if (cart.find(i => i.name === label)) return; 
     cart.push({ name: label, price: price });
     render(); toggleSections(); checkPay();
 }
@@ -346,7 +367,10 @@ function removeItem(name) {
 }
 
 function render() {
-    let subINR = 0; let html = ""; const loc = locationEl.value;
+    let subINR = 0; 
+    let html = ""; 
+    const loc = locationEl.value;
+    
     cart.forEach(i => {
         subINR += i.price;
         let displayPrice = (loc === 'domestic') ? `₹${i.price}` : `$${(i.price * exchangeRate).toFixed(2)}`;
@@ -357,6 +381,7 @@ function render() {
         </div>`;
     });
 
+    // Discount Logic
     const pdfItems = cart.filter(i => i.name.includes('PDF') || i.name.includes('Monthly') || i.name.includes('Quarterly') || i.name.includes('Half-Yearly') || i.name.includes('Yearly') || i.name.includes('Chakra'));
     let discountINR = 0;
     if (pdfItems.length === 2) discountINR = pdfItems.reduce((a, b) => a + b.price, 0) * 0.1;
@@ -371,12 +396,15 @@ function render() {
             let discDisplay = (loc === 'domestic') ? `₹${Math.round(discountINR)}` : `$${(discountINR * exchangeRate).toFixed(2)}`;
             priceHTML += `<p class="discount-text">Discount Applied - ${discDisplay}</p>`;
         }
+        
+        // FIXED SYNTAX ERROR HERE
         let totalDisplay = (loc === 'domestic') ? `₹${Math.round(finalINR)}` : `$${finalUSD.toFixed(2)}`;
-        priceHTML += `<div class="total-text">Total: ${totalDisplay}</div>`;
+        priceHTML += '<div class="total-text">Total: ' + totalDisplay + '</div>';
+        
         if (loc === 'international') priceHTML += `<div class="rate-text">Live Rate: 1 INR = ${exchangeRate.toFixed(4)} USD</div>`;
     }
 
-    cartDiv.innerHTML = html || "No items";
+    cartDiv.innerHTML = html || "No items added yet.";
     priceBreakupDiv.innerHTML = priceHTML;
     window.finalINR = Math.round(finalINR);
     window.finalUSD = finalUSD.toFixed(2);
@@ -396,7 +424,8 @@ function updateSlots() {
     timeEl.innerHTML = '';
     const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
     let availableSlots = (slots[d] || []);
-    if (availableSlots.length === 0) { timeEl.innerHTML = '<option value="">No slots configured for this day</option>'; return; }
+    if (availableSlots.length === 0) { timeEl.innerHTML = '<option value="">No slots available for this day</option>'; return; }
+    
     availableSlots.forEach(s => {
         const opt = document.createElement('option');
         opt.value = s;
@@ -416,10 +445,20 @@ function checkPay() {
 
     payBtn.disabled = true; paypalBtn.disabled = true;
     payBtn.style.opacity = 0.5; paypalBtn.style.opacity = 0.5;
-    if (cart.length === 0) { note.innerText = "Select service"; return; }
+    
+    if (cart.length === 0) { note.innerText = "Please select a service"; return; }
     if (agreeEl && !agreeEl.checked) { note.innerText = "Please accept booking conditions"; return; }
-    if (hasPDF && (!nameEl.value || !emailEl.value || !mobileEl.value || !dobEl.value || !queryEl.value)) { note.innerText = "Fill all PDF details"; return; }
-    if (hasLive && (!dateEl.value || !timeEl.value || !nameEl.value || !emailEl.value || !mobileEl.value)) { note.innerText = "Select valid slot"; return; }
+    
+    // Validation for PDF
+    if (hasPDF && (!nameEl.value || !emailEl.value || !mobileEl.value || !dobEl.value || !queryEl.value)) {
+        note.innerText = "Please fill all PDF details"; return;
+    }
+    
+    // Validation for Live
+    if (hasLive) {
+        if (!dateEl.value || !timeEl.value) { note.innerText = "Please select a valid slot"; return; }
+        if (!nameEl.value || !emailEl.value || !mobileEl.value) { note.innerText = "Please fill contact details"; return; }
+    }
 
     note.innerText = "";
     if (loc === 'domestic') { payBtn.disabled = false; payBtn.style.opacity = 1; } 
@@ -436,16 +475,39 @@ function generateBookingId() { return 'TTT-' + Date.now().toString().slice(-6); 
 payBtn.onclick = function() {
     let id = generateBookingId();
     let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    const bookingData = { id: id, name: nameEl.value, email: emailEl.value, mobile: mobileEl.value, services: cart.map(i => i.name), date: dateEl.value || null, time: timeEl.value || null, dob: dobEl.value || null, query: queryEl.value || null, rescheduled: false };
+    const bookingData = { 
+        id: id, 
+        name: nameEl.value, 
+        email: emailEl.value, 
+        mobile: mobileEl.value, 
+        services: cart.map(i => i.name), 
+        date: dateEl.value || null, 
+        time: timeEl.value || null, 
+        dob: dobEl.value || null, 
+        query: queryEl.value || null, 
+        rescheduled: false 
+    };
+    
+    // Double check slot availability (locally)
     if (bookingData.date && bookingData.time) {
-        if (bookings.find(b => b.date === bookingData.date && b.time === bookingData.time)) { alert('This slot is booked. Please select another.'); updateSlots(); return; }
+        if (bookings.find(b => b.date === bookingData.date && b.time === bookingData.time)) { 
+            alert('This slot was just booked. Please select another.'); 
+            updateSlots(); 
+            return; 
+        }
     }
+    
     bookings.push(bookingData);
     localStorage.setItem('bookings', JSON.stringify(bookings));
+    
+    // Open Payment
     window.open(razorpayLink + '/' + window.finalINR, '_blank');
-    let msg = `✨ Booking Confirmed%0AID: ${id}%0AName: ${bookingData.name}%0AServices: ${bookingData.services.join(', ')}%0AAmount: ₹${window.finalINR}`;
+    
+    // Send WhatsApp
+    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${bookingData.name}%0AServices: ${bookingData.services.join(', ')}%0AAmount: ₹${window.finalINR}`;
     if (bookingData.date && bookingData.time) { msg += `%0ADate: ${bookingData.date}%0ATime: ${bookingData.time}`; }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
+    
     alert('Redirecting to Payment. Booking ID: ' + id);
     updateSlots();
 }
@@ -454,13 +516,30 @@ payBtn.onclick = function() {
 paypalBtn.onclick = function() {
     let id = generateBookingId();
     let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
-    const bookingData = { id: id, name: nameEl.value, email: emailEl.value, mobile: mobileEl.value, services: cart.map(i => i.name), date: dateEl.value || null, time: timeEl.value || null, dob: dobEl.value || null, query: queryEl.value || null, rescheduled: false };
+    const bookingData = { 
+        id: id, 
+        name: nameEl.value, 
+        email: emailEl.value, 
+        mobile: mobileEl.value, 
+        services: cart.map(i => i.name), 
+        date: dateEl.value || null, 
+        time: timeEl.value || null, 
+        dob: dobEl.value || null, 
+        query: queryEl.value || null, 
+        rescheduled: false 
+    };
+    
     bookings.push(bookingData);
     localStorage.setItem('bookings', JSON.stringify(bookings));
-    window.open(paypalLink + '/' + window.finalUSD, '_blank');
-    let msg = `✨ Booking Confirmed%0AID: ${id}%0AName: ${bookingData.name}%0AServices: ${bookingData.services.join(', ')}%0AAmount: $${window.finalUSD}`;
+    
+    // Open Payment with USD amount
+    window.open(paypalLink + '/' + window.finalUSD + 'USD', '_blank');
+    
+    // Send WhatsApp
+    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${bookingData.name}%0AServices: ${bookingData.services.join(', ')}%0AAmount: $${window.finalUSD}`;
     if (bookingData.date && bookingData.time) { msg += `%0ADate: ${bookingData.date}%0ATime: ${bookingData.time}`; }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
+    
     alert('Redirecting to PayPal. Booking ID: ' + id);
     updateSlots();
 }
@@ -488,7 +567,6 @@ function rescheduleBooking() {
     const t = document.getElementById('rescheduleTime').value;
     if (!id || !d || !t) { alert("Fill all fields"); return; }
     
-    // Update local storage
     let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
     let b = bookings.find(x => x.id === id);
     if (b) {
@@ -497,7 +575,6 @@ function rescheduleBooking() {
         localStorage.setItem('bookings', JSON.stringify(bookings));
     }
 
-    // FIX: Send WhatsApp to Merchant
     let msg = `🔁 *Reschedule Request*%0AID: ${id}%0ANew Date: ${d}%0ANew Time: ${t}`;
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
     alert('Please send the WhatsApp message to complete reschedule.');
@@ -509,7 +586,6 @@ function cancelBooking() {
     const id = document.getElementById('cancelId').value.trim();
     if (!id) { alert("Enter Booking ID"); return; }
 
-    // Update local storage
     let bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
     const exists = bookings.find(b => b.id === id);
     if(exists) {
@@ -517,7 +593,6 @@ function cancelBooking() {
         localStorage.setItem('bookings', JSON.stringify(bookings));
     }
 
-    // FIX: Send WhatsApp to Merchant
     let msg = `❌ *Cancellation Request*%0AID: ${id}`;
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
     alert('Please send the WhatsApp message to complete cancellation.');
@@ -537,6 +612,7 @@ function sendFeedback() {
     window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, '_blank');
 }
 
+// Initialize
 fetchExchangeRate();
 </script>
 </body>
