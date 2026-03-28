@@ -23,8 +23,11 @@ h1,h2{text-align:center;margin-top:35px}
 
 .narrow{max-width:420px;margin:0 auto}
 .form-card{background:#1a0f2a;margin:18px auto;padding:22px 22px 26px 22px;border-radius:14px;max-width:420px;line-height:1.6}
-.testimonial-grid{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:15px}
-.testimonial{background:#1a0f2a;padding:18px;border-radius:14px;width:200px;height:200px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5;font-size:14px}
+
+/* Testimonial Slider Styles */
+.testimonial-slider { max-width: 500px; margin: 0 auto; overflow: hidden; position: relative; border-radius: 14px; background: #1a0f2a; }
+.testimonial-slide { min-width: 100%; padding: 30px; text-align: center; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.slides-container { display: flex; transition: transform 0.6s ease-in-out; }
 
 .form-card textarea{min-height:120px;resize:vertical}
 
@@ -50,6 +53,15 @@ select option { color: #fff; background: #2b1b4e; }
 }
 .music-btn:hover { transform: scale(1.1); }
 .music-btn.playing { animation: pulse 1.5s infinite; }
+
+/* Back to Top Button */
+#topBtn {
+    display: none; position: fixed; bottom: 80px; right: 20px; z-index: 99;
+    font-size: 18px; border: none; outline: none; background-color: #7c3aed;
+    color: white; cursor: pointer; padding: 10px 15px; border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);
+}
+
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
@@ -58,22 +70,32 @@ select option { color: #fff; background: #2b1b4e; }
 
 /* Calendar Responsive */
 .calendar-container {
-    position: relative;
-    padding-bottom: 60%;
-    height: 0;
-    overflow: hidden;
-    background: #1a0f2a;
-    border-radius: 12px;
-    margin: 20px auto;
-    max-width: 800px;
+    position: relative; padding-bottom: 60%; height: 0; overflow: hidden;
+    background: #1a0f2a; border-radius: 12px; margin: 20px auto; max-width: 800px;
 }
 .calendar-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0; transform: translateY(30px); transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1; transform: translateY(0);
+}
+
+/* FAQ Accordion */
+.accordion-btn {
+    width: 100%; text-align: left; background: #2b1b4e; color: #fff;
+    border: none; padding: 15px; cursor: pointer; font-size: 16px;
+    outline: none; transition: 0.3s; border-radius: 8px; margin-top: 5px;
+}
+.accordion-btn:hover { background: #3b2b5e; }
+.accordion-btn.active { background: #7c3aed; }
+.accordion-panel {
+    display: none; padding: 15px; background: #1a0f2a; 
+    color: #cbd5f5; border-radius: 0 0 8px 8px; margin-bottom: 5px;
 }
 
 </style>
@@ -82,6 +104,7 @@ select option { color: #fff; background: #2b1b4e; }
 <body>
 <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+<button onclick="scrollToTop()" id="topBtn" title="Go to top">☝️</button>
 
 <div class="container">
 
@@ -99,24 +122,28 @@ select option { color: #fff; background: #2b1b4e; }
 <h1 style="text-align:center;margin:10px 0 5px 0">🔮 Tarot Tells Tales</h1>
 <div style="text-align:center;margin-bottom:20px"><img src="logo.png" style="height:80px; border-radius: 50%;" alt="Logo"></div>
 
-<h2 id="about">🌙 About Me</h2>
-<p style="text-align:center;max-width:800px;margin:auto;line-height:1.9">
-Hi, I’m the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear.
-My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence.
-✨ Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.
-</p>
+<div class="reveal">
+    <h2 id="about">🌙 About Me</h2>
+    <p style="text-align:center;max-width:800px;margin:auto;line-height:1.9">
+    Hi, I’m the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear.
+    My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence.
+    ✨ Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.
+    </p>
+</div>
 
-<h2>✨ Begin Your Journey</h2>
-<div class="card"><div class="row">
-<div class="col"><img src="begin-journey.jpg" alt="Journey"></div>
-<div class="col card-content">
-<p>You don’t need perfect questions — just take the first step. Sometimes all we need is guidance, reassurance, or simply clarity in moments of confusion. Tarot helps you connect the dots, understand energies and move ahead with confidence. No questions? No problem — just choose a category and allow tarot to guide you.</p>
-</div></div></div>
+<div class="reveal">
+    <h2>✨ Begin Your Journey</h2>
+    <div class="card"><div class="row">
+    <div class="col"><img src="begin-journey.jpg" alt="Journey"></div>
+    <div class="col card-content">
+    <p>You don’t need perfect questions — just take the first step. Sometimes all we need is guidance, reassurance, or simply clarity in moments of confusion. Tarot helps you connect the dots, understand energies and move ahead with confidence. No questions? No problem — just choose a category and allow tarot to guide you.</p>
+    </div></div></div>
+</div>
 
 <h2 id="categories">🔮 Categories</h2>
 
 <!-- Categories -->
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="health.jpg" alt="Health"></div>
 <div class="col card-content">
 <h3>🧘 Health & Wellness</h3>
@@ -125,7 +152,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Health',2500,'Live')">Live ₹2500</button>
 </div></div></div>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="selfhelp.jpg" alt="Self Help"></div>
 <div class="col card-content">
 <h3>🌱 Self Help</h3>
@@ -133,7 +160,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Self Help',1850,'PDF')">PDF ₹1850</button>
 </div></div></div>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="lost.jpg" alt="Feeling Lost"></div>
 <div class="col card-content">
 <h3>🌫️ Feeling Lost</h3>
@@ -141,7 +168,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Feeling Lost',2100,'Live')">Live ₹2100</button>
 </div></div></div>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="relationships.jpg" alt="Relationships"></div>
 <div class="col card-content">
 <h3>❤️ Relationships</h3>
@@ -150,7 +177,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Relationships',2500,'Live')">Live ₹2500</button>
 </div></div></div>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="career.jpg" alt="Career"></div>
 <div class="col card-content">
 <h3>💼 Career & Finance</h3>
@@ -159,7 +186,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Career',2500,'Live')">Live ₹2500</button>
 </div></div></div>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="pet-cuddle.jpg" alt="Pet Reading"></div>
 <div class="col card-content">
 <h3>🐾 Pet Reading</h3>
@@ -169,7 +196,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 
 <h2>✨ Premium</h2>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="chakra.jpg" alt="Chakra"></div>
 <div class="col card-content">
 <h3>🧿 Chakra Healing</h3>
@@ -179,7 +206,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo ₹5750</button>
 </div></div></div>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><img src="guidance.jpg" alt="Guidance"></div>
 <div class="col card-content">
 <h3>🔮 Guidance (PDF Reading)</h3>
@@ -189,7 +216,7 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly ₹17850</button>
 </div></div></div>
 
-<div class="card"><div class="row">
+<div class="card reveal"><div class="row">
 <div class="col"><video src="name-analysis.mp4" autoplay muted loop playsinline></video></div>
 <div class="col card-content">
 <h3>🔢 Name Analysis</h3>
@@ -197,26 +224,47 @@ My approach is not just about predictions. It is about clarity, emotional unders
 <button class="btn" onclick="addToCart('Name Analysis',4500,'PDF')">PDF ₹4500</button>
 </div></div></div>
 
-<h2>🎁 Combo Offers</h2>
-<p style="text-align:center">2 PDF Readings → <b>10% OFF</b><br>3 PDF Readings → <b>15% OFF</b></p>
+<div class="reveal">
+    <h2>🎁 Combo Offers</h2>
+    <p style="text-align:center">2 PDF Readings → <b>10% OFF</b><br>3 PDF Readings → <b>15% OFF</b></p>
+</div>
 
-<h2>💬 Testimonials</h2>
-<div class="testimonial-grid">
-<div class="testimonial">“The reading was extremely accurate and gave me clarity I was looking for.”</div>
-<div class="testimonial">“I felt heard, understood and guided in the right direction.”</div>
-<div class="testimonial">“One of the most genuine readings I’ve experienced.”</div>
-<div class="testimonial">“Helped me make an important life decision confidently.”</div>
-<div class="testimonial">“Helped me gain clarity instantly.”</div>
+<div class="reveal">
+    <h2>💬 Testimonials</h2>
+    <div class="testimonial-slider">
+        <div class="slides-container" id="slidesContainer">
+            <div class="testimonial-slide">
+                <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
+                <p style="margin-top: 15px; line-height: 1.6;">“The reading was extremely accurate and gave me clarity I was looking for.”</p>
+                <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Happy Client</strong>
+            </div>
+            <div class="testimonial-slide">
+                <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
+                <p style="margin-top: 15px; line-height: 1.6;">“I felt heard, understood and guided in the right direction.”</p>
+                <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Grateful Soul</strong>
+            </div>
+            <div class="testimonial-slide">
+                <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
+                <p style="margin-top: 15px; line-height: 1.6;">“One of the most genuine readings I’ve experienced. Highly recommended.”</p>
+                <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Repeat Client</strong>
+            </div>
+            <div class="testimonial-slide">
+                <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
+                <p style="margin-top: 15px; line-height: 1.6;">“Helped me make an important life decision confidently.”</p>
+                <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Believer</strong>
+            </div>
+        </div>
+    </div>
 </div>
 
 <h2 id="basket-section">🛒 Basket</h2>
-<div class="narrow">
+<div class="narrow reveal">
 <div id="cart"></div>
 <div id="priceBreakup" style="text-align:center; margin-top:10px;"></div>
 </div>
 
 <h2 id="booking">📅 Booking</h2>
-<div class="narrow">
+<div class="narrow reveal">
 <p style="text-align:center;color:#cbd5f5">Check the calendar below for availability. Booking is confirmed after payment.</p>
 
 <!-- GOOGLE CALENDAR SECTION -->
@@ -253,7 +301,7 @@ I agree to the booking conditions
 <div class="form-card" id="liveSection" style="display:none">
 <label style="font-size:12px; color:#aaa;">Select Date</label>
 <input type="date" id="date">
-<label style="font-size:12px; color:#aaa;">Select Time</label>
+<label style="font-size:12px; color:#aaa;">Select Time (Slots shown in your local time)</label>
 <select id="time"></select>
 </div>
 
@@ -266,7 +314,7 @@ I agree to the booking conditions
 
 <!-- RESCHEDULE SECTION -->
 <h2>🔁 Reschedule</h2>
-<div class="narrow">
+<div class="narrow reveal">
 <div class="form-card">
 <p style="font-size:12px; color:#cbd5f5; text-align:center; margin-top:0;">(Note: Please send the WhatsApp message to confirm reschedule)</p>
 <input id="rescheduleId" placeholder="Booking ID">
@@ -278,7 +326,7 @@ I agree to the booking conditions
 
 <!-- CANCEL SECTION -->
 <h2>❌ Cancel</h2>
-<div class="narrow">
+<div class="narrow reveal">
 <div class="form-card">
 <p style="font-size:12px; color:#cbd5f5; text-align:center; margin-top:0;">(Note: Cancellation is subject to policy. No refunds applicable.)</p>
 <input id="cancelId" placeholder="Booking ID">
@@ -287,13 +335,34 @@ I agree to the booking conditions
 </div>
 </div>
 
+<!-- FAQ SECTION -->
+<div class="reveal">
+<h2>❓ Frequently Asked Questions</h2>
+<div class="narrow">
+    <button class="accordion-btn">How long does a PDF reading take?</button>
+    <div class="accordion-panel">
+        <p>PDF readings are delivered within <b>2 to 4 working days</b> via email or WhatsApp.</p>
+    </div>
+
+    <button class="accordion-btn">Can I reschedule a live session?</button>
+    <div class="accordion-panel">
+        <p>Yes, live sessions can be rescheduled <b>once</b> if notified at least 24 hours in advance.</p>
+    </div>
+
+    <button class="accordion-btn">Is my information confidential?</button>
+    <div class="accordion-panel">
+        <p>Absolutely. All your personal details, queries, and reading content remain 100% private and confidential.</p>
+    </div>
+</div>
+</div>
+
 <h2>⚠️ Disclaimer</h2>
-<p style="text-align:center;font-size:13px;color:#cbd5f5;max-width:800px;margin:auto;line-height:1.7">
+<p style="text-align:center;font-size:13px;color:#cbd5f5;max-width:800px;margin:auto;line-height:1.7" class="reveal">
 Tarot readings are based on intuitive guidance and are not absolute or legally binding. Any decisions taken by you after the reading are your sole responsibility. No refunds are applicable once a booking is made for either PDF or live sessions.
 </p>
 
 <h2>📝 Feedback</h2>
-<div class="narrow">
+<div class="narrow reveal">
 <div class="form-card">
 <input id="feedMobile" type="tel" placeholder="Your Mobile Number">
 <input id="feedEmail" type="email" placeholder="Your Email Address">
@@ -302,12 +371,22 @@ Tarot readings are based on intuitive guidance and are not absolute or legally b
 </div>
 </div>
 
+<!-- CORRECTED CONTACT SECTION -->
 <h2 id="contact">📞 Contact</h2>
-<p style="text-align:center; margin-bottom:40px;">
-WhatsApp: <a href="https://wa.me/919892223162" style="color:#a5f3fc">9892223162</a><br>
-Email: tarottellstalestarneja@gmail.com<br>
-Instagram: @tarottelltales
-</p>
+<div style="text-align:center; margin-bottom:40px; line-height:2; font-size: 18px;">
+    <a href="https://wa.me/919892223162" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">
+        📱 WhatsApp: 9892223162
+    </a>
+    <br>
+    <a href="mailto:tarottellstalestarneja@gmail.com" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">
+        ✉️ tarottellstalestarneja@gmail.com
+    </a>
+    <br>
+    <a href="https://instagram.com/tarottelltales" target="_blank" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">
+        📸 Instagram: @tarottelltales
+    </a>
+</div>
+<!-- END CORRECTED SECTION -->
 
 </div>
 
@@ -331,7 +410,7 @@ const queryEl = document.getElementById('query');
 const dateEl = document.getElementById('date');
 const timeEl = document.getElementById('time');
 const locationEl = document.getElementById('location');
-const agreeEl = document.getElementById('agree'); // Defined Agree Element
+const agreeEl = document.getElementById('agree'); 
 const payBtn = document.getElementById('payBtn');
 const paypalBtn = document.getElementById('paypalBtn');
 const note = document.getElementById('note');
@@ -344,6 +423,58 @@ function toggleMusic() {
     else { audio.pause(); btn.innerHTML = "🎵"; btn.classList.remove('playing'); }
 }
 
+// TESTIMONIAL SLIDER
+let currentSlide = 0;
+const slidesContainer = document.getElementById('slidesContainer');
+if(slidesContainer) {
+    const totalSlides = document.querySelectorAll('.testimonial-slide').length;
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }, 4000);
+}
+
+// ACCORDION LOGIC
+const accBtns = document.getElementsByClassName("accordion-btn");
+for (let i = 0; i < accBtns.length; i++) {
+    accBtns[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+
+// SCROLL REVEAL
+function reveal() {
+  const reveals = document.querySelectorAll(".reveal");
+  for (let i = 0; i < reveals.length; i++) {
+    const windowHeight = window.innerHeight;
+    const elementTop = reveals[i].getBoundingClientRect().top;
+    const elementVisible = 150;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+window.addEventListener("scroll", reveal);
+reveal(); // Initial check
+
+// BACK TO TOP
+window.onscroll = function() { scrollFunction(); reveal(); };
+function scrollFunction() {
+    const btn = document.getElementById("topBtn");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+}
+function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+
 // 1. Fetch Exchange Rate
 async function fetchExchangeRate() {
     try {
@@ -351,9 +482,7 @@ async function fetchExchangeRate() {
         const data = await response.json();
         if (data && data.rates && data.rates.USD) {
             exchangeRate = data.rates.USD;
-        } else {
-            throw new Error("Invalid data");
-        }
+        } else { throw new Error("Invalid data"); }
     } catch (error) {
         console.error("Exchange API Failed, using fallback.", error);
         exchangeRate = 1 / 83; 
@@ -364,7 +493,7 @@ async function fetchExchangeRate() {
     checkPay();
 }
 
-// Slot Config
+// Slot Config (IST Times)
 const slots = {
     1:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"],
     2:["4 PM","5 PM","6 PM","7 PM"],
@@ -374,6 +503,16 @@ const slots = {
     6:["2 PM","3 PM","4 PM","5 PM","6 PM","7 PM"],
     0:["11 AM","12 PM","1 PM","5 PM","6 PM","7 PM"]
 };
+
+// Helper to convert 12h IST string to Date object
+function getISTDate(dateStr, timeStr) {
+    const [time, modifier] = timeStr.split(' ');
+    let hours = parseInt(time);
+    if (hours === 12) hours = modifier === 'AM' ? 0 : 12;
+    else if (modifier === 'PM') hours += 12;
+    const isoStr = `${dateStr}T${String(hours).padStart(2, '0')}:00:00+05:30`;
+    return new Date(isoStr);
+}
 
 function addToCart(name, price, format) {
     const label = name + " (" + format + ")";
@@ -388,9 +527,7 @@ function removeItem(name) {
 }
 
 function render() {
-    let subINR = 0; 
-    let html = ""; 
-    const loc = locationEl.value;
+    let subINR = 0; let html = ""; const loc = locationEl.value;
     
     cart.forEach(i => {
         subINR += i.price;
@@ -416,10 +553,8 @@ function render() {
             let discDisplay = (loc === 'domestic') ? `₹${Math.round(discountINR)}` : `$${(discountINR * exchangeRate).toFixed(2)}`;
             priceHTML += `<p class="discount-text">Discount Applied - ${discDisplay}</p>`;
         }
-        
         let totalDisplay = (loc === 'domestic') ? `₹${Math.round(finalINR)}` : `$${finalUSD.toFixed(2)}`;
         priceHTML += '<div class="total-text">Total: ' + totalDisplay + '</div>';
-        
         if (loc === 'international') priceHTML += `<div class="rate-text">Live Rate: 1 INR = ${exchangeRate.toFixed(4)} USD</div>`;
     }
 
@@ -436,21 +571,24 @@ function toggleSections() {
     document.getElementById('liveSection').style.display = hasLive ? 'block' : 'none';
 }
 
+// UPDATED SLOTS LOGIC WITH TIMEZONE
 function updateSlots() {
     if (!dateEl.value) { timeEl.innerHTML = '<option value="">Select date first</option>'; return; }
     const parts = dateEl.value.split('-');
     const d = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
     timeEl.innerHTML = '';
     let availableSlots = (slots[d] || []);
+    
     if (availableSlots.length === 0) { timeEl.innerHTML = '<option value="">No slots available for this day</option>'; return; }
     
     availableSlots.forEach(s => {
+        const istDate = getISTDate(dateEl.value, s);
+        const userTimeStr = istDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
         const opt = document.createElement('option');
         opt.value = s;
-        opt.textContent = s;
+        opt.textContent = `${userTimeStr} (Your Time) / ${s} (India)`;
         timeEl.appendChild(opt);
     });
-    // Reset time value to empty to force user selection
     timeEl.value = "";
     checkPay();
 }
@@ -461,82 +599,52 @@ function checkPay() {
     const hasPDF = cart.some(i => i.name.includes('PDF') || i.name.includes('Monthly') || i.name.includes('Quarterly') || i.name.includes('Half-Yearly') || i.name.includes('Yearly') || i.name.includes('Chakra'));
     const hasLive = cart.some(i => i.name.includes('Live'));
 
-    // DEFAULT STATE: Disabled
     payBtn.disabled = true; paypalBtn.disabled = true;
     payBtn.style.opacity = 0.5; paypalBtn.style.opacity = 0.5;
     
-    // CHECK 1: Cart
     if (cart.length === 0) { note.innerText = "Please select a service"; return; }
-    
-    // CHECK 2: Agreement (Global Check)
     if (!agreeEl.checked) { note.innerText = "Please accept booking conditions"; return; }
+    if (!nameEl.value || !emailEl.value || !mobileEl.value) { note.innerText = "Please fill Name, Email and Mobile"; return; }
     
-    // CHECK 3: Basic Contact Details (Required for ALL bookings)
-    if (!nameEl.value || !emailEl.value || !mobileEl.value) { 
-        note.innerText = "Please fill Name, Email and Mobile"; 
-        return; 
-    }
-    
-    // CHECK 4: PDF Specifics
     if (hasPDF) {
-        if (!dobEl.value || !queryEl.value) {
-            note.innerText = "Please fill DOB and Query for PDF reading"; 
-            return;
-        }
+        if (!dobEl.value || !queryEl.value) { note.innerText = "Please fill DOB and Query for PDF reading"; return; }
     }
     
-    // CHECK 5: Live Specifics
     if (hasLive) {
-        if (!dateEl.value) { 
-            note.innerText = "Please select a date"; 
-            return; 
-        }
-        if (!timeEl.value) { 
-            note.innerText = "Please select a time slot"; 
-            return; 
-        }
+        if (!dateEl.value) { note.innerText = "Please select a date"; return; }
+        if (!timeEl.value) { note.innerText = "Please select a time slot"; return; }
     }
 
-    // IF ALL PASS
     note.innerText = "";
     if (loc === 'domestic') { payBtn.disabled = false; payBtn.style.opacity = 1; } 
     else { paypalBtn.disabled = false; paypalBtn.style.opacity = 1; }
 }
 
-// Event Listeners
 [nameEl, emailEl, mobileEl, dobEl, queryEl].forEach(el => { if(el) el.addEventListener('input', checkPay); });
 if(dateEl) dateEl.addEventListener('change', checkPay);
 if(timeEl) timeEl.addEventListener('change', checkPay);
-if(agreeEl) agreeEl.addEventListener('change', checkPay); // ADDED LISTENER FOR CHECKBOX
+if(agreeEl) agreeEl.addEventListener('change', checkPay);
 
 function generateBookingId() { return 'TTT-' + Date.now().toString().slice(-6); }
 
-// PAYMENT CLICK (Razorpay)
 payBtn.onclick = function() {
     let id = generateBookingId();
     window.open(razorpayLink + '/' + window.finalINR, '_blank');
-    
     let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${nameEl.value}%0AServices: ${cart.map(i => i.name).join(', ')}%0AAmount: ₹${window.finalINR}`;
-    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value}`; }
+    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value} (India Standard Time)`; }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-    
     alert('Redirecting to Payment. Booking ID: ' + id);
 }
 
-// PAYMENT CLICK (PayPal)
 paypalBtn.onclick = function() {
     let id = generateBookingId();
-    
     window.open(paypalLink + '/' + window.finalUSD + 'USD', '_blank');
-    
     let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${nameEl.value}%0AServices: ${cart.map(i => i.name).join(', ')}%0AAmount: $${window.finalUSD}`;
-    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value}`; }
+    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value} (India Standard Time)`; }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-    
     alert('Redirecting to PayPal. Booking ID: ' + id);
 }
 
-// RESCHEDULE LOGIC
 function updateRescheduleSlots() {
     const rDate = document.getElementById('rescheduleDate').value;
     const rTime = document.getElementById('rescheduleTime');
@@ -555,17 +663,14 @@ function rescheduleBooking() {
     const d = document.getElementById('rescheduleDate').value;
     const t = document.getElementById('rescheduleTime').value;
     if (!id || !d || !t) { alert("Fill all fields"); return; }
-    
     let msg = `🔁 *Reschedule Request*%0AID: ${id}%0ANew Date: ${d}%0ANew Time: ${t}`;
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
     alert('Please send the WhatsApp message to complete reschedule.');
 }
 
-// CANCEL LOGIC
 function cancelBooking() {
     const id = document.getElementById('cancelId').value.trim();
     if (!id) { alert("Enter Booking ID"); return; }
-
     if (confirm("Are you sure you want to cancel? Please note: No refunds are applicable for cancelled bookings as per policy.")) {
         let msg = `❌ *Cancellation Request*%0AID: ${id}`;
         window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
@@ -586,7 +691,6 @@ function sendFeedback() {
     window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, '_blank');
 }
 
-// Initialize
 fetchExchangeRate();
 </script>
 </body>
