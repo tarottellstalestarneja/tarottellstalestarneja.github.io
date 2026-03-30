@@ -11,7 +11,7 @@
 <meta name="keywords" content="Tarot Reading, Online Tarot, Tarot Tells Tales, Love Tarot, Career Tarot, Live Tarot Session, Spiritual Guidance, Energy Healing">
 <meta name="author" content="Tarot Tells Tales">
 
-<!-- Open Graph Tags (WhatsApp/Facebook/LinkedIn Sharing) -->
+<!-- Open Graph Tags -->
 <meta property="og:title" content="Tarot Tells Tales - Tarot Reading & Guidance">
 <meta property="og:description" content="Find clarity and direction with personalized tarot readings for relationships, career, and health.">
 <meta property="og:image" content="https://yourwebsite.com/logo.png">
@@ -22,6 +22,9 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- RAZORPAY CHECKOUT SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
 body{margin:0;font-family:'Outfit',sans-serif;color:#f5f3ff;background:radial-gradient(circle at top,#1a0f2a,#020617)}
@@ -40,7 +43,6 @@ h1,h2{text-align:center;margin-top:35px}
 .narrow{max-width:420px;margin:0 auto}
 .form-card{background:#1a0f2a;margin:18px auto;padding:22px 22px 26px 22px;border-radius:14px;max-width:420px;line-height:1.6}
 
-/* Testimonial Slider Styles */
 .testimonial-slider { max-width: 500px; margin: 0 auto; overflow: hidden; position: relative; border-radius: 14px; background: #1a0f2a; }
 .testimonial-slide { min-width: 100%; padding: 30px; text-align: center; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .slides-container { display: flex; transition: transform 0.6s ease-in-out; }
@@ -70,7 +72,6 @@ select option { color: #fff; background: #2b1b4e; }
 .music-btn:hover { transform: scale(1.1); }
 .music-btn.playing { animation: pulse 1.5s infinite; }
 
-/* Back to Top Button */
 #topBtn {
     display: none; position: fixed; bottom: 80px; right: 20px; z-index: 99;
     font-size: 18px; border: none; outline: none; background-color: #7c3aed;
@@ -84,7 +85,6 @@ select option { color: #fff; background: #2b1b4e; }
     100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
 }
 
-/* Calendar Responsive */
 .calendar-container {
     position: relative; padding-bottom: 60%; height: 0; overflow: hidden;
     background: #1a0f2a; border-radius: 12px; margin: 20px auto; max-width: 800px;
@@ -93,7 +93,6 @@ select option { color: #fff; background: #2b1b4e; }
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
 }
 
-/* Scroll Reveal Animation */
 .reveal {
   opacity: 0; transform: translateY(30px); transition: all 0.8s ease;
 }
@@ -101,7 +100,6 @@ select option { color: #fff; background: #2b1b4e; }
   opacity: 1; transform: translateY(0);
 }
 
-/* FAQ Accordion */
 .accordion-btn {
     width: 100%; text-align: left; background: #2b1b4e; color: #fff;
     border: none; padding: 15px; cursor: pointer; font-size: 16px;
@@ -112,6 +110,19 @@ select option { color: #fff; background: #2b1b4e; }
 .accordion-panel {
     display: none; padding: 15px; background: #1a0f2a; 
     color: #cbd5f5; border-radius: 0 0 8px 8px; margin-bottom: 5px;
+}
+
+#successModal { animation: fadeIn 0.3s ease; }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.modal-card {
+    animation: slideUp 0.4s ease;
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 </style>
@@ -141,7 +152,7 @@ select option { color: #fff; background: #2b1b4e; }
 <div class="reveal">
     <h2 id="about">🌙 About Me</h2>
     <p style="text-align:center;max-width:800px;margin:auto;line-height:1.9">
-    Hi, I’m the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear.
+    Hi, I'm the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear.
     My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence.
     ✨ Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.
     </p>
@@ -152,13 +163,12 @@ select option { color: #fff; background: #2b1b4e; }
     <div class="card"><div class="row">
     <div class="col"><img src="begin-journey.jpg" alt="Begin your spiritual tarot journey" loading="lazy"></div>
     <div class="col card-content">
-    <p>You don’t need perfect questions — just take the first step. Sometimes all we need is guidance, reassurance, or simply clarity in moments of confusion. Tarot helps you connect the dots, understand energies and move ahead with confidence. No questions? No problem — just choose a category and allow tarot to guide you.</p>
+    <p>You don't need perfect questions — just take the first step. Sometimes all we need is guidance, reassurance, or simply clarity in moments of confusion. Tarot helps you connect the dots, understand energies and move ahead with confidence. No questions? No problem — just choose a category and allow tarot to guide you.</p>
     </div></div></div>
 </div>
 
 <h2 id="categories">🔮 Categories</h2>
 
-<!-- Categories -->
 <div class="card reveal"><div class="row">
 <div class="col"><img src="health.jpg" alt="Tarot reading for health and wellness insights" loading="lazy"></div>
 <div class="col card-content">
@@ -206,7 +216,7 @@ select option { color: #fff; background: #2b1b4e; }
 <div class="col"><img src="pet-cuddle.jpg" alt="Pet communication and tarot reading" loading="lazy"></div>
 <div class="col card-content">
 <h3>🐾 Pet Reading</h3>
-<p>Understand your pet’s emotions, behaviour and deeper bond with you. This reading also includes communication with departed pets.</p>
+<p>Understand your pet's emotions, behaviour and deeper bond with you. This reading also includes communication with departed pets.</p>
 <button class="btn" onclick="addToCart('Pet',2500,'PDF')">PDF ₹2500</button>
 </div></div></div>
 
@@ -251,22 +261,22 @@ select option { color: #fff; background: #2b1b4e; }
         <div class="slides-container" id="slidesContainer">
             <div class="testimonial-slide">
                 <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top: 15px; line-height: 1.6;">“The reading was extremely accurate and gave me clarity I was looking for.”</p>
+                <p style="margin-top: 15px; line-height: 1.6;">"The reading was extremely accurate and gave me clarity I was looking for."</p>
                 <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Happy Client</strong>
             </div>
             <div class="testimonial-slide">
                 <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top: 15px; line-height: 1.6;">“I felt heard, understood and guided in the right direction.”</p>
+                <p style="margin-top: 15px; line-height: 1.6;">"I felt heard, understood and guided in the right direction."</p>
                 <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Grateful Soul</strong>
             </div>
             <div class="testimonial-slide">
                 <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top: 15px; line-height: 1.6;">“One of the most genuine readings I’ve experienced. Highly recommended.”</p>
+                <p style="margin-top: 15px; line-height: 1.6;">"One of the most genuine readings I've experienced. Highly recommended."</p>
                 <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Repeat Client</strong>
             </div>
             <div class="testimonial-slide">
                 <div style="font-size: 40px; color: #a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top: 15px; line-height: 1.6;">“Helped me make an important life decision confidently.”</p>
+                <p style="margin-top: 15px; line-height: 1.6;">"Helped me make an important life decision confidently."</p>
                 <strong style="color: #e9d5ff; display: block; margin-top: 10px;">- Believer</strong>
             </div>
         </div>
@@ -283,7 +293,6 @@ select option { color: #fff; background: #2b1b4e; }
 <div class="narrow reveal">
 <p style="text-align:center;color:#cbd5f5">Check the calendar below for availability. Booking is confirmed after payment.</p>
 
-<!-- GOOGLE CALENDAR SECTION -->
 <div class="calendar-container">
 <iframe src="https://calendar.google.com/calendar/embed?src=tarottellstalestarneja%40gmail.com&ctz=Asia%2FKolkata" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
@@ -328,7 +337,6 @@ I agree to the booking conditions
 </div>
 </div>
 
-<!-- RESCHEDULE SECTION -->
 <h2>🔁 Reschedule</h2>
 <div class="narrow reveal">
 <div class="form-card">
@@ -340,7 +348,6 @@ I agree to the booking conditions
 </div>
 </div>
 
-<!-- CANCEL SECTION -->
 <h2>❌ Cancel</h2>
 <div class="narrow reveal">
 <div class="form-card">
@@ -351,7 +358,6 @@ I agree to the booking conditions
 </div>
 </div>
 
-<!-- FAQ SECTION -->
 <div class="reveal">
 <h2>❓ Frequently Asked Questions</h2>
 <div class="narrow">
@@ -368,6 +374,16 @@ I agree to the booking conditions
     <button class="accordion-btn">Is my information confidential?</button>
     <div class="accordion-panel">
         <p>Absolutely. All your personal details, queries, and reading content remain 100% private and confidential.</p>
+    </div>
+
+    <button class="accordion-btn">How do I pay?</button>
+    <div class="accordion-panel">
+        <p>Click <b>"Pay via Razorpay"</b> — a secure payment popup will open. You can pay using UPI, cards, net banking, or wallets. Once paid, your booking is automatically confirmed.</p>
+    </div>
+
+    <button class="accordion-btn">What if my payment fails?</button>
+    <div class="accordion-panel">
+        <p>If payment fails, you can simply try again. No booking is created until payment is successful.</p>
     </div>
 </div>
 </div>
@@ -387,7 +403,6 @@ Tarot readings are based on intuitive guidance and are not absolute or legally b
 </div>
 </div>
 
-<!-- CONTACT SECTION -->
 <h2 id="contact">📞 Contact</h2>
 <div style="text-align:center; margin-bottom:40px; line-height:2; font-size: 18px;">
     <a href="https://wa.me/919892223162" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">
@@ -409,12 +424,16 @@ Tarot readings are based on intuitive guidance and are not absolute or legally b
 let cart = [];
 let exchangeRate = 0;
 
-// CONFIGURATION
-const razorpayLink = "https://rzp.io/l/tarottelltales";
-const paypalLink = "https://paypal.me/tarottellstales";
-const whatsappNumber = "919892223162"; 
+// ===================================================
+// ⚠️ REPLACE THIS WITH YOUR ACTUAL RAZORPAY KEY ID
+// ===================================================
+const RAZORPAY_KEY_ID = "rzp_live_SXP13njJD5Ks9k";
+// Looks like: rzp_live_abc123def456ghi
+// Find it at: Razorpay Dashboard → Settings → API Keys → Key ID
+// ===================================================
 
-// Elements
+const whatsappNumber = "919892223162";
+
 const cartDiv = document.getElementById('cart');
 const priceBreakupDiv = document.getElementById('priceBreakup');
 const nameEl = document.getElementById('name');
@@ -425,23 +444,21 @@ const queryEl = document.getElementById('query');
 const dateEl = document.getElementById('date');
 const timeEl = document.getElementById('time');
 const locationEl = document.getElementById('location');
-const agreeEl = document.getElementById('agree'); 
+const agreeEl = document.getElementById('agree');
 const payBtn = document.getElementById('payBtn');
 const paypalBtn = document.getElementById('paypalBtn');
 const note = document.getElementById('note');
 
-// MUSIC FUNCTION
 function toggleMusic() {
     const audio = document.getElementById('bgMusic');
     const btn = document.getElementById('musicBtn');
-    if (audio.paused) { audio.play(); btn.innerHTML = "🔊"; btn.classList.add('playing'); } 
+    if (audio.paused) { audio.play(); btn.innerHTML = "🔊"; btn.classList.add('playing'); }
     else { audio.pause(); btn.innerHTML = "🎵"; btn.classList.remove('playing'); }
 }
 
-// TESTIMONIAL SLIDER
 let currentSlide = 0;
 const slidesContainer = document.getElementById('slidesContainer');
-if(slidesContainer) {
+if (slidesContainer) {
     const totalSlides = document.querySelectorAll('.testimonial-slide').length;
     setInterval(() => {
         currentSlide = (currentSlide + 1) % totalSlides;
@@ -449,10 +466,9 @@ if(slidesContainer) {
     }, 4000);
 }
 
-// ACCORDION LOGIC
 const accBtns = document.getElementsByClassName("accordion-btn");
 for (let i = 0; i < accBtns.length; i++) {
-    accBtns[i].addEventListener("click", function() {
+    accBtns[i].addEventListener("click", function () {
         this.classList.toggle("active");
         const panel = this.nextElementSibling;
         if (panel.style.display === "block") {
@@ -463,23 +479,21 @@ for (let i = 0; i < accBtns.length; i++) {
     });
 }
 
-// SCROLL REVEAL
 function reveal() {
-  const reveals = document.querySelectorAll(".reveal");
-  for (let i = 0; i < reveals.length; i++) {
-    const windowHeight = window.innerHeight;
-    const elementTop = reveals[i].getBoundingClientRect().top;
-    const elementVisible = 150;
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
+    const reveals = document.querySelectorAll(".reveal");
+    for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
     }
-  }
 }
 window.addEventListener("scroll", reveal);
-reveal(); // Initial check
+reveal();
 
-// BACK TO TOP
-window.onscroll = function() { scrollFunction(); reveal(); };
+window.onscroll = function () { scrollFunction(); reveal(); };
 function scrollFunction() {
     const btn = document.getElementById("topBtn");
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -488,9 +502,8 @@ function scrollFunction() {
         btn.style.display = "none";
     }
 }
-function scrollToTop() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-// 1. Fetch Exchange Rate
 async function fetchExchangeRate() {
     try {
         const response = await fetch('https://open.er-api.com/v6/latest/INR');
@@ -500,7 +513,7 @@ async function fetchExchangeRate() {
         } else { throw new Error("Invalid data"); }
     } catch (error) {
         console.error("Exchange API Failed, using fallback.", error);
-        exchangeRate = 1 / 83; 
+        exchangeRate = 1 / 83;
     }
     updateSlots();
     render();
@@ -508,18 +521,16 @@ async function fetchExchangeRate() {
     checkPay();
 }
 
-// Slot Config (IST Times)
 const slots = {
-    1:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"],
-    2:["4 PM","5 PM","6 PM","7 PM"],
-    3:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"],
-    4:["4 PM","5 PM","6 PM","7 PM"],
-    5:["4 PM","5 PM","6 PM","7 PM"],
-    6:["2 PM","3 PM","4 PM","5 PM","6 PM","7 PM"],
-    0:["11 AM","12 PM","1 PM","5 PM","6 PM","7 PM"]
+    1: ["11 AM", "12 PM", "4 PM", "5 PM", "6 PM", "7 PM"],
+    2: ["4 PM", "5 PM", "6 PM", "7 PM"],
+    3: ["11 AM", "12 PM", "4 PM", "5 PM", "6 PM", "7 PM"],
+    4: ["4 PM", "5 PM", "6 PM", "7 PM"],
+    5: ["4 PM", "5 PM", "6 PM", "7 PM"],
+    6: ["2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM"],
+    0: ["11 AM", "12 PM", "1 PM", "5 PM", "6 PM", "7 PM"]
 };
 
-// Helper to convert 12h IST string to Date object
 function getISTDate(dateStr, timeStr) {
     const [time, modifier] = timeStr.split(' ');
     let hours = parseInt(time);
@@ -531,7 +542,7 @@ function getISTDate(dateStr, timeStr) {
 
 function addToCart(name, price, format) {
     const label = name + " (" + format + ")";
-    if (cart.find(i => i.name === label)) return; 
+    if (cart.find(i => i.name === label)) return;
     cart.push({ name: label, price: price });
     render(); toggleSections(); checkPay();
 }
@@ -543,7 +554,7 @@ function removeItem(name) {
 
 function render() {
     let subINR = 0; let html = ""; const loc = locationEl.value;
-    
+
     cart.forEach(i => {
         subINR += i.price;
         let displayPrice = (loc === 'domestic') ? `₹${i.price}` : `$${(i.price * exchangeRate).toFixed(2)}`;
@@ -586,16 +597,15 @@ function toggleSections() {
     document.getElementById('liveSection').style.display = hasLive ? 'block' : 'none';
 }
 
-// UPDATED SLOTS LOGIC WITH TIMEZONE
 function updateSlots() {
     if (!dateEl.value) { timeEl.innerHTML = '<option value="">Select date first</option>'; return; }
     const parts = dateEl.value.split('-');
     const d = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
     timeEl.innerHTML = '';
     let availableSlots = (slots[d] || []);
-    
+
     if (availableSlots.length === 0) { timeEl.innerHTML = '<option value="">No slots available for this day</option>'; return; }
-    
+
     availableSlots.forEach(s => {
         const istDate = getISTDate(dateEl.value, s);
         const userTimeStr = istDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
@@ -616,54 +626,293 @@ function checkPay() {
 
     payBtn.disabled = true; paypalBtn.disabled = true;
     payBtn.style.opacity = 0.5; paypalBtn.style.opacity = 0.5;
-    
+
     if (cart.length === 0) { note.innerText = "Please select a service"; return; }
     if (!agreeEl.checked) { note.innerText = "Please accept booking conditions"; return; }
     if (!nameEl.value || !emailEl.value || !mobileEl.value) { note.innerText = "Please fill Name, Email and Mobile"; return; }
-    
+
     if (hasPDF) {
         if (!dobEl.value || !queryEl.value) { note.innerText = "Please fill DOB and Query for PDF reading"; return; }
     }
-    
+
     if (hasLive) {
         if (!dateEl.value) { note.innerText = "Please select a date"; return; }
         if (!timeEl.value) { note.innerText = "Please select a time slot"; return; }
     }
 
     note.innerText = "";
-    if (loc === 'domestic') { payBtn.disabled = false; payBtn.style.opacity = 1; } 
+    if (loc === 'domestic') { payBtn.disabled = false; payBtn.style.opacity = 1; }
     else { paypalBtn.disabled = false; paypalBtn.style.opacity = 1; }
 }
 
-[nameEl, emailEl, mobileEl, dobEl, queryEl].forEach(el => { if(el) el.addEventListener('input', checkPay); });
-if(dateEl) dateEl.addEventListener('change', checkPay);
-if(timeEl) timeEl.addEventListener('change', checkPay);
-if(agreeEl) agreeEl.addEventListener('change', checkPay);
+[nameEl, emailEl, mobileEl, dobEl, queryEl].forEach(el => { if (el) el.addEventListener('input', checkPay); });
+if (dateEl) dateEl.addEventListener('change', checkPay);
+if (timeEl) timeEl.addEventListener('change', checkPay);
+if (agreeEl) agreeEl.addEventListener('change', checkPay);
 
 function generateBookingId() { return 'TTT-' + Date.now().toString().slice(-6); }
 
-payBtn.onclick = function() {
-    let id = generateBookingId();
-    window.open(razorpayLink + '/' + window.finalINR, '_blank');
-    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${nameEl.value}%0AServices: ${cart.map(i => i.name).join(', ')}%0AAmount: ₹${window.finalINR}`;
-    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value} (India Standard Time)`; }
+// =============================================
+// RAZORPAY CHECKOUT — PROPER API INTEGRATION
+// =============================================
+payBtn.onclick = function () {
+    if (!window.finalINR || window.finalINR <= 0) {
+        alert("Calculation error: Amount is zero.");
+        return;
+    }
+
+    if (RAZORPAY_KEY_ID === "YOUR_KEY_ID_HERE") {
+        alert("Razorpay Key ID not set. Please replace YOUR_KEY_ID_HERE in the code with your actual key.");
+        return;
+    }
+
+    const bookingId = generateBookingId();
+    const services = cart.map(i => i.name).join(', ');
+
+    const options = {
+        key: RAZORPAY_KEY_ID,
+        amount: window.finalINR * 100, // Razorpay expects amount in paise
+        currency: "INR",
+        name: "Tarot Tells Tales",
+        description: services,
+        image: "https://yourwebsite.com/logo.png",
+        handler: function (response) {
+            // THIS RUNS ONLY AFTER SUCCESSFUL PAYMENT
+            // response.razorpay_payment_id is the proof of payment
+            handleSuccessfulPayment(bookingId, response.razorpay_payment_id, services, '₹', window.finalINR);
+        },
+        prefill: {
+            name: nameEl.value,
+            email: emailEl.value,
+            contact: mobileEl.value
+        },
+        notes: {
+            booking_id: bookingId,
+            services: services,
+            dob: dobEl.value || 'N/A',
+            query: queryEl.value || 'N/A',
+            date: dateEl.value || 'N/A',
+            time: timeEl.value || 'N/A'
+        },
+        theme: {
+            color: "#7c3aed" // Your brand purple
+        }
+    };
+
+    const rzp = new Razorpay(options);
+
+    // Handle payment failure
+    rzp.on('payment.failed', function (response) {
+        showErrorModal(response.error.description);
+    });
+
+    rzp.open();
+};
+
+// =============================================
+// PAYPAL (unchanged — keeps two-step flow)
+// =============================================
+paypalBtn.onclick = function () {
+    if (!window.finalUSD || window.finalUSD <= 0) {
+        alert("Calculation error: Amount is zero.");
+        return;
+    }
+
+    const bookingId = generateBookingId();
+    const services = cart.map(i => i.name).join(', ');
+
+    let msg = `✨ *New Booking Initiated*%0A`;
+    msg += `ID: ${bookingId}%0A`;
+    msg += `Name: ${nameEl.value}%0A`;
+    msg += `Email: ${emailEl.value}%0A`;
+    msg += `Mobile: ${mobileEl.value}%0A`;
+    msg += `DOB: ${dobEl.value || 'N/A'}%0A`;
+    msg += `Query: ${queryEl.value || 'N/A'}%0A`;
+    msg += `Services: ${services}%0A`;
+    msg += `Amount: $${window.finalUSD}%0A`;
+    if (dateEl.value && timeEl.value) {
+        msg += `Date: ${dateEl.value}%0A`;
+        msg += `Time: ${timeEl.value} (IST)%0A`;
+    }
+    msg += `%0A⏳ *Payment pending - awaiting confirmation*`;
+
+    window.open("https://paypal.me/tarottellstales/" + window.finalUSD + "USD", '_blank');
+
+    showPaypalConfirmModal(bookingId, msg);
+};
+
+// =============================================
+// AFTER RAZORPAY SUCCESS — AUTO CONFIRMED
+// =============================================
+function handleSuccessfulPayment(bookingId, paymentId, services, symbol, amount) {
+    // Build WhatsApp message with payment proof
+    let msg = `✅ *Payment Confirmed*%0A`;
+    msg += `ID: ${bookingId}%0A`;
+    msg += `Payment ID: ${paymentId}%0A`;
+    msg += `Name: ${nameEl.value}%0A`;
+    msg += `Email: ${emailEl.value}%0A`;
+    msg += `Mobile: ${mobileEl.value}%0A`;
+    msg += `DOB: ${dobEl.value || 'N/A'}%0A`;
+    msg += `Query: ${queryEl.value || 'N/A'}%0A`;
+    msg += `Services: ${services}%0A`;
+    msg += `Amount Paid: ${symbol}${amount}%0A`;
+    if (dateEl.value && timeEl.value) {
+        msg += `Date: ${dateEl.value}%0A`;
+        msg += `Time: ${timeEl.value} (IST)%0A`;
+    }
+
+    // Open WhatsApp with confirmed details
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-    alert('Redirecting to Payment. Booking ID: ' + id);
+
+    // Show success modal
+    showSuccessModal(bookingId, paymentId);
 }
 
-paypalBtn.onclick = function() {
-    let id = generateBookingId();
-    window.open(paypalLink + '/' + window.finalUSD + 'USD', '_blank');
-    let msg = `✨ *Booking Confirmed*%0AID: ${id}%0AName: ${nameEl.value}%0AServices: ${cart.map(i => i.name).join(', ')}%0AAmount: $${window.finalUSD}`;
-    if (dateEl.value && timeEl.value) { msg += `%0ADate: ${dateEl.value}%0ATime: ${timeEl.value} (India Standard Time)`; }
-    window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-    alert('Redirecting to PayPal. Booking ID: ' + id);
+// =============================================
+// PAYPAL CONFIRM MODAL (keeps two-step for PayPal)
+// =============================================
+function showPaypalConfirmModal(bookingId, pendingMsg) {
+    const existing = document.getElementById('paymentModal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'paymentModal';
+    modal.innerHTML = `
+        <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;">
+            <div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:450px;width:100%;text-align:center;border:1px solid #3b2b5e;">
+                <div style="font-size:50px;margin-bottom:10px;">💳</div>
+                <h3 style="color:#f5f3ff;margin:0 0 8px 0;font-size:20px;">Payment In Progress</h3>
+                <p style="color:#cbd5f5;margin:0 0 20px 0;line-height:1.7;font-size:14px;">
+                    Complete your payment of <strong style="color:#fcd34d;font-size:20px;">$${window.finalUSD}</strong> on the PayPal page that opened.
+                </p>
+                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;">
+                    <span style="font-size:12px;color:#aaa;">Booking ID</span><br>
+                    <span style="font-size:18px;color:#a5f3fc;font-weight:600;">${bookingId}</span>
+                </div>
+                <p style="color:#fbbf24;font-size:12px;margin-bottom:15px;">⚠️ Click below ONLY after completing payment</p>
+                <button class="btn" style="background:#22c55e;width:100%;margin:8px 0;font-size:15px;padding:14px;" onclick="confirmPaypalPayment('${bookingId}')">
+                    ✅ I Have Completed Payment
+                </button>
+                <button class="btn" style="background:#444;width:100%;font-size:13px;padding:12px;color:#ccc;" onclick="closePaymentModal()">
+                    ✕ Cancel / I Couldn't Pay
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Store pending message for later use
+    window._pendingPaypalMsg = pendingMsg;
 }
 
+function confirmPaypalPayment(bookingId) {
+    const completedMsg = window._pendingPaypalMsg.replace(
+        '⏳ *Payment pending - awaiting confirmation*',
+        '✅ *Payment completed — please verify on PayPal*'
+    );
+    window.open("https://wa.me/" + whatsappNumber + "?text=" + completedMsg, '_blank');
+    closePaymentModal();
+    showSuccessModal(bookingId, 'PayPal');
+}
+
+function closePaymentModal() {
+    const modal = document.getElementById('paymentModal');
+    if (modal) modal.remove();
+}
+
+// =============================================
+// SUCCESS MODAL
+// =============================================
+function showSuccessModal(bookingId, paymentId) {
+    const existing = document.getElementById('successModal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'successModal';
+    modal.innerHTML = `
+        <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;">
+            <div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:420px;width:100%;text-align:center;border:1px solid #22c55e;">
+                <div style="font-size:60px;margin-bottom:10px;">🎉</div>
+                <h3 style="color:#22c55e;margin:0 0 12px 0;font-size:22px;">Payment Successful!</h3>
+                <p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">
+                    Your booking <strong style="color:#a5f3fc;">${bookingId}</strong> is confirmed.<br><br>
+                    A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong> to complete your booking.
+                </p>
+                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:15px;">
+                    <span style="font-size:11px;color:#aaa;">Payment ID</span><br>
+                    <span style="font-size:14px;color:#a5f3fc;word-break:break-all;">${paymentId}</span>
+                </div>
+                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;">
+                    <p style="color:#aaa;font-size:12px;margin:0 0 4px 0;">What happens next?</p>
+                    <p style="color:#cbd5f5;font-size:13px;margin:0;line-height:1.5;">
+                        We will confirm your booking and reach out within a few hours.
+                    </p>
+                </div>
+                <button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="closeSuccessAndReset()">
+                    Done
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+// =============================================
+// ERROR MODAL (for failed Razorpay payments)
+// =============================================
+function showErrorModal(errorMsg) {
+    const existing = document.getElementById('errorModal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'errorModal';
+    modal.innerHTML = `
+        <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;">
+            <div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:400px;width:100%;text-align:center;border:1px solid #ef4444;">
+                <div style="font-size:50px;margin-bottom:10px;">😔</div>
+                <h3 style="color:#ef4444;margin:0 0 12px 0;font-size:20px;">Payment Failed</h3>
+                <p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">
+                    ${errorMsg || "Your payment could not be processed. Please try again."}
+                </p>
+                <button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest('div[id]').remove();">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function closeSuccessAndReset() {
+    const modal = document.getElementById('successModal');
+    if (modal) modal.remove();
+    resetForm();
+}
+
+function resetForm() {
+    cart = [];
+    nameEl.value = '';
+    emailEl.value = '';
+    mobileEl.value = '';
+    dobEl.value = '';
+    queryEl.value = '';
+    dateEl.value = '';
+    timeEl.innerHTML = '';
+    agreeEl.checked = false;
+    note.innerText = '';
+    render();
+    toggleSections();
+    checkPay();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// =============================================
+// RESCHEDULE
+// =============================================
 function updateRescheduleSlots() {
     const rDate = document.getElementById('rescheduleDate').value;
     const rTime = document.getElementById('rescheduleTime');
-    if(!rDate) return;
+    if (!rDate) return;
     const parts = rDate.split('-');
     const d = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
     rTime.innerHTML = '';
@@ -694,7 +943,7 @@ function cancelBooking() {
 }
 
 function clearAllData() {
-    if(confirm("Clear all test data?")) { localStorage.removeItem('bookings'); alert("Cleared."); updateSlots(); }
+    if (confirm("Clear all test data?")) { localStorage.removeItem('bookings'); alert("Cleared."); updateSlots(); }
 }
 
 function sendFeedback() {
