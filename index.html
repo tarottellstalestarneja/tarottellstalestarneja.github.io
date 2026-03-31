@@ -15,14 +15,17 @@
 <meta property="og:title" content="Tarot Tells Tales - Tarot Reading & Guidance">
 <meta property="og:description" content="Find clarity and direction with personalized tarot readings for relationships, career, and health.">
 <meta property="og:image" content="https://tarottellstales.co.in/logo.png">
-<meta property="og:url" content="https://tarottellstales.co.in">
+<meta property="og:url" content="https://tarottellstales.co.in/">
 <meta property="og:type" content="website">
 
 <!-- Twitter Card Tags -->
 <meta name="twitter:card" content="summary_large_image">
+
+<!-- Goatcounter Analytics -->
 <script data-goatcounter="https://tarottellstales.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-        <!-- Worldwide SEO Schema -->
+
+<!-- Worldwide SEO Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -42,26 +45,13 @@
     "@type": "OfferCatalog",
     "name": "Tarot Reading Services",
     "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "PDF Tarot Reading",
-          "description": "Personalized tarot reading delivered via PDF within 2-4 days."
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Live Tarot Session",
-          "description": "Live one-on-one tarot reading session via Zoom or WhatsApp."
-        }
-      }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PDF Tarot Reading", "description": "Personalized tarot reading delivered via PDF within 2-4 days." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Live Tarot Session", "description": "Live one-on-one tarot reading session via Zoom or WhatsApp." } }
     ]
   }
 }
 </script>
+
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
 
 <!-- RAZORPAY CHECKOUT SDK -->
@@ -80,30 +70,22 @@ body{margin:0;font-family:'Outfit',sans-serif;color:#f5f3ff;background:radial-gr
 .btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
 input,select,textarea{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#2b1b4e;color:#fff;box-sizing:border-box;font-family:'Outfit',sans-serif}
 h1,h2{text-align:center;margin-top:35px}
-
 .narrow{max-width:420px;margin:0 auto}
 .form-card{background:#1a0f2a;margin:18px auto;padding:22px 22px 26px 22px;border-radius:14px;max-width:420px;line-height:1.6}
-
 .testimonial-slider { max-width: 500px; margin: 0 auto; overflow: hidden; position: relative; border-radius: 14px; background: #1a0f2a; }
 .testimonial-slide { min-width: 100%; padding: 30px; text-align: center; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .slides-container { display: flex; transition: transform 0.6s ease-in-out; }
-
 .form-card textarea{min-height:120px;resize:vertical}
-
 .item-name{color:#e9d5ff;font-weight:500}
 .item-price{color:#a5f3fc;font-weight:600}
 .discount-text{color:#fca5a5;font-weight:600;text-align:center}
 .total-text{color:#fcd34d;font-weight:700;font-size:22px}
 .rate-text{color:#a5f3fc;font-size:12px;text-align:center;opacity:0.8}
-
 .footer{text-align:center;color:#aaa;margin-top:30px;padding-bottom:20px}
-
 .nav-link { color: #cbd5f5; text-decoration: none; cursor: pointer; transition: 0.3s; }
 .nav-link:hover { color: #a5f3fc; text-decoration: underline; }
-
 select option:disabled { color: #555; background: #1a1a1a; }
 select option { color: #fff; background: #2b1b4e; }
-
 .music-btn {
     position: fixed; bottom: 20px; right: 20px; background: #7c3aed;
     color: #fff; border: none; border-radius: 50%; width: 50px; height: 50px;
@@ -112,20 +94,17 @@ select option { color: #fff; background: #2b1b4e; }
 }
 .music-btn:hover { transform: scale(1.1); }
 .music-btn.playing { animation: pulse 1.5s infinite; }
-
 #topBtn {
     display: none; position: fixed; bottom: 80px; right: 20px; z-index: 99;
     font-size: 18px; border: none; outline: none; background-color: #7c3aed;
     color: white; cursor: pointer; padding: 10px 15px; border-radius: 25px;
     box-shadow: 0 4px 15px rgba(124, 58, 237, 0.5);
 }
-
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(124, 58, 237, 0); }
     100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
 }
-
 .calendar-container {
     position: relative; padding-bottom: 60%; height: 0; overflow: hidden;
     background: #1a0f2a; border-radius: 12px; margin: 20px auto; max-width: 800px;
@@ -133,14 +112,8 @@ select option { color: #fff; background: #2b1b4e; }
 .calendar-container iframe {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
 }
-
-.reveal {
-  opacity: 0; transform: translateY(30px); transition: all 0.8s ease;
-}
-.reveal.active {
-  opacity: 1; transform: translateY(0);
-}
-
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 .accordion-btn {
     width: 100%; text-align: left; background: #2b1b4e; color: #fff;
     border: none; padding: 15px; cursor: pointer; font-size: 16px;
@@ -152,20 +125,10 @@ select option { color: #fff; background: #2b1b4e; }
     display: none; padding: 15px; background: #1a0f2a; 
     color: #cbd5f5; border-radius: 0 0 8px 8px; margin-bottom: 5px;
 }
-
 #successModal { animation: fadeIn 0.3s ease; }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.modal-card {
-    animation: slideUp 0.4s ease;
-}
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-card { animation: slideUp 0.4s ease; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 
@@ -403,29 +366,15 @@ I agree to the booking conditions
 <h2>❓ Frequently Asked Questions</h2>
 <div class="narrow">
     <button class="accordion-btn">How long does a PDF reading take?</button>
-    <div class="accordion-panel">
-        <p>PDF readings are delivered within <b>2 to 4 working days</b> via email or WhatsApp.</p>
-    </div>
-
+    <div class="accordion-panel"><p>PDF readings are delivered within <b>2 to 4 working days</b> via email or WhatsApp.</p></div>
     <button class="accordion-btn">Can I reschedule a live session?</button>
-    <div class="accordion-panel">
-        <p>Yes, live sessions can be rescheduled <b>once</b> if notified at least 24 hours in advance.</p>
-    </div>
-
+    <div class="accordion-panel"><p>Yes, live sessions can be rescheduled <b>once</b> if notified at least 24 hours in advance.</p></div>
     <button class="accordion-btn">Is my information confidential?</button>
-    <div class="accordion-panel">
-        <p>Absolutely. All your personal details, queries, and reading content remain 100% private and confidential.</p>
-    </div>
-
+    <div class="accordion-panel"><p>Absolutely. All your personal details, queries, and reading content remain 100% private and confidential.</p></div>
     <button class="accordion-btn">How do I pay?</button>
-    <div class="accordion-panel">
-        <p>Click <b>"Pay via Razorpay"</b> — a secure payment popup will open. You can pay using UPI, cards, net banking, or wallets. Once paid, your booking is automatically confirmed.</p>
-    </div>
-
+    <div class="accordion-panel"><p>Click <b>"Pay via Razorpay"</b> — a secure payment popup will open. You can pay using UPI, cards, net banking, or wallets. Once paid, your booking is automatically confirmed.</p></div>
     <button class="accordion-btn">What if my payment fails?</button>
-    <div class="accordion-panel">
-        <p>If payment fails, you can simply try again. No booking is created until payment is successful.</p>
-    </div>
+    <div class="accordion-panel"><p>If payment fails, you can simply try again. No booking is created until payment is successful.</p></div>
 </div>
 </div>
 
@@ -446,17 +395,9 @@ Tarot readings are based on intuitive guidance and are not absolute or legally b
 
 <h2 id="contact">📞 Contact</h2>
 <div style="text-align:center; margin-bottom:40px; line-height:2; font-size: 18px;">
-    <a href="https://wa.me/919892223162" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">
-        📱 WhatsApp: 9892223162
-    </a>
-    <br>
-    <a href="mailto:tarottellstalestarneja@gmail.com" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">
-        ✉️ tarottellstalestarneja@gmail.com
-    </a>
-    <br>
-    <a href="https://instagram.com/tarottelltales" target="_blank" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">
-        📸 Instagram: @tarottelltales
-    </a>
+    <a href="https://wa.me/919892223162" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">📱 WhatsApp: 9892223162</a><br>
+    <a href="mailto:tarottellstalestarneja@gmail.com" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">✉️ tarottellstalestarneja@gmail.com</a><br>
+    <a href="https://instagram.com/tarottelltales" target="_blank" style="color:#a5f3fc; text-decoration:none; display:inline-flex; align-items:center;">📸 Instagram: @tarottelltales</a>
 </div>
 
 </div>
@@ -466,12 +407,13 @@ let cart = [];
 let exchangeRate = 0;
 
 // ===================================================
-// ⚠️ REPLACE THIS WITH YOUR ACTUAL RAZORPAY KEY ID
+// ⚠️ PASTE YOUR RAZORPAY KEY ID HERE
 // ===================================================
 const RAZORPAY_KEY_ID = "rzp_live_SXP13njJD5Ks9k";
-// Looks like: rzp_live_abc123def456ghi
-// Find it at: Razorpay Dashboard → Settings → API Keys → Key ID
 // ===================================================
+
+// GOOGLE APPS SCRIPT URL (DO NOT CHANGE)
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby8nn4mhAGkwlzvVRKbkvIzbA6j9TOxPGvkmE7g9IQNxCixJAeL0r69f7-dB3WBJi_mdA/exec";
 
 const whatsappNumber = "919892223162";
 
@@ -512,36 +454,21 @@ for (let i = 0; i < accBtns.length; i++) {
     accBtns[i].addEventListener("click", function () {
         this.classList.toggle("active");
         const panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
     });
 }
 
 function reveal() {
     const reveals = document.querySelectorAll(".reveal");
     for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
-        }
+        if (reveals[i].getBoundingClientRect().top < window.innerHeight - 150) reveals[i].classList.add("active");
     }
 }
 window.addEventListener("scroll", reveal);
 reveal();
-
 window.onscroll = function () { scrollFunction(); reveal(); };
 function scrollFunction() {
-    const btn = document.getElementById("topBtn");
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        btn.style.display = "block";
-    } else {
-        btn.style.display = "none";
-    }
+    document.getElementById("topBtn").style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
 }
 function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
@@ -549,42 +476,24 @@ async function fetchExchangeRate() {
     try {
         const response = await fetch('https://open.er-api.com/v6/latest/INR');
         const data = await response.json();
-        if (data && data.rates && data.rates.USD) {
-            exchangeRate = data.rates.USD;
-        } else { throw new Error("Invalid data"); }
+        exchangeRate = data.rates.USD;
     } catch (error) {
-        console.error("Exchange API Failed, using fallback.", error);
         exchangeRate = 1 / 83;
     }
-    updateSlots();
-    render();
-    toggleSections();
-    checkPay();
+    render(); toggleSections(); checkPay();
 }
-
-const slots = {
-    1: ["11 AM", "12 PM", "4 PM", "5 PM", "6 PM", "7 PM"],
-    2: ["4 PM", "5 PM", "6 PM", "7 PM"],
-    3: ["11 AM", "12 PM", "4 PM", "5 PM", "6 PM", "7 PM"],
-    4: ["4 PM", "5 PM", "6 PM", "7 PM"],
-    5: ["4 PM", "5 PM", "6 PM", "7 PM"],
-    6: ["2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM"],
-    0: ["11 AM", "12 PM", "1 PM", "5 PM", "6 PM", "7 PM"]
-};
 
 function getISTDate(dateStr, timeStr) {
     const [time, modifier] = timeStr.split(' ');
     let hours = parseInt(time);
     if (hours === 12) hours = modifier === 'AM' ? 0 : 12;
     else if (modifier === 'PM') hours += 12;
-    const isoStr = `${dateStr}T${String(hours).padStart(2, '0')}:00:00+05:30`;
-    return new Date(isoStr);
+    return new Date(`${dateStr}T${String(hours).padStart(2, '0')}:00:00+05:30`);
 }
 
 function addToCart(name, price, format) {
     const label = name + " (" + format + ")";
-    if (cart.find(i => i.name === label)) return;
-    cart.push({ name: label, price: price });
+    if (!cart.find(i => i.name === label)) cart.push({ name: label, price: price });
     render(); toggleSections(); checkPay();
 }
 
@@ -595,7 +504,6 @@ function removeItem(name) {
 
 function render() {
     let subINR = 0; let html = ""; const loc = locationEl.value;
-
     cart.forEach(i => {
         subINR += i.price;
         let displayPrice = (loc === 'domestic') ? `₹${i.price}` : `$${(i.price * exchangeRate).toFixed(2)}`;
@@ -607,21 +515,15 @@ function render() {
     });
 
     const pdfItems = cart.filter(i => i.name.includes('PDF') || i.name.includes('Monthly') || i.name.includes('Quarterly') || i.name.includes('Half-Yearly') || i.name.includes('Yearly') || i.name.includes('Chakra'));
-    let discountINR = 0;
-    if (pdfItems.length === 2) discountINR = pdfItems.reduce((a, b) => a + b.price, 0) * 0.1;
-    if (pdfItems.length >= 3) discountINR = pdfItems.reduce((a, b) => a + b.price, 0) * 0.15;
+    let discountINR = pdfItems.length === 2 ? pdfItems.reduce((a, b) => a + b.price, 0) * 0.1 : pdfItems.length >= 3 ? pdfItems.reduce((a, b) => a + b.price, 0) * 0.15 : 0;
 
     let finalINR = subINR - discountINR;
     let finalUSD = finalINR * exchangeRate;
     let priceHTML = "";
 
     if (cart.length > 0) {
-        if (discountINR > 0) {
-            let discDisplay = (loc === 'domestic') ? `₹${Math.round(discountINR)}` : `$${(discountINR * exchangeRate).toFixed(2)}`;
-            priceHTML += `<p class="discount-text">Discount Applied - ${discDisplay}</p>`;
-        }
-        let totalDisplay = (loc === 'domestic') ? `₹${Math.round(finalINR)}` : `$${finalUSD.toFixed(2)}`;
-        priceHTML += '<div class="total-text">Total: ' + totalDisplay + '</div>';
+        if (discountINR > 0) priceHTML += `<p class="discount-text">Discount Applied - ${(loc === 'domestic' ? `₹${Math.round(discountINR)}` : `$${(discountINR * exchangeRate).toFixed(2)}`)}</p>`;
+        priceHTML += `<div class="total-text">Total: ${(loc === 'domestic' ? `₹${Math.round(finalINR)}` : `$${finalUSD.toFixed(2)}`)}</div>`;
         if (loc === 'international') priceHTML += `<div class="rate-text">Live Rate: 1 INR = ${exchangeRate.toFixed(4)} USD</div>`;
     }
 
@@ -638,25 +540,41 @@ function toggleSections() {
     document.getElementById('liveSection').style.display = hasLive ? 'block' : 'none';
 }
 
+// =============================================
+// DYNAMIC SLOTS FROM GOOGLE CALENDAR
+// =============================================
 function updateSlots() {
     if (!dateEl.value) { timeEl.innerHTML = '<option value="">Select date first</option>'; return; }
-    const parts = dateEl.value.split('-');
-    const d = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
-    timeEl.innerHTML = '';
-    let availableSlots = (slots[d] || []);
+    
+    timeEl.innerHTML = '<option value="">Checking availability...</option>';
+    
+    const callbackName = 'jsonpCallback_' + Date.now();
+    window[callbackName] = function(data) {
+        delete window[callbackName];
+        document.body.removeChild(script);
+        
+        timeEl.innerHTML = '';
+        if (!data.slots || data.slots.length === 0) { 
+            timeEl.innerHTML = '<option value="">No slots available</option>'; 
+            checkPay();
+            return; 
+        }
+        
+        data.slots.forEach(s => {
+            const istDate = getISTDate(dateEl.value, s);
+            const userTimeStr = istDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+            const opt = document.createElement('option');
+            opt.value = s;
+            opt.textContent = `${userTimeStr} (Your Time) / ${s} (India)`;
+            timeEl.appendChild(opt);
+        });
+        timeEl.value = "";
+        checkPay();
+    };
 
-    if (availableSlots.length === 0) { timeEl.innerHTML = '<option value="">No slots available for this day</option>'; return; }
-
-    availableSlots.forEach(s => {
-        const istDate = getISTDate(dateEl.value, s);
-        const userTimeStr = istDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
-        const opt = document.createElement('option');
-        opt.value = s;
-        opt.textContent = `${userTimeStr} (Your Time) / ${s} (India)`;
-        timeEl.appendChild(opt);
-    });
-    timeEl.value = "";
-    checkPay();
+    const script = document.createElement('script');
+    script.src = `${SCRIPT_URL}?action=getSlots&date=${dateEl.value}&callback=${callbackName}`;
+    document.body.appendChild(script);
 }
 dateEl.addEventListener('change', updateSlots);
 
@@ -671,15 +589,9 @@ function checkPay() {
     if (cart.length === 0) { note.innerText = "Please select a service"; return; }
     if (!agreeEl.checked) { note.innerText = "Please accept booking conditions"; return; }
     if (!nameEl.value || !emailEl.value || !mobileEl.value) { note.innerText = "Please fill Name, Email and Mobile"; return; }
-
-    if (hasPDF) {
-        if (!dobEl.value || !queryEl.value) { note.innerText = "Please fill DOB and Query for PDF reading"; return; }
-    }
-
-    if (hasLive) {
-        if (!dateEl.value) { note.innerText = "Please select a date"; return; }
-        if (!timeEl.value) { note.innerText = "Please select a time slot"; return; }
-    }
+    if (hasPDF && (!dobEl.value || !queryEl.value)) { note.innerText = "Please fill DOB and Query for PDF reading"; return; }
+    if (hasLive && !dateEl.value) { note.innerText = "Please select a date"; return; }
+    if (hasLive && !timeEl.value) { note.innerText = "Please select a time slot"; return; }
 
     note.innerText = "";
     if (loc === 'domestic') { payBtn.disabled = false; payBtn.style.opacity = 1; }
@@ -687,134 +599,93 @@ function checkPay() {
 }
 
 [nameEl, emailEl, mobileEl, dobEl, queryEl].forEach(el => { if (el) el.addEventListener('input', checkPay); });
-if (dateEl) dateEl.addEventListener('change', checkPay);
 if (timeEl) timeEl.addEventListener('change', checkPay);
 if (agreeEl) agreeEl.addEventListener('change', checkPay);
 
 function generateBookingId() { return 'TTT-' + Date.now().toString().slice(-6); }
 
+// HELPER TO BOOK SLOT IN BACKGROUND
+function bookCalendarSlot(bookingId, services, date, time) {
+    const callbackName = 'bookCallback_' + Date.now();
+    window[callbackName] = function(data) { delete window[callbackName]; document.body.removeChild(script); };
+    const script = document.createElement('script');
+    script.src = `${SCRIPT_URL}?action=bookSlot&bookingId=${bookingId}&name=${encodeURIComponent(nameEl.value)}&service=${encodeURIComponent(services)}&date=${date}&time=${time}&callback=${callbackName}`;
+    document.body.appendChild(script);
+}
+
 // =============================================
-// RAZORPAY CHECKOUT — PROPER API INTEGRATION
+// RAZORPAY CHECKOUT
 // =============================================
 payBtn.onclick = function () {
-    if (!window.finalINR || window.finalINR <= 0) {
-        alert("Calculation error: Amount is zero.");
-        return;
-    }
-
-    if (RAZORPAY_KEY_ID === "YOUR_KEY_ID_HERE") {
-        alert("Razorpay Key ID not set. Please replace YOUR_KEY_ID_HERE in the code with your actual key.");
-        return;
-    }
+    if (!window.finalINR || window.finalINR <= 0) return alert("Error");
+    if (RAZORPAY_KEY_ID === "YOUR_KEY_ID_HERE") return alert("Razorpay Key ID not set.");
 
     const bookingId = generateBookingId();
     const services = cart.map(i => i.name).join(', ');
+    const bookingDate = dateEl.value;
+    const bookingTime = timeEl.value;
 
     const options = {
         key: RAZORPAY_KEY_ID,
-        amount: window.finalINR * 100, // Razorpay expects amount in paise
+        amount: window.finalINR * 100,
         currency: "INR",
         name: "Tarot Tells Tales",
         description: services,
-        image: "https://yourwebsite.com/logo.png",
+        image: "https://tarottellstales.co.in/logo.png",
         handler: function (response) {
-            // THIS RUNS ONLY AFTER SUCCESSFUL PAYMENT
-            // response.razorpay_payment_id is the proof of payment
+            if (bookingDate && bookingTime) bookCalendarSlot(bookingId, services, bookingDate, bookingTime);
             handleSuccessfulPayment(bookingId, response.razorpay_payment_id, services, '₹', window.finalINR);
         },
-        prefill: {
-            name: nameEl.value,
-            email: emailEl.value,
-            contact: mobileEl.value
-        },
-        notes: {
-            booking_id: bookingId,
-            services: services,
-            dob: dobEl.value || 'N/A',
-            query: queryEl.value || 'N/A',
-            date: dateEl.value || 'N/A',
-            time: timeEl.value || 'N/A'
-        },
-        theme: {
-            color: "#7c3aed" // Your brand purple
-        }
+        prefill: { name: nameEl.value, email: emailEl.value, contact: mobileEl.value },
+        notes: { booking_id: bookingId, services: services },
+        theme: { color: "#7c3aed" }
     };
 
     const rzp = new Razorpay(options);
-
-    // Handle payment failure
-    rzp.on('payment.failed', function (response) {
-        showErrorModal(response.error.description);
-    });
-
+    rzp.on('payment.failed', function (response) { showErrorModal(response.error.description); });
     rzp.open();
 };
 
 // =============================================
-// PAYPAL (unchanged — keeps two-step flow)
+// PAYPAL
 // =============================================
 paypalBtn.onclick = function () {
-    if (!window.finalUSD || window.finalUSD <= 0) {
-        alert("Calculation error: Amount is zero.");
-        return;
-    }
+    if (!window.finalUSD || window.finalUSD <= 0) return alert("Error");
 
     const bookingId = generateBookingId();
     const services = cart.map(i => i.name).join(', ');
+    
+    window._pendingPaypalData = { bookingId, services, date: dateEl.value, time: timeEl.value };
 
-    let msg = `✨ *New Booking Initiated*%0A`;
-    msg += `ID: ${bookingId}%0A`;
-    msg += `Name: ${nameEl.value}%0A`;
-    msg += `Email: ${emailEl.value}%0A`;
-    msg += `Mobile: ${mobileEl.value}%0A`;
-    msg += `DOB: ${dobEl.value || 'N/A'}%0A`;
-    msg += `Query: ${queryEl.value || 'N/A'}%0A`;
-    msg += `Services: ${services}%0A`;
-    msg += `Amount: $${window.finalUSD}%0A`;
-    if (dateEl.value && timeEl.value) {
-        msg += `Date: ${dateEl.value}%0A`;
-        msg += `Time: ${timeEl.value} (IST)%0A`;
-    }
+    let msg = `✨ *New Booking Initiated*%0AID: ${bookingId}%0AName: ${nameEl.value}%0AEmail: ${emailEl.value}%0AMobile: ${mobileEl.value}%0ADOB: ${dobEl.value || 'N/A'}%0AQuery: ${queryEl.value || 'N/A'}%0AServices: ${services}%0AAmount: $${window.finalUSD}%0A`;
+    if (dateEl.value && timeEl.value) msg += `Date: ${dateEl.value}%0ATime: ${timeEl.value} (IST)%0A`;
     msg += `%0A⏳ *Payment pending - awaiting confirmation*`;
 
     window.open("https://paypal.me/tarottellstales/" + window.finalUSD + "USD", '_blank');
-
     showPaypalConfirmModal(bookingId, msg);
 };
 
-// =============================================
-// AFTER RAZORPAY SUCCESS — AUTO CONFIRMED
-// =============================================
+function confirmPaypalPayment(bookingId) {
+    const data = window._pendingPaypalData;
+    if (data.date && data.time) bookCalendarSlot(data.bookingId, data.services, data.date, data.time);
+    
+    const completedMsg = window._pendingPaypalMsg.replace('⏳ *Payment pending - awaiting confirmation*', '✅ *Payment completed — please verify on PayPal*');
+    window.open("https://wa.me/" + whatsappNumber + "?text=" + completedMsg, '_blank');
+    closePaymentModal();
+    showSuccessModal(bookingId, 'PayPal');
+}
+
 function handleSuccessfulPayment(bookingId, paymentId, services, symbol, amount) {
-    // Build WhatsApp message with payment proof
-    let msg = `✅ *Payment Confirmed*%0A`;
-    msg += `ID: ${bookingId}%0A`;
-    msg += `Payment ID: ${paymentId}%0A`;
-    msg += `Name: ${nameEl.value}%0A`;
-    msg += `Email: ${emailEl.value}%0A`;
-    msg += `Mobile: ${mobileEl.value}%0A`;
-    msg += `DOB: ${dobEl.value || 'N/A'}%0A`;
-    msg += `Query: ${queryEl.value || 'N/A'}%0A`;
-    msg += `Services: ${services}%0A`;
-    msg += `Amount Paid: ${symbol}${amount}%0A`;
-    if (dateEl.value && timeEl.value) {
-        msg += `Date: ${dateEl.value}%0A`;
-        msg += `Time: ${timeEl.value} (IST)%0A`;
-    }
-
-    // Open WhatsApp with confirmed details
+    let msg = `✅ *Payment Confirmed*%0AID: ${bookingId}%0APayment ID: ${paymentId}%0AName: ${nameEl.value}%0AEmail: ${emailEl.value}%0AMobile: ${mobileEl.value}%0ADOB: ${dobEl.value || 'N/A'}%0AQuery: ${queryEl.value || 'N/A'}%0AServices: ${services}%0AAmount Paid: ${symbol}${amount}%0A`;
+    if (dateEl.value && timeEl.value) msg += `Date: ${dateEl.value}%0ATime: ${timeEl.value} (IST)%0A`;
     window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-
-    // Show success modal
     showSuccessModal(bookingId, paymentId);
 }
 
-// =============================================
-// PAYPAL CONFIRM MODAL (keeps two-step for PayPal)
-// =============================================
 function showPaypalConfirmModal(bookingId, pendingMsg) {
     const existing = document.getElementById('paymentModal');
     if (existing) existing.remove();
+    window._pendingPaypalMsg = pendingMsg;
 
     const modal = document.createElement('div');
     modal.id = 'paymentModal';
@@ -823,51 +694,21 @@ function showPaypalConfirmModal(bookingId, pendingMsg) {
             <div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:450px;width:100%;text-align:center;border:1px solid #3b2b5e;">
                 <div style="font-size:50px;margin-bottom:10px;">💳</div>
                 <h3 style="color:#f5f3ff;margin:0 0 8px 0;font-size:20px;">Payment In Progress</h3>
-                <p style="color:#cbd5f5;margin:0 0 20px 0;line-height:1.7;font-size:14px;">
-                    Complete your payment of <strong style="color:#fcd34d;font-size:20px;">$${window.finalUSD}</strong> on the PayPal page that opened.
-                </p>
-                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;">
-                    <span style="font-size:12px;color:#aaa;">Booking ID</span><br>
-                    <span style="font-size:18px;color:#a5f3fc;font-weight:600;">${bookingId}</span>
-                </div>
+                <p style="color:#cbd5f5;margin:0 0 20px 0;line-height:1.7;font-size:14px;">Complete your payment of <strong style="color:#fcd34d;font-size:20px;">$${window.finalUSD}</strong> on the PayPal page that opened.</p>
+                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;"><span style="font-size:12px;color:#aaa;">Booking ID</span><br><span style="font-size:18px;color:#a5f3fc;font-weight:600;">${bookingId}</span></div>
                 <p style="color:#fbbf24;font-size:12px;margin-bottom:15px;">⚠️ Click below ONLY after completing payment</p>
-                <button class="btn" style="background:#22c55e;width:100%;margin:8px 0;font-size:15px;padding:14px;" onclick="confirmPaypalPayment('${bookingId}')">
-                    ✅ I Have Completed Payment
-                </button>
-                <button class="btn" style="background:#444;width:100%;font-size:13px;padding:12px;color:#ccc;" onclick="closePaymentModal()">
-                    ✕ Cancel / I Couldn't Pay
-                </button>
+                <button class="btn" style="background:#22c55e;width:100%;margin:8px 0;font-size:15px;padding:14px;" onclick="confirmPaypalPayment('${bookingId}')">✅ I Have Completed Payment</button>
+                <button class="btn" style="background:#444;width:100%;font-size:13px;padding:12px;color:#ccc;" onclick="closePaymentModal()">✕ Cancel</button>
             </div>
-        </div>
-    `;
+        </div>`;
     document.body.appendChild(modal);
-
-    // Store pending message for later use
-    window._pendingPaypalMsg = pendingMsg;
 }
 
-function confirmPaypalPayment(bookingId) {
-    const completedMsg = window._pendingPaypalMsg.replace(
-        '⏳ *Payment pending - awaiting confirmation*',
-        '✅ *Payment completed — please verify on PayPal*'
-    );
-    window.open("https://wa.me/" + whatsappNumber + "?text=" + completedMsg, '_blank');
-    closePaymentModal();
-    showSuccessModal(bookingId, 'PayPal');
-}
+function closePaymentModal() { const m = document.getElementById('paymentModal'); if(m) m.remove(); }
 
-function closePaymentModal() {
-    const modal = document.getElementById('paymentModal');
-    if (modal) modal.remove();
-}
-
-// =============================================
-// SUCCESS MODAL
-// =============================================
 function showSuccessModal(bookingId, paymentId) {
     const existing = document.getElementById('successModal');
     if (existing) existing.remove();
-
     const modal = document.createElement('div');
     modal.id = 'successModal';
     modal.innerHTML = `
@@ -875,36 +716,18 @@ function showSuccessModal(bookingId, paymentId) {
             <div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:420px;width:100%;text-align:center;border:1px solid #22c55e;">
                 <div style="font-size:60px;margin-bottom:10px;">🎉</div>
                 <h3 style="color:#22c55e;margin:0 0 12px 0;font-size:22px;">Payment Successful!</h3>
-                <p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">
-                    Your booking <strong style="color:#a5f3fc;">${bookingId}</strong> is confirmed.<br><br>
-                    A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong> to complete your booking.
-                </p>
-                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:15px;">
-                    <span style="font-size:11px;color:#aaa;">Payment ID</span><br>
-                    <span style="font-size:14px;color:#a5f3fc;word-break:break-all;">${paymentId}</span>
-                </div>
-                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;">
-                    <p style="color:#aaa;font-size:12px;margin:0 0 4px 0;">What happens next?</p>
-                    <p style="color:#cbd5f5;font-size:13px;margin:0;line-height:1.5;">
-                        We will confirm your booking and reach out within a few hours.
-                    </p>
-                </div>
-                <button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="closeSuccessAndReset()">
-                    Done
-                </button>
+                <p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">Your booking <strong style="color:#a5f3fc;">${bookingId}</strong> is confirmed.<br><br>A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong>.</p>
+                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:15px;"><span style="font-size:11px;color:#aaa;">Payment ID</span><br><span style="font-size:14px;color:#a5f3fc;word-break:break-all;">${paymentId}</span></div>
+                <div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;"><p style="color:#aaa;font-size:12px;margin:0 0 4px 0;">What happens next?</p><p style="color:#cbd5f5;font-size:13px;margin:0;line-height:1.5;">We will confirm your booking and reach out within a few hours.</p></div>
+                <button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest('div[id]').remove(); resetForm();">Done</button>
             </div>
-        </div>
-    `;
+        </div>`;
     document.body.appendChild(modal);
 }
 
-// =============================================
-// ERROR MODAL (for failed Razorpay payments)
-// =============================================
 function showErrorModal(errorMsg) {
     const existing = document.getElementById('errorModal');
     if (existing) existing.remove();
-
     const modal = document.createElement('div');
     modal.id = 'errorModal';
     modal.innerHTML = `
@@ -912,88 +735,51 @@ function showErrorModal(errorMsg) {
             <div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:400px;width:100%;text-align:center;border:1px solid #ef4444;">
                 <div style="font-size:50px;margin-bottom:10px;">😔</div>
                 <h3 style="color:#ef4444;margin:0 0 12px 0;font-size:20px;">Payment Failed</h3>
-                <p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">
-                    ${errorMsg || "Your payment could not be processed. Please try again."}
-                </p>
-                <button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest('div[id]').remove();">
-                    Try Again
-                </button>
+                <p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">${errorMsg || "Could not process payment."}</p>
+                <button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest('div[id]').remove();">Try Again</button>
             </div>
-        </div>
-    `;
+        </div>`;
     document.body.appendChild(modal);
 }
 
-function closeSuccessAndReset() {
-    const modal = document.getElementById('successModal');
-    if (modal) modal.remove();
-    resetForm();
-}
-
 function resetForm() {
-    cart = [];
-    nameEl.value = '';
-    emailEl.value = '';
-    mobileEl.value = '';
-    dobEl.value = '';
-    queryEl.value = '';
-    dateEl.value = '';
-    timeEl.innerHTML = '';
-    agreeEl.checked = false;
-    note.innerText = '';
-    render();
-    toggleSections();
-    checkPay();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    cart = []; nameEl.value = ''; emailEl.value = ''; mobileEl.value = ''; dobEl.value = ''; queryEl.value = ''; dateEl.value = ''; timeEl.innerHTML = ''; agreeEl.checked = false; note.innerText = '';
+    render(); toggleSections(); checkPay(); window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // =============================================
-// RESCHEDULE
+// RESCHEDULE (Uses hardcoded slots for admin ease)
 // =============================================
+const slots = { 1:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"], 2:["4 PM","5 PM","6 PM","7 PM"], 3:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"], 4:["4 PM","5 PM","6 PM","7 PM"], 5:["4 PM","5 PM","6 PM","7 PM"], 6:["2 PM","3 PM","4 PM","5 PM","6 PM","7 PM"], 0:["11 AM","12 PM","1 PM","5 PM","6 PM","7 PM"] };
+
 function updateRescheduleSlots() {
     const rDate = document.getElementById('rescheduleDate').value;
     const rTime = document.getElementById('rescheduleTime');
     if (!rDate) return;
-    const parts = rDate.split('-');
-    const d = new Date(parts[0], parts[1] - 1, parts[2]).getDay();
+    const d = new Date(rDate.split('-')[0], rDate.split('-')[1] - 1, rDate.split('-')[2]).getDay();
     rTime.innerHTML = '';
-    (slots[d] || []).forEach(s => {
-        const opt = document.createElement('option'); opt.value = s; opt.textContent = s; rTime.appendChild(opt);
-    });
+    (slots[d] || []).forEach(s => { const opt = document.createElement('option'); opt.value = s; opt.textContent = s; rTime.appendChild(opt); });
 }
 document.getElementById('rescheduleDate').addEventListener('change', updateRescheduleSlots);
 
 function rescheduleBooking() {
-    const id = document.getElementById('rescheduleId').value.trim();
-    const d = document.getElementById('rescheduleDate').value;
-    const t = document.getElementById('rescheduleTime').value;
-    if (!id || !d || !t) { alert("Fill all fields"); return; }
-    let msg = `🔁 *Reschedule Request*%0AID: ${id}%0ANew Date: ${d}%0ANew Time: ${t}`;
-    window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-    alert('Please send the WhatsApp message to complete reschedule.');
+    const id = document.getElementById('rescheduleId').value.trim(), d = document.getElementById('rescheduleDate').value, t = document.getElementById('rescheduleTime').value;
+    if (!id || !d || !t) return alert("Fill all fields");
+    window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(`🔁 *Reschedule Request*\nID: ${id}\nNew Date: ${d}\nNew Time: ${t}`), '_blank');
 }
 
 function cancelBooking() {
     const id = document.getElementById('cancelId').value.trim();
-    if (!id) { alert("Enter Booking ID"); return; }
-    if (confirm("Are you sure you want to cancel? Please note: No refunds are applicable for cancelled bookings as per policy.")) {
-        let msg = `❌ *Cancellation Request*%0AID: ${id}`;
-        window.open("https://wa.me/" + whatsappNumber + "?text=" + msg, '_blank');
-        alert('Please send the WhatsApp message to complete cancellation.');
-    }
+    if (!id) return alert("Enter Booking ID");
+    if (confirm("Are you sure? No refunds are applicable.")) window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(`❌ *Cancellation Request*\nID: ${id}`), '_blank');
 }
 
-function clearAllData() {
-    if (confirm("Clear all test data?")) { localStorage.removeItem('bookings'); alert("Cleared."); updateSlots(); }
-}
+function clearAllData() { if(confirm("Clear test data?")) { localStorage.removeItem('bookings'); alert("Cleared."); } }
 
 function sendFeedback() {
-    const m = document.getElementById('feedMobile').value.trim();
-    const e = document.getElementById('feedEmail').value.trim();
-    const t = document.getElementById('feedMsg').value.trim();
-    if (!m || !e || !t) { alert("Fill all feedback fields."); return; }
-    const msg = `📝 *Feedback*%0AMobile: ${m}%0AEmail: ${e}%0AFeedback: ${t}`;
-    window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, '_blank');
+    const m = document.getElementById('feedMobile').value.trim(), e = document.getElementById('feedEmail').value.trim(), t = document.getElementById('feedMsg').value.trim();
+    if (!m || !e || !t) return alert("Fill all fields.");
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`📝 *Feedback*\nMobile: ${m}\nEmail: ${e}\nFeedback: ${t}`)}`, '_blank');
 }
 
 fetchExchangeRate();
