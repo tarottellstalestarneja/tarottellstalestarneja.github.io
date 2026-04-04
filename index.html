@@ -61,9 +61,6 @@ input,select,textarea{width:100%;padding:12px;margin:10px 0;border-radius:10px;b
 h1,h2{text-align:center;margin-top:35px}
 .narrow{max-width:420px;margin:0 auto}
 .form-card{background:#1a0f2a;margin:18px auto;padding:22px 22px 26px 22px;border-radius:14px;max-width:420px;line-height:1.6}
-.testimonial-slider{max-width:500px;margin:0 auto;overflow:hidden;position:relative;border-radius:14px;background:#1a0f2a}
-.testimonial-slide{min-width:100%;padding:30px;text-align:center;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.slides-container{display:flex;transition:transform 0.6s ease-in-out}
 .form-card textarea{min-height:120px;resize:vertical}
 .item-name{color:#e9d5ff;font-weight:500}
 .item-price{color:#a5f3fc;font-weight:600}
@@ -91,6 +88,21 @@ select option{color:#fff;background:#2b1b4e}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal-card{animation:slideUp 0.4s ease}
 @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.popular-tag{background:#fcd34d;color:#000;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:8px}
+.steps-box{background:#2b1b4e;border-radius:12px;padding:18px;margin:15px auto;max-width:420px}
+.steps-title{color:#fcd34d;font-weight:600;margin:0 0 10px 0;text-align:center}
+.steps-list{font-size:13px;color:#cbd5f5;line-height:2}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:15px;max-width:950px;margin:0 auto}
+.trust-card{background:#1a0f2a;border-radius:14px;padding:20px;display:flex;align-items:flex-start;gap:12px}
+.trust-icon{font-size:26px;min-width:36px;text-align:center}
+.trust-title{color:#e9d5ff;font-weight:600;margin:0 0 4px 0;font-size:15px}
+.trust-desc{color:#cbd5f5;font-size:13px;margin:0;line-height:1.5}
+.testi-card{background:#1a0f2a;border-radius:14px;padding:22px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.testi-stars{font-size:28px;color:#a5f3fc;margin-bottom:10px}
+.testi-text{color:#cbd5f5;font-style:italic;line-height:1.7;font-size:14px;margin:0 0 12px 0}
+.testi-name{color:#e9d5ff;font-size:13px;font-weight:600}
+.testi-tag{display:block;color:#a5f3fc;font-size:11px;margin-top:3px}
+@media(max-width:600px){.grid-2{grid-template-columns:1fr;max-width:420px}.trust-card{padding:16px}}
 </style>
 </head>
 
@@ -107,11 +119,16 @@ select option{color:#fff;background:#2b1b4e}
 
 <div id="top"></div>
 <h1 style="text-align:center;margin:10px 0 5px 0">🔮 Tarot Tells Tales</h1>
-<div style="text-align:center;margin-bottom:20px"><img src="logo.png" style="height:80px;border-radius:50%;" alt="Tarot Tells Tales Official Logo"></div>
+<div style="text-align:center;margin-bottom:25px;">
+    <img src="logo.png" style="height:70px;border-radius:50%;margin-bottom:8px;" alt="Tarot Tells Tales Logo">
+    <img src="your-photo.jpg" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #7c3aed;display:block;margin:0 auto;" alt="Seema - Tarot Reader">
+    <p style="margin:8px 0 0 0;color:#e9d5ff;font-size:18px;font-weight:600;">Seema</p>
+    <p style="margin:2px 0 0 0;color:#a5f3fc;font-size:13px;">Certified Tarot Reader &bull; 500+ Readings Done</p>
+</div>
 
 <div class="reveal">
     <h2 id="about">🌙 About Me</h2>
-    <p style="text-align:center;max-width:800px;margin:auto;line-height:1.9">Hi, I'm the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear. My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence. ✨ Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.</p>
+    <p style="text-align:center;max-width:800px;margin:auto;line-height:1.9">Hi, I'm Seema, the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear. My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence. ✨ Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.</p>
 </div>
 
 <div class="reveal">
@@ -132,8 +149,8 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col card-content">
             <h3>🧘 Health &amp; Wellness</h3>
             <p>Gain insights into emotional and physical well-being and underlying energy blocks.</p>
-            <button class="btn" onclick="addToCart('Health',2000,'PDF')">PDF ₹2000</button>
-            <button class="btn" onclick="addToCart('Health',2500,'Live')">Live ₹2500</button>
+            <button class="btn" onclick="addToCart('Health',2000,'PDF')">PDF ₹2000 ($24)</button>
+            <button class="btn" onclick="addToCart('Health',2500,'Live')">Live ₹2500 ($30)</button>
         </div>
     </div>
 </div>
@@ -144,7 +161,7 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col card-content">
             <h3>🌱 Self Help</h3>
             <p>Understand yourself better and overcome emotional blocks.</p>
-            <button class="btn" onclick="addToCart('Self Help',1850,'PDF')">PDF ₹1850</button>
+            <button class="btn" onclick="addToCart('Self Help',1850,'PDF')">PDF ₹1850 ($22)</button>
         </div>
     </div>
 </div>
@@ -155,7 +172,7 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col card-content">
             <h3>🌫️ Feeling Lost</h3>
             <p>Find direction when life feels uncertain.</p>
-            <button class="btn" onclick="addToCart('Feeling Lost',2100,'Live')">Live ₹2100</button>
+            <button class="btn" onclick="addToCart('Feeling Lost',2100,'Live')">Live ₹2100 ($25)</button>
         </div>
     </div>
 </div>
@@ -164,10 +181,11 @@ select option{color:#fff;background:#2b1b4e}
     <div class="row">
         <div class="col"><img src="relationships.jpg" alt="Love and relationship tarot reading" loading="lazy"></div>
         <div class="col card-content">
+            <div class="popular-tag">⭐ MOST POPULAR</div>
             <h3>❤️ Relationships</h3>
             <p>Clarity on love, emotions and partner intentions.</p>
-            <button class="btn" onclick="addToCart('Relationships',1850,'PDF')">PDF ₹1850</button>
-            <button class="btn" onclick="addToCart('Relationships',2500,'Live')">Live ₹2500</button>
+            <button class="btn" onclick="addToCart('Relationships',1850,'PDF')">PDF ₹1850 ($22)</button>
+            <button class="btn" onclick="addToCart('Relationships',2500,'Live')">Live ₹2500 ($30)</button>
         </div>
     </div>
 </div>
@@ -178,8 +196,8 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col card-content">
             <h3>💼 Career &amp; Finance</h3>
             <p>Direction in career and financial decisions.</p>
-            <button class="btn" onclick="addToCart('Career',1850,'PDF')">PDF ₹1850</button>
-            <button class="btn" onclick="addToCart('Career',2500,'Live')">Live ₹2500</button>
+            <button class="btn" onclick="addToCart('Career',1850,'PDF')">PDF ₹1850 ($22)</button>
+            <button class="btn" onclick="addToCart('Career',2500,'Live')">Live ₹2500 ($30)</button>
         </div>
     </div>
 </div>
@@ -190,7 +208,7 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col card-content">
             <h3>🐾 Pet Reading</h3>
             <p>Understand your pet's emotions, behaviour and deeper bond with you. This reading also includes communication with departed pets.</p>
-            <button class="btn" onclick="addToCart('Pet',2500,'PDF')">PDF ₹2500</button>
+            <button class="btn" onclick="addToCart('Pet',2500,'PDF')">PDF ₹2500 ($30)</button>
         </div>
     </div>
 </div>
@@ -203,9 +221,9 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col card-content">
             <h3>🧿 Chakra Healing</h3>
             <p><b>PDF Reading</b> - Deep energy healing and balance.</p>
-            <button class="btn" onclick="addToCart('Chakra Healing',4500,'PDF')">PDF ₹4500</button>
-            <button class="btn" onclick="addToCart('Chakra Followup',2000,'PDF')">Follow-up ₹2000</button>
-            <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo ₹5750</button>
+            <button class="btn" onclick="addToCart('Chakra Healing',4500,'PDF')">PDF ₹4500 ($54)</button>
+            <button class="btn" onclick="addToCart('Chakra Followup',2000,'PDF')">Follow-up ₹2000 ($24)</button>
+            <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo ₹5750 ($69)</button>
         </div>
     </div>
 </div>
@@ -215,10 +233,10 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col"><img src="guidance.jpg" alt="Future guidance tarot reading" loading="lazy"></div>
         <div class="col card-content">
             <h3>🔮 Guidance (PDF Reading)</h3>
-            <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly ₹1750</button>
-            <button class="btn" onclick="addToCart('Quarterly',5000,'PDF')">Quarterly ₹5000</button>
-            <button class="btn" onclick="addToCart('Half-Yearly',9500,'PDF')">Half-Yearly ₹9500</button>
-            <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly ₹17850</button>
+            <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly ₹1750 ($21)</button>
+            <button class="btn" onclick="addToCart('Quarterly',5000,'PDF')">Quarterly ₹5000 ($60)</button>
+            <button class="btn" onclick="addToCart('Half-Yearly',9500,'PDF')">Half-Yearly ₹9500 ($114)</button>
+            <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly ₹17850 ($215)</button>
         </div>
     </div>
 </div>
@@ -229,7 +247,7 @@ select option{color:#fff;background:#2b1b4e}
         <div class="col card-content">
             <h3>🔢 Name Analysis</h3>
             <p>Understand how your name influences your life path.</p>
-            <button class="btn" onclick="addToCart('Name Analysis',4500,'PDF')">PDF ₹4500</button>
+            <button class="btn" onclick="addToCart('Name Analysis',4500,'PDF')">PDF ₹4500 ($54)</button>
         </div>
     </div>
 </div>
@@ -240,29 +258,65 @@ select option{color:#fff;background:#2b1b4e}
 </div>
 
 <div class="reveal">
-    <h2>💬 Testimonials</h2>
-    <div class="testimonial-slider">
-        <div class="slides-container" id="slidesContainer">
-            <div class="testimonial-slide">
-                <div style="font-size:40px;color:#a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top:15px;line-height:1.6;">"The reading was extremely accurate and gave me clarity I was looking for."</p>
-                <strong style="color:#e9d5ff;display:block;margin-top:10px;">- Happy Client</strong>
+    <h2>🔒 Why Clients Trust Me</h2>
+    <div class="grid-2">
+        <div class="trust-card">
+            <div class="trust-icon">🔒</div>
+            <div>
+                <p class="trust-title">100% Confidential</p>
+                <p class="trust-desc">Your name, queries, and reading details are never shared with anyone. Ever.</p>
             </div>
-            <div class="testimonial-slide">
-                <div style="font-size:40px;color:#a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top:15px;line-height:1.6;">"I felt heard, understood and guided in the right direction."</p>
-                <strong style="color:#e9d5ff;display:block;margin-top:10px;">- Grateful Soul</strong>
+        </div>
+        <div class="trust-card">
+            <div class="trust-icon">🌍</div>
+            <div>
+                <p class="trust-title">Clients Across 15+ Countries</p>
+                <p class="trust-desc">Reading for clients from India, USA, UK, Canada, Australia, UAE and more.</p>
             </div>
-            <div class="testimonial-slide">
-                <div style="font-size:40px;color:#a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top:15px;line-height:1.6;">"One of the most genuine readings I've experienced. Highly recommended."</p>
-                <strong style="color:#e9d5ff;display:block;margin-top:10px;">- Repeat Client</strong>
+        </div>
+        <div class="trust-card">
+            <div class="trust-icon">💳</div>
+            <div>
+                <p class="trust-title">Pay Only When Ready</p>
+                <p class="trust-desc">No advance tricks. You see the price, you choose, you pay securely via Razorpay. Simple.</p>
             </div>
-            <div class="testimonial-slide">
-                <div style="font-size:40px;color:#a5f3fc;">⭐⭐⭐⭐⭐</div>
-                <p style="margin-top:15px;line-height:1.6;">"Helped me make an important life decision confidently."</p>
-                <strong style="color:#e9d5ff;display:block;margin-top:10px;">- Believer</strong>
+        </div>
+        <div class="trust-card">
+            <div class="trust-icon">✉️</div>
+            <div>
+                <p class="trust-title">Direct Access Post-Reading</p>
+                <p class="trust-desc">Got questions after your reading? Reach out directly on WhatsApp. I respond personally.</p>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="reveal">
+    <h2>💬 Client Experiences</h2>
+    <div class="grid-2">
+        <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testi-text">"I had requested a Relationship Tarot reading for myself. I must say the reading was very insightful, in depth and explanations were very clear and easy to understand. I completely resonated with the reading."</p>
+            <strong class="testi-name">— Tarot Client</strong>
+            <span class="testi-tag">Relationship Reading · via Instagram</span>
+        </div>
+        <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testi-text">"Got this reading done and was amazed to see how every choice I was confused about was explained in such detail. Each choice was classified with its upside, downside and what one should consider."</p>
+            <strong class="testi-name">— Tarot Client</strong>
+            <span class="testi-tag">via Instagram</span>
+        </div>
+        <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testi-text">"After getting the tarot reading done by Seema, my recurring dreams stopped. The reading was so accurate. I recommend all of her tarot readings."</p>
+            <strong class="testi-name">— Tarot Client</strong>
+            <span class="testi-tag">via Instagram</span>
+        </div>
+        <div class="testi-card">
+            <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+            <p class="testi-text">"The yearly reading was so accurate and focused on all the key highlights of the year. The intuition is spot on. I highly recommend including the yearly one!"</p>
+            <strong class="testi-name">— Tarot Client</strong>
+            <span class="testi-tag">Yearly Reading · via Instagram</span>
         </div>
     </div>
 </div>
@@ -277,12 +331,6 @@ select option{color:#fff;background:#2b1b4e}
     <p style="color:#a5f3fc;font-size:16px;margin:0 0 10px 0;">❓ Not sure what to pick?</p>
     <p style="color:#cbd5f5;font-size:13px;margin:0 0 8px 0;">📄 <b>PDF Reading:</b> Detailed written analysis delivered to you. Read it anytime, anywhere.</p>
     <p style="color:#cbd5f5;font-size:13px;margin:0;">📞 <b>Live Session:</b> Face-to-face conversation for real-time clarity and interaction.</p>
-</div>
-
-<div class="reveal" style="background:#1a0f2a;border:1px solid #3b2b5e;border-radius:14px;padding:15px;max-width:420px;margin:0 auto 30px auto;text-align:center;">
-    <div style="color:#a5f3fc;font-size:18px;">⭐⭐⭐⭐⭐</div>
-    <p style="color:#e9d5ff;font-style:italic;margin:5px 0;font-size:14px;">"One of the most genuine readings I've experienced. Highly recommended."</p>
-    <strong style="color:#aaa;font-size:12px;">- Repeat Client</strong>
 </div>
 
 <h2 id="booking">📅 Booking</h2>
@@ -324,6 +372,17 @@ select option{color:#fff;background:#2b1b4e}
     </div>
 
     <p id="note" style="text-align:center;color:#fbbf24;font-weight:bold;"></p>
+
+    <div class="steps-box">
+        <p class="steps-title">📋 What happens after you pay?</p>
+        <div class="steps-list">
+            <div>1️⃣ You get a Booking ID instantly</div>
+            <div>2️⃣ A WhatsApp message opens — just send it</div>
+            <div>3️⃣ <b>PDF Reading:</b> Delivered to your email in 2-4 days</div>
+            <div>4️⃣ <b>Live Session:</b> Time slot confirmed within 2 hours</div>
+            <div>5️⃣ All readings are 100% confidential</div>
+        </div>
+    </div>
 
     <div style="text-align:center;margin-top:15px;">
         <button class="btn" id="payBtn" disabled>💳 Pay via Razorpay</button>
@@ -392,7 +451,6 @@ select option{color:#fff;background:#2b1b4e}
 <script>
 var cart = [];
 var exchangeRate = 0;
-
 var RAZORPAY_KEY_ID = "rzp_live_SXP13njJD5Ks9k";
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycby8nn4mhAGkwlzvVRKbkvIzbA6j9TOxPGvkmE7g9IQNxCixJAeL0r69f7-dB3WBJi_mdA/exec";
 var whatsappNumber = "919892223162";
@@ -418,25 +476,6 @@ function toggleMusic() {
     else { audio.pause(); btn.innerHTML = "🎵"; btn.classList.remove('playing'); }
 }
 
-var currentSlide = 0;
-var slidesContainer = document.getElementById('slidesContainer');
-if (slidesContainer) {
-    var totalSlides = document.querySelectorAll('.testimonial-slide').length;
-    setInterval(function() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        slidesContainer.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-    }, 4000);
-}
-
-var accBtns = document.getElementsByClassName("accordion-btn");
-for (var i = 0; i < accBtns.length; i++) {
-    accBtns[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
-    });
-}
-
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
@@ -451,6 +490,15 @@ function scrollFunction() {
     document.getElementById("topBtn").style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
 }
 function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+var accBtns = document.getElementsByClassName("accordion-btn");
+for (var i = 0; i < accBtns.length; i++) {
+    accBtns[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+    });
+}
 
 async function fetchExchangeRate() {
     try { var response = await fetch('https://open.er-api.com/v6/latest/INR'); var data = await response.json(); exchangeRate = data.rates.USD; }
@@ -537,17 +585,14 @@ dateEl.addEventListener('change', updateSlots);
 function checkPay() {
     var hasPDF = cart.some(function(i) { return i.name.includes('PDF') || i.name.includes('Monthly') || i.name.includes('Quarterly') || i.name.includes('Half-Yearly') || i.name.includes('Yearly') || i.name.includes('Chakra'); });
     var hasLive = cart.some(function(i) { return i.name.includes('Live'); });
-
     payBtn.disabled = true;
     payBtn.style.opacity = 0.5;
-
     if (cart.length === 0) { note.innerText = "Please select a service"; return; }
     if (!agreeEl.checked) { note.innerText = "Please accept booking conditions"; return; }
     if (!nameEl.value || !emailEl.value || !mobileEl.value) { note.innerText = "Please fill Name, Email and Mobile"; return; }
     if (hasPDF && (!dobEl.value || !queryEl.value)) { note.innerText = "Please fill DOB and Query for PDF reading"; return; }
     if (hasLive && !dateEl.value) { note.innerText = "Please select a date"; return; }
     if (hasLive && !timeEl.value) { note.innerText = "Please select a time slot"; return; }
-
     note.innerText = "";
     payBtn.disabled = false;
     payBtn.style.opacity = 1;
@@ -557,12 +602,7 @@ function checkPay() {
 if (timeEl) timeEl.addEventListener('change', checkPay);
 if (agreeEl) agreeEl.addEventListener('change', checkPay);
 
-/* ========================================================
-   BOOKING ID — generated ONLY inside the success handler
-   ======================================================== */
-function generateBookingId() {
-    return 'TTT-' + Date.now().toString().slice(-6);
-}
+function generateBookingId() { return 'TTT-' + Date.now().toString().slice(-6); }
 
 function bookCalendarSlot(bookingId, services, date, time) {
     var callbackName = 'bookCallback_' + Date.now();
@@ -572,29 +612,24 @@ function bookCalendarSlot(bookingId, services, date, time) {
     document.body.appendChild(script);
 }
 
-/* ========================================================
-   RAZORPAY PAYMENT — Domestic (INR) & International (USD)
-   Booking ID is created ONLY after payment succeeds.
-   ======================================================== */
 payBtn.onclick = function() {
     if (!window.finalINR || window.finalUSD <= 0) return alert("Error calculating amount.");
     if (RAZORPAY_KEY_ID === "YOUR_KEY_ID_HERE") return alert("Razorpay Key ID not set.");
 
-    /* Capture form data now — but NO booking ID yet */
-    var services    = cart.map(function(i) { return i.name; }).join(', ');
+    var services = cart.map(function(i) { return i.name; }).join(', ');
     var bookingDate = dateEl.value;
     var bookingTime = timeEl.value;
-    var custName    = nameEl.value;
-    var custEmail   = emailEl.value;
-    var custMobile  = mobileEl.value;
-    var custDob     = dobEl.value;
-    var custQuery   = queryEl.value;
+    var custName = nameEl.value;
+    var custEmail = emailEl.value;
+    var custMobile = mobileEl.value;
+    var custDob = dobEl.value;
+    var custQuery = queryEl.value;
 
     var isInternational = locationEl.value === 'international';
-    var currency        = isInternational ? "USD" : "INR";
-    var amount          = isInternational ? Math.round(window.finalUSD * 100) : window.finalINR * 100;
-    var symbol          = isInternational ? '$' : '₹';
-    var displayAmount   = isInternational ? window.finalUSD : window.finalINR;
+    var currency = isInternational ? "USD" : "INR";
+    var amount = isInternational ? Math.round(window.finalUSD * 100) : window.finalINR * 100;
+    var symbol = isInternational ? '$' : '₹';
+    var displayAmount = isInternational ? window.finalUSD : window.finalINR;
 
     var options = {
         key: RAZORPAY_KEY_ID,
@@ -603,174 +638,64 @@ payBtn.onclick = function() {
         name: "Tarot Tells Tales",
         description: services,
         image: "https://tarottellstales.co.in/logo.png",
-
-        /* ===== THIS FIRES ONLY ON SUCCESSFUL PAYMENT ===== */
         handler: function(response) {
-
-            /* Booking ID created RIGHT HERE — only after money is received */
             var bookingId = generateBookingId();
-
-            /* Block calendar slot if live session */
-            if (bookingDate && bookingTime) {
-                bookCalendarSlot(bookingId, services, bookingDate, bookingTime);
-            }
-
-            /* Send WhatsApp confirmation */
+            if (bookingDate && bookingTime) { bookCalendarSlot(bookingId, services, bookingDate, bookingTime); }
             sendWhatsAppConfirmation(bookingId, response.razorpay_payment_id, services, symbol, displayAmount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime);
-
-            /* Show success modal */
             showSuccessModal(bookingId, response.razorpay_payment_id, symbol + displayAmount, isInternational ? 'International (USD)' : 'Domestic (INR)');
         },
-
-        prefill: {
-            name: custName,
-            email: custEmail,
-            contact: custMobile
-        },
+        prefill: { name: custName, email: custEmail, contact: custMobile },
         notes: { services: services },
         theme: { color: "#7c3aed" }
     };
 
     var rzp = new Razorpay(options);
-    rzp.on('payment.failed', function(response) {
-        showErrorModal(response.error.description);
-    });
+    rzp.on('payment.failed', function(response) { showErrorModal(response.error.description); });
     rzp.open();
 };
 
-/* ========================================================
-   WHATSAPP CONFIRMATION MESSAGE — formatted for both INR & USD
-   ======================================================== */
 function sendWhatsAppConfirmation(bookingId, paymentId, services, symbol, amount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime) {
-
     var locationLabel = isInternational ? '🌍 International (USD)' : '🇮🇳 Domestic (INR)';
     var timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' });
-
-    var msg = '';
-    msg += '✅ *PAYMENT CONFIRMED*\n';
-    msg += '━━━━━━━━━━━━━━━\n';
-    msg += '📋 *Booking ID:* ' + bookingId + '\n';
-    msg += '💳 *Payment ID:* ' + paymentId + '\n';
-    msg += '📁 *Type:* ' + locationLabel + '\n';
-    msg += '🕐 *Paid at:* ' + timestamp + ' (IST)\n';
-    msg += '━━━━━━━━━━━━━━━\n';
-    msg += '👤 *Name:* ' + custName + '\n';
-    msg += '📧 *Email:* ' + custEmail + '\n';
-    msg += '📱 *Mobile:* ' + custMobile + '\n';
-    msg += '━━━━━━━━━━━━━━━\n';
-    msg += '📦 *Services:*\n' + services + '\n';
-    msg += '💰 *Amount Paid:* ' + symbol + amount + '\n';
-
+    var msg = '✅ *PAYMENT CONFIRMED*\n━━━━━━━━━━━━━━━\n📋 *Booking ID:* ' + bookingId + '\n💳 *Payment ID:* ' + paymentId + '\n📁 *Type:* ' + locationLabel + '\n🕐 *Paid at:* ' + timestamp + ' (IST)\n━━━━━━━━━━━━━━━\n👤 *Name:* ' + custName + '\n📧 *Email:* ' + custEmail + '\n📱 *Mobile:* ' + custMobile + '\n━━━━━━━━━━━━━━━\n📦 *Services:*\n' + services + '\n💰 *Amount Paid:* ' + symbol + amount + '\n';
     if (custDob) msg += '🎂 *DOB:* ' + custDob + '\n';
     if (custQuery) msg += '❓ *Query:* ' + custQuery + '\n';
-
-    if (bookingDate && bookingTime) {
-        msg += '━━━━━━━━━━━━━━━\n';
-        msg += '📅 *Date:* ' + bookingDate + '\n';
-        msg += '🕐 *Time:* ' + bookingTime + ' (IST)\n';
-    }
-
+    if (bookingDate && bookingTime) { msg += '━━━━━━━━━━━━━━━\n📅 *Date:* ' + bookingDate + '\n🕐 *Time:* ' + bookingTime + ' (IST)\n'; }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg), '_blank');
 }
 
-/* ========================================================
-   SUCCESS MODAL
-   ======================================================== */
 function showSuccessModal(bookingId, paymentId, amountStr, locationType) {
-    var existing = document.getElementById('successModal');
-    if (existing) existing.remove();
-
-    var modal = document.createElement('div');
-    modal.id = 'successModal';
-    modal.innerHTML =
-        '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;">' +
-            '<div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:420px;width:100%;text-align:center;border:1px solid #22c55e;">' +
-                '<div style="font-size:60px;margin-bottom:10px;">🎉</div>' +
-                '<h3 style="color:#22c55e;margin:0 0 12px 0;font-size:22px;">Payment Successful!</h3>' +
-                '<p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">Your booking <strong style="color:#a5f3fc;">' + bookingId + '</strong> is confirmed.<br><br>A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong> to complete your booking.</p>' +
-                '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Booking ID</span><br><span style="font-size:16px;color:#a5f3fc;font-weight:600;">' + bookingId + '</span></div>' +
-                '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Payment ID</span><br><span style="font-size:13px;color:#a5f3fc;word-break:break-all;">' + paymentId + '</span></div>' +
-                '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Amount Paid</span><br><span style="font-size:16px;color:#fcd34d;font-weight:600;">' + amountStr + '</span></div>' +
-                '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;"><span style="font-size:11px;color:#aaa;">Location</span><br><span style="font-size:14px;color:#cbd5f5;">' + locationType + '</span></div>' +
-                '<button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest(\'div[id]\').remove();resetForm();">Done</button>' +
-            '</div>' +
-        '</div>';
+    var existing = document.getElementById('successModal'); if (existing) existing.remove();
+    var modal = document.createElement('div'); modal.id = 'successModal';
+    modal.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;"><div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:420px;width:100%;text-align:center;border:1px solid #22c55e;"><div style="font-size:60px;margin-bottom:10px;">🎉</div><h3 style="color:#22c55e;margin:0 0 12px 0;font-size:22px;">Payment Successful!</h3><p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">Your booking <strong style="color:#a5f3fc;">' + bookingId + '</strong> is confirmed.<br><br>A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong> to complete your booking.</p><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Booking ID</span><br><span style="font-size:16px;color:#a5f3fc;font-weight:600;">' + bookingId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Payment ID</span><br><span style="font-size:13px;color:#a5f3fc;word-break:break-all;">' + paymentId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Amount Paid</span><br><span style="font-size:16px;color:#fcd34d;font-weight:600;">' + amountStr + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;"><span style="font-size:11px;color:#aaa;">Location</span><br><span style="font-size:14px;color:#cbd5f5;">' + locationType + '</span></div><button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest(\'div[id]\').remove();resetForm();">Done</button></div></div>';
     document.body.appendChild(modal);
 }
 
-/* ========================================================
-   ERROR MODAL
-   ======================================================== */
 function showErrorModal(errorMsg) {
-    var existing = document.getElementById('errorModal');
-    if (existing) existing.remove();
-
-    var modal = document.createElement('div');
-    modal.id = 'errorModal';
-    modal.innerHTML =
-        '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;">' +
-            '<div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:400px;width:100%;text-align:center;border:1px solid #ef4444;">' +
-                '<div style="font-size:50px;margin-bottom:10px;">😔</div>' +
-                '<h3 style="color:#ef4444;margin:0 0 12px 0;font-size:20px;">Payment Issue</h3>' +
-                '<p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">' + (errorMsg || "Could not process payment.") + '</p>' +
-                '<button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest(\'div[id]\').remove();">Try Again</button>' +
-            '</div>' +
-        '</div>';
+    var existing = document.getElementById('errorModal'); if (existing) existing.remove();
+    var modal = document.createElement('div'); modal.id = 'errorModal';
+    modal.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;"><div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:400px;width:100%;text-align:center;border:1px solid #ef4444;"><div style="font-size:50px;margin-bottom:10px;">😔</div><h3 style="color:#ef4444;margin:0 0 12px 0;font-size:20px;">Payment Issue</h3><p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">' + (errorMsg || "Could not process payment.") + '</p><button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest(\'div[id]\').remove();">Try Again</button></div></div>';
     document.body.appendChild(modal);
 }
 
-/* ========================================================
-   RESET FORM
-   ======================================================== */
 function resetForm() {
-    cart = [];
-    nameEl.value = '';
-    emailEl.value = '';
-    mobileEl.value = '';
-    dobEl.value = '';
-    queryEl.value = '';
-    dateEl.value = '';
-    timeEl.innerHTML = '';
-    agreeEl.checked = false;
-    note.innerText = '';
-    render();
-    toggleSections();
-    checkPay();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    cart = []; nameEl.value = ''; emailEl.value = ''; mobileEl.value = ''; dobEl.value = ''; queryEl.value = ''; dateEl.value = ''; timeEl.innerHTML = ''; agreeEl.checked = false; note.innerText = '';
+    render(); toggleSections(); checkPay(); window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ========================================================
-   RESCHEDULE & CANCEL
-   ======================================================== */
-var daySlots = {
-    1: ["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"],
-    2: ["4 PM","5 PM","6 PM","7 PM"],
-    3: ["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"],
-    4: ["4 PM","5 PM","6 PM","7 PM"],
-    5: ["4 PM","5 PM","6 PM","7 PM"],
-    6: ["2 PM","3 PM","4 PM","5 PM","6 PM","7 PM"],
-    0: ["11 AM","12 PM","1 PM","5 PM","6 PM","7 PM"]
-};
+var daySlots = { 1:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"], 2:["4 PM","5 PM","6 PM","7 PM"], 3:["11 AM","12 PM","4 PM","5 PM","6 PM","7 PM"], 4:["4 PM","5 PM","6 PM","7 PM"], 5:["4 PM","5 PM","6 PM","7 PM"], 6:["2 PM","3 PM","4 PM","5 PM","6 PM","7 PM"], 0:["11 AM","12 PM","1 PM","5 PM","6 PM","7 PM"] };
 
 function updateRescheduleSlots() {
-    var rDate = document.getElementById('rescheduleDate').value;
-    var rTime = document.getElementById('rescheduleTime');
+    var rDate = document.getElementById('rescheduleDate').value; var rTime = document.getElementById('rescheduleTime');
     if (!rDate) return;
     var d = new Date(rDate.split('-')[0], rDate.split('-')[1] - 1, rDate.split('-')[2]).getDay();
     rTime.innerHTML = '';
-    (daySlots[d] || []).forEach(function(s) {
-        var opt = document.createElement('option');
-        opt.value = s;
-        opt.textContent = s;
-        rTime.appendChild(opt);
-    });
+    (daySlots[d] || []).forEach(function(s) { var opt = document.createElement('option'); opt.value = s; opt.textContent = s; rTime.appendChild(opt); });
 }
 document.getElementById('rescheduleDate').addEventListener('change', updateRescheduleSlots);
 
 function rescheduleBooking() {
-    var id = document.getElementById('rescheduleId').value.trim();
-    var d = document.getElementById('rescheduleDate').value;
-    var t = document.getElementById('rescheduleTime').value;
+    var id = document.getElementById('rescheduleId').value.trim(); var d = document.getElementById('rescheduleDate').value; var t = document.getElementById('rescheduleTime').value;
     if (!id || !d || !t) return alert("Fill all fields");
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent("🔁 *Reschedule Request*\nID: " + id + "\nNew Date: " + d + "\nNew Time: " + t), '_blank');
 }
@@ -778,22 +703,13 @@ function rescheduleBooking() {
 function cancelBooking() {
     var id = document.getElementById('cancelId').value.trim();
     if (!id) return alert("Enter Booking ID");
-    if (confirm("Are you sure? No refunds are applicable.")) {
-        window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent("❌ *Cancellation Request*\nID: " + id), '_blank');
-    }
+    if (confirm("Are you sure? No refunds are applicable.")) { window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent("❌ *Cancellation Request*\nID: " + id), '_blank'); }
 }
 
-function clearAllData() {
-    if (confirm("Clear test data?")) {
-        localStorage.removeItem('bookings');
-        alert("Cleared.");
-    }
-}
+function clearAllData() { if (confirm("Clear test data?")) { localStorage.removeItem('bookings'); alert("Cleared."); } }
 
 function sendFeedback() {
-    var m = document.getElementById('feedMobile').value.trim();
-    var e = document.getElementById('feedEmail').value.trim();
-    var t = document.getElementById('feedMsg').value.trim();
+    var m = document.getElementById('feedMobile').value.trim(); var e = document.getElementById('feedEmail').value.trim(); var t = document.getElementById('feedMsg').value.trim();
     if (!m || !e || !t) return alert("Fill all fields.");
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent("📝 *Feedback*\nMobile: " + m + "\nEmail: " + e + "\nFeedback: " + t), '_blank');
 }
