@@ -1,0 +1,56 @@
+body{margin:0;font-family:'Outfit',sans-serif;color:#f5f3ff;background:radial-gradient(circle at top,#1a0f2a,#020617)}
+.container{max-width:950px;margin:auto;padding:20px}
+.card{background:#1a0f2a;margin:25px 0;border-radius:18px;overflow:hidden}
+.row{display:flex;flex-wrap:wrap}
+.col{flex:1;min-width:260px}
+.card img,video{width:100%;height:100%;object-fit:cover}
+.card-content{padding:22px}
+.btn{padding:10px 16px;border-radius:25px;background:#7c3aed;color:#fff;border:none;cursor:pointer;margin:5px;transition:0.2s}
+.btn:hover{opacity:0.9;transform:translateY(-1px)}
+.btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+input,select,textarea{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;background:#2b1b4e;color:#fff;box-sizing:border-box;font-family:'Outfit',sans-serif}
+h1,h2{text-align:center;margin-top:35px}
+.narrow{max-width:420px;margin:0 auto}
+.form-card{background:#1a0f2a;margin:18px auto;padding:22px 22px 26px 22px;border-radius:14px;max-width:420px;line-height:1.6}
+.form-card textarea{min-height:120px;resize:vertical}
+.item-name{color:#e9d5ff;font-weight:500}
+.item-price{color:#a5f3fc;font-weight:600}
+.discount-text{color:#fca5a5;font-weight:600;text-align:center}
+.total-text{color:#fcd34d;font-weight:700;font-size:22px}
+.rate-text{color:#a5f3fc;font-size:12px;text-align:center;opacity:0.8}
+.nav-link{color:#cbd5f5;text-decoration:none;cursor:pointer;transition:0.3s}
+.nav-link:hover{color:#a5f3fc;text-decoration:underline}
+select option:disabled{color:#555;background:#1a1a1a}
+select option{color:#fff;background:#2b1b4e}
+.music-btn{position:fixed;bottom:20px;right:20px;background:#7c3aed;color:#fff;border:none;border-radius:50%;width:50px;height:50px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(124,58,237,0.5);z-index:999;font-size:20px}
+.music-btn:hover{transform:scale(1.1)}
+.music-btn.playing{animation:pulse 1.5s infinite}
+#topBtn{display:none;position:fixed;bottom:80px;right:20px;z-index:99;font-size:18px;border:none;outline:none;background-color:#7c3aed;color:white;cursor:pointer;padding:10px 15px;border-radius:25px;box-shadow:0 4px 15px rgba(124,58,237,0.5)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,58,237,0.7)}70%{box-shadow:0 0 0 15px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
+.calendar-container{position:relative;padding-bottom:60%;height:0;overflow:hidden;background:#1a0f2a;border-radius:12px;margin:20px auto;max-width:800px}
+.calendar-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.accordion-btn{width:100%;text-align:left;background:#2b1b4e;color:#fff;border:none;padding:15px;cursor:pointer;font-size:16px;outline:none;transition:0.3s;border-radius:8px;margin-top:5px}
+.accordion-btn:hover{background:#3b2b5e}
+.accordion-btn.active{background:#7c3aed}
+.accordion-panel{display:none;padding:15px;background:#1a0f2a;color:#cbd5f5;border-radius:0 0 8px 8px;margin-bottom:5px}
+#successModal{animation:fadeIn 0.3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-card{animation:slideUp 0.4s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.popular-tag{background:#fcd34d;color:#000;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:8px}
+.steps-box{background:#2b1b4e;border-radius:12px;padding:18px;margin:15px auto;max-width:420px}
+.steps-title{color:#fcd34d;font-weight:600;margin:0 0 10px 0;text-align:center}
+.steps-list{font-size:13px;color:#cbd5f5;line-height:2}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:15px;max-width:950px;margin:0 auto}
+.trust-card{background:#1a0f2a;border-radius:14px;padding:20px;display:flex;align-items:flex-start;gap:12px}
+.trust-icon{font-size:26px;min-width:36px;text-align:center}
+.trust-title{color:#e9d5ff;font-weight:600;margin:0 0 4px 0;font-size:15px}
+.trust-desc{color:#cbd5f5;font-size:13px;margin:0;line-height:1.5}
+.testi-card{background:#1a0f2a;border-radius:14px;padding:22px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.testi-stars{font-size:28px;color:#a5f3fc;margin-bottom:10px}
+.testi-text{color:#cbd5f5;font-style:italic;line-height:1.7;font-size:14px;margin:0 0 12px 0}
+.testi-name{color:#e9d5ff;font-size:13px;font-weight:600}
+.testi-tag{display:block;color:#a5f3fc;font-size:11px;margin-top:3px}
+@media(max-width:600px){.grid-2{grid-template-columns:1fr;max-width:420px}.trust-card{padding:16px}}
