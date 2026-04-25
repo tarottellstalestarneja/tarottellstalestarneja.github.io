@@ -1,8 +1,7 @@
 var cart = [];
 var exchangeRate = 0;
 var RAZORPAY_KEY_ID = "rzp_live_SXP13njJD5Ks9k";
-// UPDATED: New Clean URL to fix Insecure Content / Strict Browsing block
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDLX82l5S7sRiYUQVZjCgAdDTaBIYQ_yjvRGpdelQDMLhWVRa4gGrVyaZ1JH7eSm2ckQ/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlPkKukfHC5FbJywmqnDr5IayVrA6o3hal4ZIVFEKpNpik7oKlWRv6CUw7erMN-8AYxw/exec";
 var whatsappNumber = "919892223162";
 
 var cartDiv = document.getElementById('cart');
@@ -71,7 +70,6 @@ function addToCart(name, price, format) {
     if (!cart.find(function(i) { return i.name === label; })) cart.push({ name: label, price: price });
     render(); toggleSections(); checkPay();
     
-    // FIX: Auto-scroll to booking section when item is added
     var bookingSection = document.getElementById('booking');
     if (bookingSection) {
         bookingSection.scrollIntoView({ behavior: 'smooth' });
@@ -116,7 +114,6 @@ function toggleSections() {
     document.getElementById('liveSection').style.display = hasLive ? 'block' : 'none';
 }
 
-// --- UPDATED FUNCTION WITH BUG FIX ---
 function updateSlots() {
     if (!dateEl.value) { 
         timeEl.innerHTML = '<option value="">Select date first</option>'; 
@@ -128,21 +125,17 @@ function updateSlots() {
     var callbackName = 'jsonpCallback_' + Date.now();
     var script = document.createElement('script');
     
-    // 1. Set a timeout. If the server doesn't reply in 8 seconds, show error.
     var timeoutId = setTimeout(function() {
-        // Only show error if we are still waiting
         if (timeEl.innerHTML.includes('Checking availability')) {
             timeEl.innerHTML = '<option value="">Connection timeout. Try selecting date again.</option>';
         }
         delete window[callbackName];
     }, 8000);
 
-    // 2. Define the callback
     window[callbackName] = function(data) {
         clearTimeout(timeoutId);
         
         try {
-            // Check if data is valid
             if (!data || !data.slots) {
                  throw new Error("Invalid data");
             }
@@ -169,15 +162,16 @@ function updateSlots() {
         checkPay();
     };
 
-    // 3. We REMOVED the script.onerror handler because it was too aggressive.
-    // Now we rely on the timeout above.
-
     script.src = SCRIPT_URL + '?action=getSlots&date=' + dateEl.value + '&callback=' + callbackName;
     document.body.appendChild(script);
 }
-// -------------------------------------
 
 dateEl.addEventListener('change', updateSlots);
+
+function getSessionMode() {
+    var selected = document.querySelector('input[name="sessionMode"]:checked');
+    return selected ? selected.value : 'Google Meet';
+}
 
 function checkPay() {
     var hasPDF = cart.some(function(i) { return i.name.includes('PDF') || i.name.includes('Monthly') || i.name.includes('Quarterly') || i.name.includes('Half-Yearly') || i.name.includes('Yearly') || i.name.includes('Chakra'); });
@@ -201,11 +195,11 @@ if (agreeEl) agreeEl.addEventListener('change', checkPay);
 
 function generateBookingId() { return 'TTT-' + Date.now().toString().slice(-6); }
 
-function bookCalendarSlot(bookingId, services, date, time) {
+function bookCalendarSlot(bookingId, services, date, time, mode) {
     var callbackName = 'bookCallback_' + Date.now();
     window[callbackName] = function(data) { delete window[callbackName]; document.body.removeChild(script); };
     var script = document.createElement('script');
-    script.src = SCRIPT_URL + '?action=bookSlot&bookingId=' + bookingId + '&name=' + encodeURIComponent(nameEl.value) + '&service=' + encodeURIComponent(services) + '&date=' + date + '&time=' + time + '&callback=' + callbackName;
+    script.src = SCRIPT_URL + '?action=bookSlot&bookingId=' + bookingId + '&name=' + encodeURIComponent(nameEl.value) + '&email=' + encodeURIComponent(emailEl.value) + '&service=' + encodeURIComponent(services) + '&date=' + date + '&time=' + time + '&mode=' + encodeURIComponent(mode) + '&callback=' + callbackName;
     document.body.appendChild(script);
 }
 
@@ -215,6 +209,7 @@ payBtn.onclick = function() {
     var services = cart.map(function(i) { return i.name; }).join(', ');
     var bookingDate = dateEl.value;
     var bookingTime = timeEl.value;
+    var sessionMode = getSessionMode();
     var custName = nameEl.value;
     var custEmail = emailEl.value;
     var custMobile = mobileEl.value;
@@ -234,9 +229,9 @@ payBtn.onclick = function() {
         image: "https://tarottellstales.co.in/logo.png",
         handler: function(response) {
             var bookingId = generateBookingId();
-            if (bookingDate && bookingTime) { bookCalendarSlot(bookingId, services, bookingDate, bookingTime); }
-            sendWhatsAppConfirmation(bookingId, response.razorpay_payment_id, services, symbol, displayAmount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime);
-            showSuccessModal(bookingId, response.razorpay_payment_id, symbol + displayAmount, isInternational ? 'International (USD)' : 'Domestic (INR)');
+            if (bookingDate && bookingTime) { bookCalendarSlot(bookingId, services, bookingDate, bookingTime, sessionMode); }
+            sendWhatsAppConfirmation(bookingId, response.razorpay_payment_id, services, symbol, displayAmount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime, sessionMode);
+            showSuccessModal(bookingId, response.razorpay_payment_id, symbol + displayAmount, isInternational ? 'International (USD)' : 'Domestic (INR)', sessionMode);
         },
         prefill: { name: custName, email: custEmail, contact: custMobile },
         notes: { services: services },
@@ -247,20 +242,27 @@ payBtn.onclick = function() {
     rzp.open();
 };
 
-function sendWhatsAppConfirmation(bookingId, paymentId, services, symbol, amount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime) {
+function sendWhatsAppConfirmation(bookingId, paymentId, services, symbol, amount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime, sessionMode) {
     var locationLabel = isInternational ? '\uD83C\uDF0D International (USD)' : '\uD83C\uDDEE\uD83C\uDDF3 Domestic (INR)';
     var timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' });
     var msg = '\u2705 *PAYMENT CONFIRMED*\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4CB} *Booking ID:* ' + bookingId + '\n\u{1F4B3} *Payment ID:* ' + paymentId + '\n\u{1F4C1} *Type:* ' + locationLabel + '\n\u{1F550} *Paid at:* ' + timestamp + ' (IST)\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F464} *Name:* ' + custName + '\n\u{1F4E7} *Email:* ' + custEmail + '\n\u{1F4F1} *Mobile:* ' + custMobile + '\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4E6} *Services:*\n' + services + '\n\u{1F4B0} *Amount Paid:* ' + symbol + amount + '\n';
     if (custDob) msg += '\u{1F382} *DOB:* ' + custDob + '\n';
     if (custQuery) msg += '\u2753 *Query:* ' + custQuery + '\n';
-    if (bookingDate && bookingTime) { msg += '\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4C5} *Date:* ' + bookingDate + '\n\u{1F550} *Time:* ' + bookingTime + ' (IST)\n'; }
+    if (bookingDate && bookingTime) {
+        msg += '\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4C5} *Date:* ' + bookingDate + '\n\u{1F550} *Time:* ' + bookingTime + ' (IST)\n';
+        if (sessionMode) msg += '\u{1F3A5} *Session Mode:* ' + sessionMode + '\n';
+    }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg), '_blank');
 }
 
-function showSuccessModal(bookingId, paymentId, amountStr, locationType) {
+function showSuccessModal(bookingId, paymentId, amountStr, locationType, sessionMode) {
     var existing = document.getElementById('successModal'); if (existing) existing.remove();
+    var modeHTML = '';
+    if (sessionMode) {
+        modeHTML = '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Session Mode</span><br><span style="font-size:14px;color:#cbd5f5;">' + sessionMode + '</span></div>';
+    }
     var modal = document.createElement('div'); modal.id = 'successModal';
-    modal.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;"><div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:420px;width:100%;text-align:center;border:1px solid #22c55e;"><div style="font-size:60px;margin-bottom:10px;">&#127881;</div><h3 style="color:#22c55e;margin:0 0 12px 0;font-size:22px;">Payment Successful!</h3><p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">Your booking <strong style="color:#a5f3fc;">' + bookingId + '</strong> is confirmed.<br><br>A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong> to complete your booking.</p><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Booking ID</span><br><span style="font-size:16px;color:#a5f3fc;font-weight:600;">' + bookingId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Payment ID</span><br><span style="font-size:13px;color:#a5f3fc;word-break:break-all;">' + paymentId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Amount Paid</span><br><span style="font-size:16px;color:#fcd34d;font-weight:600;">' + amountStr + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;"><span style="font-size:11px;color:#aaa;">Location</span><br><span style="font-size:14px;color:#cbd5f5;">' + locationType + '</span></div><button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest(\'div[id]\').remove();resetForm();">Done</button></div></div>';
+    modal.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;"><div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:30px;max-width:420px;width:100%;text-align:center;border:1px solid #22c55e;"><div style="font-size:60px;margin-bottom:10px;">&#127881;</div><h3 style="color:#22c55e;margin:0 0 12px 0;font-size:22px;">Payment Successful!</h3><p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">Your booking <strong style="color:#a5f3fc;">' + bookingId + '</strong> is confirmed.<br><br>A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong> to complete your booking.</p><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Booking ID</span><br><span style="font-size:16px;color:#a5f3fc;font-weight:600;">' + bookingId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Payment ID</span><br><span style="font-size:13px;color:#a5f3fc;word-break:break-all;">' + paymentId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Amount Paid</span><br><span style="font-size:16px;color:#fcd34d;font-weight:600;">' + amountStr + '</span></div>' + modeHTML + '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;"><span style="font-size:11px;color:#aaa;">Location</span><br><span style="font-size:14px;color:#cbd5f5;">' + locationType + '</span></div><button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="this.closest(\'div[id]\').remove();resetForm();">Done</button></div></div>';
     document.body.appendChild(modal);
 }
 
@@ -273,6 +275,8 @@ function showErrorModal(errorMsg) {
 
 function resetForm() {
     cart = []; nameEl.value = ''; emailEl.value = ''; mobileEl.value = ''; dobEl.value = ''; queryEl.value = ''; dateEl.value = ''; timeEl.innerHTML = ''; agreeEl.checked = false; note.innerText = '';
+    var defaultMode = document.querySelector('input[name="sessionMode"][value="Google Meet"]');
+    if (defaultMode) defaultMode.checked = true;
     render(); toggleSections(); checkPay(); window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -307,23 +311,17 @@ function sendFeedback() {
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent("\uD83D\uDCDD *Feedback*\nMobile: " + m + "\nEmail: " + e + "\nFeedback: " + t), '_blank');
 }
 
-// FIX: Function to auto-detect user location based on Timezone
 function autoDetectLocation() {
     var timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    // Check if the user is likely in India
     if (timeZone && (timeZone.includes('Asia/Kolkata') || timeZone.includes('India') || timeZone.includes('Calcutta'))) {
         locationEl.value = 'domestic';
     } else {
         locationEl.value = 'international';
     }
-    // Trigger the change event to update the USD note visibility
     var event = new Event('change');
     locationEl.dispatchEvent(event);
 }
 
 fetchExchangeRate();
-
-// Call auto-detect after a slight delay to ensure elements are ready
 setTimeout(autoDetectLocation, 500);
-
 document.getElementById('usdNote').style.display = 'none';
