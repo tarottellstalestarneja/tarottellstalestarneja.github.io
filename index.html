@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#020617">
 <meta name="google-site-verification" content="Hs5yIokTYy4GJPV_y-Jo7PItBsETQEGuF92paUTTl_Y" />
 <meta name="google-site-verification" content="_If6n0N4Yt5Qz8UFp57ZZZkcE9x1yURJ9J_XmdJd9Gg" />
 
@@ -47,6 +48,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <link rel="stylesheet" href="style.css">
+<base target="_blank">
 </head>
 
 <body>
@@ -56,22 +58,30 @@
 
 <div class="container">
 
-<nav style="text-align:center;margin-bottom:10px;font-size:14px;color:#cbd5f5;position:sticky;top:0;background:#020617;padding:10px 0;z-index:100;">
-    <a href="#top" class="nav-link">Home</a> &bull; <a href="#about" class="nav-link">About</a> &bull; <a href="#categories" class="nav-link">Categories</a> &bull; <a href="#booking" class="nav-link">Booking</a> &bull; <a href="#basket-section" class="nav-link">Basket</a> &bull; <a href="#contact" class="nav-link">Contact</a>
+<nav class="nav-wrapper">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    <div class="nav-menu" id="navMenu">
+        <a href="#top" class="nav-link" onclick="return smoothScrollTo(event,'#top')">Home</a>
+        <a href="#about" class="nav-link" onclick="return smoothScrollTo(event,'#about')">About</a>
+        <a href="#categories" class="nav-link" onclick="return smoothScrollTo(event,'#categories')">Categories</a>
+        <a href="#booking" class="nav-link" onclick="return smoothScrollTo(event,'#booking')">Booking</a>
+        <a href="#basket-section" class="nav-link" onclick="return smoothScrollTo(event,'#basket-section')">Basket</a>
+        <a href="#contact" class="nav-link" onclick="return smoothScrollTo(event,'#contact')">Contact</a>
+    </div>
 </nav>
 
 <div id="top"></div>
-<h1 style="text-align:center;margin:10px 0 5px 0">&#128302; Tarot Tells Tales</h1>
-<div style="text-align:center;margin-bottom:25px;">
-    <img src="logo.png" style="height:70px;border-radius:50%;margin-bottom:8px;" alt="Tarot Tells Tales Logo">
-    <img src="your-photo.jpg" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #7c3aed;display:block;margin:0 auto;" alt="Seema - Tarot Reader">
-    <p style="margin:8px 0 0 0;color:#e9d5ff;font-size:18px;font-weight:600;">Seema</p>
-    <p style="margin:2px 0 0 0;color:#a5f3fc;font-size:13px;">Certified Tarot Reader &bull; 500+ Readings Done</p>
+<h1 style="text-align:center;margin:8px 0 4px 0">&#128302; Tarot Tells Tales</h1>
+<div class="hero-wrap">
+    <img src="logo.png" class="hero-logo" alt="Tarot Tells Tales Logo">
+    <img src="your-photo.jpg" class="hero-photo" alt="Seema - Tarot Reader">
+    <p class="hero-name">Seema</p>
+    <p class="hero-sub">Certified Tarot Reader &bull; 500+ Readings Done</p>
 </div>
 
 <div class="reveal">
     <h2 id="about">&#127769; About Me</h2>
-    <p style="text-align:center;max-width:800px;margin:auto;line-height:1.9">Hi, I'm Seema, the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear. My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence. &#10024; Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.</p>
+    <p style="text-align:center;max-width:800px;margin:auto;line-height:1.8">Hi, I'm Seema, the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear. My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence. &#10024; Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.</p>
 </div>
 
 <div class="reveal">
@@ -93,7 +103,7 @@
             <h3>&#129495; Health &amp; Wellness</h3>
             <p>Gain insights into emotional and physical well-being and underlying energy blocks.</p>
             <button class="btn" onclick="addToCart('Health',3000,'PDF')">PDF &#8377;3000 ($36)</button>
-            <button class="btn" onclick="addToCart('Health',7500,'Live')">Live &#8377;4000 ($48)</button>
+            <button class="btn" onclick="addToCart('Health',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
 </div>
@@ -115,7 +125,7 @@
         <div class="col card-content">
             <h3>&#127787;&#65039; Feeling Lost</h3>
             <p>Find direction when life feels uncertain.</p>
-            <button class="btn" onclick="addToCart('Feeling Lost',7500,'Live')">Live &#8377;4000 ($48)</button>
+            <button class="btn" onclick="addToCart('Feeling Lost',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
 </div>
@@ -128,7 +138,7 @@
             <h3>&#10084;&#65039; Relationships</h3>
             <p>Clarity on love, emotions and partner intentions.</p>
             <button class="btn" onclick="addToCart('Relationships',3000,'PDF')">PDF &#8377;3000 ($36)</button>
-            <button class="btn" onclick="addToCart('Relationships',7500,'Live')">Live &#8377;4000 ($48)</button>
+            <button class="btn" onclick="addToCart('Relationships',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
 </div>
@@ -140,7 +150,7 @@
             <h3>&#128188; Career &amp; Finance</h3>
             <p>Direction in career and financial decisions.</p>
             <button class="btn" onclick="addToCart('Career',3000,'PDF')">PDF &#8377;3000 ($36)</button>
-            <button class="btn" onclick="addToCart('Career',7500,'Live')">Live &#8377;4000 ($48)</button>
+            <button class="btn" onclick="addToCart('Career',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
 </div>
@@ -270,15 +280,15 @@
     <div id="priceBreakup" style="text-align:center;margin-top:10px;"></div>
 </div>
 
-<div class="reveal" style="background:#2b1b4e;border-radius:14px;padding:20px;max-width:420px;margin:30px auto 10px auto;text-align:center;">
-    <p style="color:#a5f3fc;font-size:16px;margin:0 0 10px 0;">&#10067; Not sure what to pick?</p>
-    <p style="color:#cbd5f5;font-size:13px;margin:0 0 8px 0;">&#128196; <b>PDF Reading:</b> Detailed written analysis delivered to you. Read it anytime, anywhere.</p>
-    <p style="color:#cbd5f5;font-size:13px;margin:0;">&#128222; <b>Live Session:</b> Face-to-face or Google Meet — real-time clarity and interaction.</p>
+<div class="reveal" style="background:#2b1b4e;border-radius:14px;padding:16px;max-width:420px;margin:20px auto 8px auto;text-align:center;">
+    <p style="color:#a5f3fc;font-size:15px;margin:0 0 8px 0;">&#10067; Not sure what to pick?</p>
+    <p style="color:#cbd5f5;font-size:12px;margin:0 0 6px 0;">&#128196; <b>PDF Reading:</b> Detailed written analysis delivered to you. Read it anytime, anywhere.</p>
+    <p style="color:#cbd5f5;font-size:12px;margin:0;">&#128222; <b>Live Session:</b> Face-to-face or Google Meet — real-time clarity and interaction.</p>
 </div>
 
 <h2 id="booking">&#128197; Booking</h2>
 <div class="narrow reveal">
-    <p style="text-align:center;color:#cbd5f5;margin-bottom:20px;">
+    <p style="text-align:center;color:#cbd5f5;margin-bottom:16px;font-size:13px;">
         Select a date below to check real-time availability.<br>
         <small>Booking is confirmed after secure payment via Razorpay.</small>
     </p>
@@ -292,14 +302,15 @@
             <option value="international">Outside India (USD)</option>
         </select>
         <p id="usdNote" style="display:none;font-size:11px;color:#a5f3fc;margin:5px 0 0 0;line-height:1.4;">* USD prices on buttons are approximate. Final price in basket reflects live conversion rate.</p>
-        <div style="margin-top:10px;font-size:13px;color:#cbd5f5;line-height:1.6">
+        <div style="margin-top:8px;font-size:12px;color:#cbd5f5;line-height:1.6">
             &#10004; PDF readings are delivered within <b>2 to 4 days</b><br>
             &#10004; Live sessions once booked can be <b>rescheduled only once</b><br>
             &#10004; No refunds applicable for cancelled bookings (PDF or Live)
         </div>
-        <label style="display:flex;align-items:center;margin-top:10px;font-size:13px;">
-            <input type="checkbox" id="agree" style="width:auto;margin-right:8px;">
-            I agree to the booking conditions
+        <label class="checkbox-wrap">
+            <input type="checkbox" id="agree">
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-label">I agree to the booking conditions</span>
         </label>
     </div>
 
@@ -410,10 +421,10 @@
 </div>
 
 <h2 id="contact">&#128222; Contact</h2>
-<div style="text-align:center;margin-bottom:40px;line-height:2;font-size:18px;">
-    <a href="https://wa.me/919892223162" style="color:#a5f3fc;text-decoration:none;display:inline-flex;align-items:center;">&#128241; WhatsApp: 9892223162</a><br>
-    <a href="mailto:tarottellstalestarneja@gmail.com" style="color:#a5f3fc;text-decoration:none;display:inline-flex;align-items:center;">&#9993;&#65039; tarottellstalestarneja@gmail.com</a><br>
-    <a href="https://instagram.com/tarottelltales" target="_blank" style="color:#a5f3fc;text-decoration:none;display:inline-flex;align-items:center;">&#128247; Instagram: @tarottelltales</a>
+<div class="contact-links">
+    <a href="https://wa.me/919892223162">&#128241; WhatsApp: 9892223162</a><br>
+    <a href="mailto:tarottellstalestarneja@gmail.com">&#9993;&#65039; tarottellstalestarneja@gmail.com</a><br>
+    <a href="https://instagram.com/tarottelltales" target="_blank">&#128247; Instagram: @tarottelltales</a>
 </div>
 
 </div>
