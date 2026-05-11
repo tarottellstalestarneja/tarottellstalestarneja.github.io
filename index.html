@@ -48,6 +48,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <link rel="stylesheet" href="style.css">
+
 <base target="_blank">
 </head>
 
@@ -66,12 +67,13 @@
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
     <div class="nav-menu" id="navMenu">
-        <a href="#top" class="nav-link" onclick="return smoothScrollTo(event,'#top')">Home</a>
-        <a href="#about" class="nav-link" onclick="return smoothScrollTo(event,'#about')">About</a>
-        <a href="#categories" class="nav-link" onclick="return smoothScrollTo(event,'#categories')">Categories</a>
-        <a href="#booking" class="nav-link" onclick="return smoothScrollTo(event,'#booking')">Booking</a>
-        <a href="#basket-section" class="nav-link" onclick="return smoothScrollTo(event,'#basket-section')">Basket</a>
-        <a href="#contact" class="nav-link" onclick="return smoothScrollTo(event,'#contact')">Contact</a>
+        <a href="#top" class="nav-link" onclick="return smoothScrollTo(event,'#top')" target="_self">Home</a>
+        <a href="#about" class="nav-link" onclick="return smoothScrollTo(event,'#about')" target="_self">About</a>
+        <a href="#categories" class="nav-link" onclick="return smoothScrollTo(event,'#categories')" target="_self">Categories</a>
+        <a href="#booking" class="nav-link" onclick="return smoothScrollTo(event,'#booking')" target="_self">Booking</a>
+        <a href="#basket-section" class="nav-link" onclick="return smoothScrollTo(event,'#basket-section')" target="_self">Basket</a>
+        <a href="#support" class="nav-link" onclick="return smoothScrollTo(event,'#support')" target="_self">Support</a>
+        <a href="#contact" class="nav-link" onclick="return smoothScrollTo(event,'#contact')" target="_self">Contact</a>
     </div>
 </nav>
 
@@ -106,108 +108,150 @@
 </div>
 
 <!-- CATEGORIES -->
-<h2 id="categories">&#128302; Categories</h2>
+<div class="section-header reveal">
+    <h2 id="categories">&#128302; Categories</h2>
+    <p>Choose your path to clarity</p>
+</div>
 
 <div class="categories-grid">
     <div class="cat-card reveal">
-        <img src="health.jpg" alt="Health" loading="lazy">
+        <div class="cat-media">
+            <img src="health.jpg" alt="Health & Wellness Tarot Reading" loading="lazy">
+        </div>
         <div class="cat-content">
             <h3>&#129495; Health &amp; Wellness</h3>
             <p>Insights into emotional and physical well-being and energy blocks.</p>
-            <button class="btn" onclick="addToCart('Health',3000,'PDF')">PDF &#8377;3000</button>
-            <button class="btn" onclick="addToCart('Health',4000,'Live')">Live &#8377;4000</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Health',3000,'PDF')">PDF &#8377;3000</button>
+                <button class="btn" onclick="addToCart('Health',4000,'Live')">Live &#8377;4000</button>
+            </div>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="selfhelp.jpg" alt="Self Help" loading="lazy">
+        <div class="cat-media">
+            <img src="selfhelp.jpg" alt="Self Help Tarot Reading" loading="lazy">
+        </div>
         <div class="cat-content">
             <h3>&#127793; Self Help</h3>
             <p>Understand yourself better and overcome emotional blocks.</p>
-            <button class="btn" onclick="addToCart('Self Help',3000,'PDF')">PDF &#8377;3000</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Self Help',3000,'PDF')">PDF &#8377;3000</button>
+            </div>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="lost.jpg" alt="Feeling Lost" loading="lazy">
+        <div class="cat-media">
+            <img src="lost.jpg" alt="Feeling Lost Tarot Reading" loading="lazy">
+        </div>
         <div class="cat-content">
             <h3>&#127787;&#65039; Feeling Lost</h3>
             <p>Find direction when life feels uncertain.</p>
-            <button class="btn" onclick="addToCart('Feeling Lost',4000,'Live')">Live &#8377;4000</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Feeling Lost',4000,'Live')">Live &#8377;4000</button>
+            </div>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="relationships.jpg" alt="Relationships" loading="lazy">
+        <div class="cat-media">
+            <img src="relationships.jpg" alt="Relationships Tarot Reading" loading="lazy">
+        </div>
         <div class="cat-content">
-            <div class="popular-tag">&#11088; MOST POPULAR</div>
+            <div class="popular-tag">&#11088; Most Popular</div>
             <h3>&#10084;&#65039; Relationships</h3>
             <p>Clarity on love, emotions and partner intentions.</p>
-            <button class="btn" onclick="addToCart('Relationships',3000,'PDF')">PDF &#8377;3000</button>
-            <button class="btn" onclick="addToCart('Relationships',4000,'Live')">Live &#8377;4000</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Relationships',3000,'PDF')">PDF &#8377;3000</button>
+                <button class="btn" onclick="addToCart('Relationships',4000,'Live')">Live &#8377;4000</button>
+            </div>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="career.jpg" alt="Career" loading="lazy">
+        <div class="cat-media">
+            <img src="career.jpg" alt="Career Tarot Reading" loading="lazy">
+        </div>
         <div class="cat-content">
             <h3>&#128188; Career &amp; Finance</h3>
             <p>Direction in career and financial decisions.</p>
-            <button class="btn" onclick="addToCart('Career',3000,'PDF')">PDF &#8377;3000</button>
-            <button class="btn" onclick="addToCart('Career',4000,'Live')">Live &#8377;4000</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Career',3000,'PDF')">PDF &#8377;3000</button>
+                <button class="btn" onclick="addToCart('Career',4000,'Live')">Live &#8377;4000</button>
+            </div>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="pet-cuddle.jpg" alt="Pet Reading" loading="lazy">
+        <div class="cat-media">
+            <img src="pet-cuddle.jpg" alt="Pet Tarot Reading" loading="lazy">
+        </div>
         <div class="cat-content">
             <h3>&#128062; Pet Reading</h3>
             <p>Understand your pet's emotions and deeper bond with you.</p>
-            <button class="btn" onclick="addToCart('Pet',3000,'PDF')">PDF &#8377;3000</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Pet',3000,'PDF')">PDF &#8377;3000</button>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- PREMIUM -->
-<h2>&#10024; Premium</h2>
+<div class="section-header reveal">
+    <h2>&#10024; Premium</h2>
+    <p>Deep guidance for lasting transformation</p>
+</div>
 
 <div class="categories-grid">
     <div class="cat-card reveal">
-        <img src="chakra.jpg" alt="Chakra" loading="lazy">
+        <div class="cat-media">
+            <img src="chakra.jpg" alt="Chakra Healing" loading="lazy">
+        </div>
         <div class="cat-content">
             <h3>&#129519; Chakra Healing</h3>
             <p>Deep energy healing and balance.</p>
-            <button class="btn" onclick="addToCart('Chakra Healing',4500,'PDF')">PDF &#8377;4500</button>
-            <button class="btn" onclick="addToCart('Chakra Followup',2000,'PDF')">Follow &#8377;2000</button>
-            <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo &#8377;5750</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Chakra Healing',4500,'PDF')">PDF &#8377;4500</button>
+                <button class="btn" onclick="addToCart('Chakra Followup',2000,'PDF')">Follow &#8377;2000</button>
+                <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo &#8377;5750</button>
+            </div>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="guidance.jpg" alt="Guidance" loading="lazy">
+        <div class="cat-media">
+            <img src="guidance.jpg" alt="Guidance Reading" loading="lazy">
+        </div>
         <div class="cat-content">
             <h3>&#128302; Guidance</h3>
-            <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly &#8377;1750</button>
-            <button class="btn" onclick="addToCart('Quarterly',5000,'PDF')">Quarterly &#8377;5000</button>
-            <button class="btn" onclick="addToCart('Half-Yearly',9500,'PDF')">Half-Yearly &#8377;9500</button>
-            <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly &#8377;17850</button>
+            <p>Long-term guidance packages for ongoing clarity.</p>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly &#8377;1750</button>
+                <button class="btn" onclick="addToCart('Quarterly',5000,'PDF')">Quarterly &#8377;5000</button>
+                <button class="btn" onclick="addToCart('Half-Yearly',9500,'PDF')">Half-Yearly &#8377;9500</button>
+                <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly &#8377;17850</button>
+            </div>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <video src="name-analysis.mp4" autoplay muted loop playsinline></video>
+        <div class="cat-media">
+            <video src="name-analysis.mp4" autoplay muted loop playsinline></video>
+        </div>
         <div class="cat-content">
             <h3>&#128290; Name Analysis</h3>
             <p>Understand how your name influences your life path.</p>
-            <button class="btn" onclick="addToCart('Name Analysis',5000,'PDF')">PDF &#8377;5000</button>
+            <div class="cat-buttons">
+                <button class="btn" onclick="addToCart('Name Analysis',5000,'PDF')">PDF &#8377;5000</button>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- COMBO OFFERS -->
-<div class="reveal">
-    <h2>&#127873; Combo Offers</h2>
-    <p style="text-align:center">2 PDF Readings &rarr; <b>10% OFF</b><br>3 PDF Readings &rarr; <b>15% OFF</b></p>
+<div class="combo-strip reveal">
+    <p>2 PDF Readings &rarr; <b>10% OFF</b> &nbsp;&bull;&nbsp; 3+ PDF Readings &rarr; <b>15% OFF</b></p>
 </div>
 
 <!-- TRUST -->
@@ -370,74 +414,120 @@
     </div>
 </div>
 
-<!-- RESCHEDULE -->
-<h2>&#128260; Reschedule</h2>
+<!-- SUPPORT & HELP -->
+<h2 id="support">&#128736;&#65039; Support & Help</h2>
 <div class="narrow reveal">
-    <div class="form-card">
-        <p style="font-size:12px;color:#cbd5f5;text-align:center;margin-top:0;">(Note: Please send the WhatsApp message to confirm reschedule)</p>
-        <input id="rescheduleId" placeholder="Booking ID">
-        <input type="date" id="rescheduleDate">
-        <select id="rescheduleTime"></select>
-        <button class="btn" onclick="rescheduleBooking()" style="width:100%;">Reschedule</button>
+    <div class="support-tabs">
+        <button class="support-tab active" onclick="openSupportTab(event, 'tab-reschedule')">&#128260; Reschedule</button>
+        <button class="support-tab" onclick="openSupportTab(event, 'tab-cancel')">&#10060; Cancel</button>
+        <button class="support-tab" onclick="openSupportTab(event, 'tab-faq')">&#10067; FAQ</button>
+        <button class="support-tab" onclick="openSupportTab(event, 'tab-feedback')">&#128221; Feedback</button>
     </div>
-</div>
 
-<!-- CANCEL -->
-<h2>&#10060; Cancel</h2>
-<div class="narrow reveal">
-    <div class="form-card">
-        <p style="font-size:12px;color:#cbd5f5;text-align:center;margin-top:0;">(Note: Cancellation is subject to policy. No refunds applicable.)</p>
-        <input id="cancelId" placeholder="Booking ID">
-        <button class="btn" style="background:#ef4444;width:100%;" onclick="cancelBooking()">Cancel Booking</button>
-        <button class="btn" style="background:#333;font-size:10px;margin-top:10px;" onclick="clearAllData()">Reset Test Data</button>
+    <!-- RESCHEDULE TAB -->
+    <div id="tab-reschedule" class="support-panel active">
+        <div class="form-card">
+            <p style="font-size:12px;color:#cbd5f5;text-align:center;margin-top:0;">(Note: Please send the WhatsApp message to confirm reschedule)</p>
+            <input id="rescheduleId" placeholder="Booking ID">
+            <input type="date" id="rescheduleDate">
+            <select id="rescheduleTime"></select>
+            <button class="btn" onclick="rescheduleBooking()" style="width:100%;">Reschedule</button>
+        </div>
     </div>
-</div>
 
-<!-- FAQ -->
-<div class="reveal">
-    <h2>&#10067; Frequently Asked Questions</h2>
-    <div class="narrow">
-        <button class="accordion-btn">How long does a PDF reading take?</button>
-        <div class="accordion-panel"><p>PDF readings are delivered within <b>2 to 4 working days</b> via email or WhatsApp.</p></div>
-        <button class="accordion-btn">Can I reschedule a live session?</button>
-        <div class="accordion-panel"><p>Yes, live sessions can be rescheduled <b>once</b> if notified at least 24 hours in advance.</p></div>
-        <button class="accordion-btn">Is my information confidential?</button>
-        <div class="accordion-panel"><p>Absolutely. All your personal details, queries, and reading content remain 100% private and confidential.</p></div>
-        <button class="accordion-btn">How do I pay?</button>
-        <div class="accordion-panel"><p>Click <b>"Pay via Razorpay"</b> &mdash; a secure payment popup will open. You can pay using UPI, Cards, Net Banking, or international cards (Visa, Mastercard, PayPal). Once paid, your booking is automatically confirmed.</p></div>
-        <button class="accordion-btn">What if my payment fails?</button>
-        <div class="accordion-panel"><p>If payment fails, you can simply try again. No booking is created until payment is successful.</p></div>
-        <button class="accordion-btn">How does the Google Meet session work?</button>
-        <div class="accordion-panel"><p>After booking, a Google Meet link is automatically generated and shared with you via email/WhatsApp. You just click the link at your booked time — no app install needed. It works on phone, tablet, or laptop.</p></div>
-        <button class="accordion-btn">What is the Face to Face session?</button>
-        <div class="accordion-panel"><p>Face to Face is an in-person session. Location details are shared after booking confirmation via WhatsApp.</p></div>
+    <!-- CANCEL TAB -->
+    <div id="tab-cancel" class="support-panel">
+        <div class="form-card">
+            <p style="font-size:12px;color:#cbd5f5;text-align:center;margin-top:0;">(Note: Cancellation is subject to policy. No refunds applicable.)</p>
+            <input id="cancelId" placeholder="Booking ID">
+            <button class="btn" style="background:#ef4444;width:100%;" onclick="cancelBooking()">Cancel Booking</button>
+            <button class="btn" style="background:#333;font-size:10px;margin-top:10px;" onclick="clearAllData()">Reset Test Data</button>
+        </div>
+    </div>
+
+    <!-- FAQ TAB -->
+    <div id="tab-faq" class="support-panel">
+        <div class="narrow">
+            <button class="accordion-btn">How long does a PDF reading take?</button>
+            <div class="accordion-panel"><p>PDF readings are delivered within <b>2 to 4 working days</b> via email or WhatsApp.</p></div>
+            <button class="accordion-btn">Can I reschedule a live session?</button>
+            <div class="accordion-panel"><p>Yes, live sessions can be rescheduled <b>once</b> if notified at least 24 hours in advance.</p></div>
+            <button class="accordion-btn">Is my information confidential?</button>
+            <div class="accordion-panel"><p>Absolutely. All your personal details, queries, and reading content remain 100% private and confidential.</p></div>
+            <button class="accordion-btn">How do I pay?</button>
+            <div class="accordion-panel"><p>Click <b>"Pay via Razorpay"</b> &mdash; a secure payment popup will open. You can pay using UPI, Cards, Net Banking, or international cards (Visa, Mastercard, PayPal). Once paid, your booking is automatically confirmed.</p></div>
+            <button class="accordion-btn">What if my payment fails?</button>
+            <div class="accordion-panel"><p>If payment fails, you can simply try again. No booking is created until payment is successful.</p></div>
+            <button class="accordion-btn">How does the Google Meet session work?</button>
+            <div class="accordion-panel"><p>After booking, a Google Meet link is automatically generated and shared with you via email/WhatsApp. You just click the link at your booked time &mdash; no app install needed. It works on phone, tablet, or laptop.</p></div>
+            <button class="accordion-btn">What is the Face to Face session?</button>
+            <div class="accordion-panel"><p>Face to Face is an in-person session. Location details are shared after booking confirmation via WhatsApp.</p></div>
+        </div>
+    </div>
+
+    <!-- FEEDBACK TAB -->
+    <div id="tab-feedback" class="support-panel">
+        <div class="form-card">
+            <input id="feedMobile" type="tel" placeholder="Your Mobile Number">
+            <input id="feedEmail" type="email" placeholder="Your Email Address">
+            <textarea id="feedMsg" placeholder="Share your experience..." style="min-height:80px;"></textarea>
+            <button class="btn" style="width:100%;" onclick="sendFeedback()">Submit Feedback</button>
+        </div>
     </div>
 </div>
 
 <!-- DISCLAIMER -->
-<h2>&#9888;&#65039; Disclaimer</h2>
-<p style="text-align:center;font-size:13px;color:#cbd5f5;max-width:800px;margin:auto;line-height:1.7;" class="reveal">Tarot readings are based on intuitive guidance and are not absolute or legally binding. Any decisions taken by you after the reading are your sole responsibility. No refunds are applicable once a booking is made for either PDF or live sessions.</p>
-
-<!-- FEEDBACK -->
-<h2>&#128221; Feedback</h2>
-<div class="narrow reveal">
-    <div class="form-card">
-        <input id="feedMobile" type="tel" placeholder="Your Mobile Number">
-        <input id="feedEmail" type="email" placeholder="Your Email Address">
-        <textarea id="feedMsg" placeholder="Share your experience..." style="min-height:80px;"></textarea>
-        <button class="btn" style="width:100%;" onclick="sendFeedback()">Submit Feedback</button>
-    </div>
+<div class="disclaimer-strip reveal">
+    <p>&#9888;&#65039; <strong>Disclaimer:</strong> Tarot readings are based on intuitive guidance and are not absolute or legally binding. Any decisions taken by you after the reading are your sole responsibility. No refunds are applicable once a booking is made for either PDF or live sessions.</p>
 </div>
 
 <!-- CONTACT -->
-<h2 id="contact">&#128222; Contact</h2>
-<div class="contact-links">
-    <a href="https://wa.me/919892223162">&#128241; WhatsApp: 9892223162</a><br>
-    <a href="mailto:tarottellstalestarneja@gmail.com">&#9993;&#65039; tarottellstalestarneja@gmail.com</a><br>
-    <a href="https://instagram.com/tarottelltales" target="_blank">&#128247; Instagram: @tarottelltales</a>
+<h2 id="contact">&#128222; Get in Touch</h2>
+<div class="narrow reveal">
+    <div class="contact-card">
+        <div class="contact-item">
+            <span class="contact-icon">&#128241;</span>
+            <div class="contact-info">
+                <span class="contact-label">WhatsApp</span>
+                <a href="https://wa.me/919892223162" class="contact-value">+91 98922 23162</a>
+            </div>
+        </div>
+        <div class="contact-divider"></div>
+        <div class="contact-item">
+            <span class="contact-icon">&#9993;&#65039;</span>
+            <div class="contact-info">
+                <span class="contact-label">Email</span>
+                <a href="mailto:tarottellstalestarneja@gmail.com" class="contact-value">tarottellstalestarneja@gmail.com</a>
+            </div>
+        </div>
+        <div class="contact-divider"></div>
+        <div class="contact-item">
+            <span class="contact-icon">&#128247;</span>
+            <div class="contact-info">
+                <span class="contact-label">Instagram</span>
+                <a href="https://instagram.com/tarottelltales" target="_blank" class="contact-value">@tarottelltales</a>
+            </div>
+        </div>
+    </div>
 </div>
 
-</div>
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <img src="logo.png" class="footer-logo" alt="Tarot Tells Tales">
+            <span class="footer-brand-text">Tarot Tells Tales</span>
+        </div>
+        <p class="footer-tagline">Guiding you toward clarity, one card at a time.</p>
+        <div class="footer-links">
+            <a href="#top" target="_self">Home</a>
+            <a href="#about" target="_self">About</a>
+            <a href="#categories" target="_self">Services</a>
+            <a href="#support" target="_self">Support</a>
+        </div>
+        <p class="footer-copyright">&copy; 2026 Tarot Tells Tales. All rights reserved.</p>
+    </div>
+</footer></div>
 
 <script src="script.js"></script>
 <script>

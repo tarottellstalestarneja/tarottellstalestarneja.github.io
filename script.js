@@ -375,3 +375,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+/* ===== SUPPORT TABS ===== */
+function openSupportTab(evt, tabName) {
+    var i, panels, tabs;
+
+    panels = document.getElementsByClassName("support-panel");
+    for (i = 0; i < panels.length; i++) {
+        panels[i].classList.remove("active");
+    }
+
+    tabs = document.getElementsByClassName("support-tab");
+    for (i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+    }
+
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+}
