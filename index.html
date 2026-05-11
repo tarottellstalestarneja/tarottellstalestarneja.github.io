@@ -86,16 +86,21 @@
 <!-- ABOUT -->
 <div class="reveal">
     <h2 id="about">&#127769; About Me</h2>
-    <p style="text-align:center;max-width:800px;margin:auto;line-height:1.8">Hi, I'm Seema, the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear. My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence. &#10024; Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.</p>
+    <div class="about-section">
+        <p class="about-short">Hi, I'm Seema. I help people find clarity and direction through tarot readings. Whether it's relationships, career, or feeling lost — I'm here to guide you.</p>
+        <p class="about-full" id="aboutFull">Hi, I'm Seema, the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear. My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence. &#10024; Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.</p>
+        <button class="about-toggle" id="aboutToggle" onclick="toggleAbout()">Read more</button>
+    </div>
 </div>
 
 <!-- BEGIN JOURNEY -->
 <div class="reveal">
     <h2>&#10024; Begin Your Journey</h2>
-    <div class="card">
-        <div class="row">
-            <div class="col"><img src="begin-journey.jpg" alt="Begin your spiritual tarot journey" loading="lazy"></div>
-            <div class="col card-content"><p>You don't need perfect questions — just take the first step. Sometimes all we need is guidance, reassurance, or simply clarity in moments of confusion. Tarot helps you connect the dots, understand energies and move ahead with confidence. No questions? No problem — just choose a category and allow tarot to guide you.</p></div>
+    <div class="cat-card">
+        <img src="begin-journey.jpg" alt="Begin your spiritual tarot journey" loading="lazy">
+        <div class="cat-content">
+            <h3>&#10024; Start Here</h3>
+            <p>You don't need perfect questions — just take the first step. Tarot helps you connect the dots and move ahead with confidence.</p>
         </div>
     </div>
 </div>
@@ -105,60 +110,60 @@
 
 <div class="categories-grid">
     <div class="cat-card reveal">
-        <img src="health.jpg" alt="Tarot reading for health and wellness insights" loading="lazy">
+        <img src="health.jpg" alt="Health" loading="lazy">
         <div class="cat-content">
             <h3>&#129495; Health &amp; Wellness</h3>
-            <p>Gain insights into emotional and physical well-being and underlying energy blocks.</p>
-            <button class="btn" onclick="addToCart('Health',3000,'PDF')">PDF &#8377;3000 ($36)</button>
-            <button class="btn" onclick="addToCart('Health',4000,'Live')">Live &#8377;4000 ($48)</button>
+            <p>Insights into emotional and physical well-being and energy blocks.</p>
+            <button class="btn" onclick="addToCart('Health',3000,'PDF')">PDF &#8377;3000</button>
+            <button class="btn" onclick="addToCart('Health',4000,'Live')">Live &#8377;4000</button>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="selfhelp.jpg" alt="Self improvement tarot reading" loading="lazy">
+        <img src="selfhelp.jpg" alt="Self Help" loading="lazy">
         <div class="cat-content">
             <h3>&#127793; Self Help</h3>
             <p>Understand yourself better and overcome emotional blocks.</p>
-            <button class="btn" onclick="addToCart('Self Help',3000,'PDF')">PDF &#8377;3000 ($36)</button>
+            <button class="btn" onclick="addToCart('Self Help',3000,'PDF')">PDF &#8377;3000</button>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="lost.jpg" alt="Tarot guidance for feeling lost in life" loading="lazy">
+        <img src="lost.jpg" alt="Feeling Lost" loading="lazy">
         <div class="cat-content">
             <h3>&#127787;&#65039; Feeling Lost</h3>
             <p>Find direction when life feels uncertain.</p>
-            <button class="btn" onclick="addToCart('Feeling Lost',4000,'Live')">Live &#8377;4000 ($48)</button>
+            <button class="btn" onclick="addToCart('Feeling Lost',4000,'Live')">Live &#8377;4000</button>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="relationships.jpg" alt="Love and relationship tarot reading" loading="lazy">
+        <img src="relationships.jpg" alt="Relationships" loading="lazy">
         <div class="cat-content">
             <div class="popular-tag">&#11088; MOST POPULAR</div>
             <h3>&#10084;&#65039; Relationships</h3>
             <p>Clarity on love, emotions and partner intentions.</p>
-            <button class="btn" onclick="addToCart('Relationships',3000,'PDF')">PDF &#8377;3000 ($36)</button>
-            <button class="btn" onclick="addToCart('Relationships',4000,'Live')">Live &#8377;4000 ($48)</button>
+            <button class="btn" onclick="addToCart('Relationships',3000,'PDF')">PDF &#8377;3000</button>
+            <button class="btn" onclick="addToCart('Relationships',4000,'Live')">Live &#8377;4000</button>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="career.jpg" alt="Career and finance tarot guidance" loading="lazy">
+        <img src="career.jpg" alt="Career" loading="lazy">
         <div class="cat-content">
             <h3>&#128188; Career &amp; Finance</h3>
             <p>Direction in career and financial decisions.</p>
-            <button class="btn" onclick="addToCart('Career',3000,'PDF')">PDF &#8377;3000 ($36)</button>
-            <button class="btn" onclick="addToCart('Career',4000,'Live')">Live &#8377;4000 ($48)</button>
+            <button class="btn" onclick="addToCart('Career',3000,'PDF')">PDF &#8377;3000</button>
+            <button class="btn" onclick="addToCart('Career',4000,'Live')">Live &#8377;4000</button>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="pet-cuddle.jpg" alt="Pet communication and tarot reading" loading="lazy">
+        <img src="pet-cuddle.jpg" alt="Pet Reading" loading="lazy">
         <div class="cat-content">
             <h3>&#128062; Pet Reading</h3>
-            <p>Understand your pet's emotions, behaviour and deeper bond with you. This reading also includes communication with departed pets.</p>
-            <button class="btn" onclick="addToCart('Pet',3000,'PDF')">PDF &#8377;3000 ($36)</button>
+            <p>Understand your pet's emotions and deeper bond with you.</p>
+            <button class="btn" onclick="addToCart('Pet',3000,'PDF')">PDF &#8377;3000</button>
         </div>
     </div>
 </div>
@@ -168,24 +173,24 @@
 
 <div class="categories-grid">
     <div class="cat-card reveal">
-        <img src="chakra.jpg" alt="Chakra healing and energy balancing" loading="lazy">
+        <img src="chakra.jpg" alt="Chakra" loading="lazy">
         <div class="cat-content">
             <h3>&#129519; Chakra Healing</h3>
-            <p><b>PDF Reading</b> - Deep energy healing and balance.</p>
-            <button class="btn" onclick="addToCart('Chakra Healing',4500,'PDF')">PDF &#8377;4500 ($54)</button>
-            <button class="btn" onclick="addToCart('Chakra Followup',2000,'PDF')">Follow-up &#8377;2000 ($24)</button>
-            <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo &#8377;5750 ($69)</button>
+            <p>Deep energy healing and balance.</p>
+            <button class="btn" onclick="addToCart('Chakra Healing',4500,'PDF')">PDF &#8377;4500</button>
+            <button class="btn" onclick="addToCart('Chakra Followup',2000,'PDF')">Follow &#8377;2000</button>
+            <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo &#8377;5750</button>
         </div>
     </div>
 
     <div class="cat-card reveal">
-        <img src="guidance.jpg" alt="Future guidance tarot reading" loading="lazy">
+        <img src="guidance.jpg" alt="Guidance" loading="lazy">
         <div class="cat-content">
-            <h3>&#128302; Guidance (PDF Reading)</h3>
-            <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly &#8377;1750 ($21)</button>
-            <button class="btn" onclick="addToCart('Quarterly',5000,'PDF')">Quarterly &#8377;5000 ($60)</button>
-            <button class="btn" onclick="addToCart('Half-Yearly',9500,'PDF')">Half-Yearly &#8377;9500 ($114)</button>
-            <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly &#8377;17850 ($215)</button>
+            <h3>&#128302; Guidance</h3>
+            <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly &#8377;1750</button>
+            <button class="btn" onclick="addToCart('Quarterly',5000,'PDF')">Quarterly &#8377;5000</button>
+            <button class="btn" onclick="addToCart('Half-Yearly',9500,'PDF')">Half-Yearly &#8377;9500</button>
+            <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly &#8377;17850</button>
         </div>
     </div>
 
@@ -194,7 +199,7 @@
         <div class="cat-content">
             <h3>&#128290; Name Analysis</h3>
             <p>Understand how your name influences your life path.</p>
-            <button class="btn" onclick="addToCart('Name Analysis',5000,'PDF')">PDF &#8377;5000 ($60)</button>
+            <button class="btn" onclick="addToCart('Name Analysis',5000,'PDF')">PDF &#8377;5000</button>
         </div>
     </div>
 </div>
@@ -213,28 +218,28 @@
             <div class="trust-icon">&#128274;</div>
             <div>
                 <p class="trust-title">100% Confidential</p>
-                <p class="trust-desc">Your name, queries, and reading details are never shared with anyone. Ever.</p>
+                <p class="trust-desc">Your details are never shared with anyone. Ever.</p>
             </div>
         </div>
         <div class="trust-card">
             <div class="trust-icon">&#127758;</div>
             <div>
-                <p class="trust-title">Clients Across 15+ Countries</p>
-                <p class="trust-desc">Reading for clients from India, USA, UK, Canada, Australia, UAE and more.</p>
+                <p class="trust-title">15+ Countries</p>
+                <p class="trust-desc">Clients from India, USA, UK, Canada, Australia, UAE and more.</p>
             </div>
         </div>
         <div class="trust-card">
             <div class="trust-icon">&#128179;</div>
             <div>
                 <p class="trust-title">Pay Only When Ready</p>
-                <p class="trust-desc">No advance tricks. You see the price, you choose, you pay securely via Razorpay. Simple.</p>
+                <p class="trust-desc">No advance tricks. Pay securely via Razorpay.</p>
             </div>
         </div>
         <div class="trust-card">
             <div class="trust-icon">&#9993;&#65039;</div>
             <div>
-                <p class="trust-title">Direct Access Post-Reading</p>
-                <p class="trust-desc">Got questions after your reading? Reach out directly on WhatsApp. I respond personally.</p>
+                <p class="trust-title">Direct WhatsApp Access</p>
+                <p class="trust-desc">Reach out directly after your reading. I respond personally.</p>
             </div>
         </div>
     </div>
@@ -246,25 +251,25 @@
     <div class="grid-2">
         <div class="testi-card">
             <div class="testi-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-            <p class="testi-text">"I had requested a Relationship Tarot reading for myself. I must say the reading was very insightful, in depth and explanations were very clear and easy to understand. I completely resonated with the reading."</p>
+            <p class="testi-text">"I had requested a Relationship Tarot reading. The reading was very insightful, in depth and explanations were very clear. I completely resonated with it."</p>
             <strong class="testi-name">- Tarot Client</strong>
             <span class="testi-tag">Relationship Reading &middot; via Instagram</span>
         </div>
         <div class="testi-card">
             <div class="testi-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-            <p class="testi-text">"Got this reading done and was amazed to see how every choice I was confused about was explained in such detail. Each choice was classified with its upside, downside and what one should consider."</p>
+            <p class="testi-text">"Every choice I was confused about was explained in detail. Each choice was classified with its upside, downside and what one should consider."</p>
             <strong class="testi-name">- Tarot Client</strong>
             <span class="testi-tag">via Instagram</span>
         </div>
         <div class="testi-card">
             <div class="testi-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-            <p class="testi-text">"After getting the tarot reading done by Seema, my recurring dreams stopped. The reading was so accurate. I recommend all of her tarot readings."</p>
+            <p class="testi-text">"After getting the reading done by Seema, my recurring dreams stopped. The reading was so accurate. I recommend all of her readings."</p>
             <strong class="testi-name">- Tarot Client</strong>
             <span class="testi-tag">via Instagram</span>
         </div>
         <div class="testi-card">
             <div class="testi-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-            <p class="testi-text">"The yearly reading was so accurate and focused on all the key highlights of the year. The intuition is spot on. I highly recommend including the yearly one!"</p>
+            <p class="testi-text">"The yearly reading was so accurate and focused on all key highlights. The intuition is spot on. I highly recommend it!"</p>
             <strong class="testi-name">- Tarot Client</strong>
             <span class="testi-tag">Yearly Reading &middot; via Instagram</span>
         </div>

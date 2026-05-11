@@ -19,7 +19,8 @@ var payBtn = document.getElementById('payBtn');
 var note = document.getElementById('note');
 
 function smoothScrollTo(e, selector) {
-    if (e) e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
+    if (e && e.stopPropagation) e.stopPropagation();
     var target = document.querySelector(selector);
     if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
@@ -31,6 +32,19 @@ function smoothScrollTo(e, selector) {
         if (navToggle) navToggle.innerHTML = '&#9776;';
     }
     return false;
+}
+
+function toggleAbout() {
+    var full = document.getElementById('aboutFull');
+    var btn = document.getElementById('aboutToggle');
+    if (!full || !btn) return;
+    if (full.classList.contains('show')) {
+        full.classList.remove('show');
+        btn.textContent = 'Read more';
+    } else {
+        full.classList.add('show');
+        btn.textContent = 'Read less';
+    }
 }
 
 function toggleMusic() {
@@ -84,7 +98,7 @@ function addToCart(name, price, format) {
     var label = name + " (" + format + ")";
     if (!cart.find(function(i) { return i.name === label; })) cart.push({ name: label, price: price });
     render(); toggleSections(); checkPay();
-    
+
     var bookingSection = document.getElementById('booking');
     if (bookingSection) {
         bookingSection.scrollIntoView({ behavior: 'smooth' });
@@ -134,12 +148,12 @@ function updateSlots() {
         timeEl.innerHTML = '<option value="">Select date first</option>'; 
         return; 
     }
-    
+
     timeEl.innerHTML = '<option value="">Checking availability...</option>';
-    
+
     var callbackName = 'jsonpCallback_' + Date.now();
     var script = document.createElement('script');
-    
+
     var timeoutId = setTimeout(function() {
         if (timeEl.innerHTML.includes('Checking availability')) {
             timeEl.innerHTML = '<option value="">Connection timeout. Try selecting date again.</option>';
@@ -149,14 +163,14 @@ function updateSlots() {
 
     window[callbackName] = function(data) {
         clearTimeout(timeoutId);
-        
+
         try {
             if (!data || !data.slots) {
                  throw new Error("Invalid data");
             }
 
             timeEl.innerHTML = '';
-            
+
             if (data.slots.length === 0) { 
                 timeEl.innerHTML = '<option value="">No slots available</option>'; 
             } else {
@@ -173,7 +187,7 @@ function updateSlots() {
             console.error("Slot Error:", error);
             timeEl.innerHTML = '<option value="">Error loading slots. Please try again.</option>';
         }
-        
+
         checkPay();
     };
 
@@ -260,11 +274,11 @@ payBtn.onclick = function() {
 function sendWhatsAppConfirmation(bookingId, paymentId, services, symbol, amount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime, sessionMode) {
     var locationLabel = isInternational ? '\uD83C\uDF0D International (USD)' : '\uD83C\uDDEE\uD83C\uDDF3 Domestic (INR)';
     var timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' });
-    var msg = '\u2705 *PAYMENT CONFIRMED*\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4CB} *Booking ID:* ' + bookingId + '\n\u{1F4B3} *Payment ID:* ' + paymentId + '\n\u{1F4C1} *Type:* ' + locationLabel + '\n\u{1F550} *Paid at:* ' + timestamp + ' (IST)\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F464} *Name:* ' + custName + '\n\u{1F4E7} *Email:* ' + custEmail + '\n\u{1F4F1} *Mobile:* ' + custMobile + '\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4E6} *Services:*\n' + services + '\n\u{1F4B0} *Amount Paid:* ' + symbol + amount + '\n';
+    var msg = '\u2705 *PAYMENT CONFIRMED*\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4CB} *Booking ID:* ' + bookingId + '\n\u{1F4B3} *Payment ID:* ' + paymentId + '\n\u{1F4C1} *Type:* ' + locationLabel + '\n\u{1F550} *Paid at:* ' + timestamp + ' (IST)\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F464} *Name:* ' + custName + '\n\u{1F4E7} *Email:* ' + custEmail + '\n\u{1F4F1} *Mobile:* ' + custMobile + '\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4E6} *Services:*\n' + services + '\n\u{1F4B0} *Amount Paid:* ' + symbol + amount + '\n';
     if (custDob) msg += '\u{1F382} *DOB:* ' + custDob + '\n';
     if (custQuery) msg += '\u2753 *Query:* ' + custQuery + '\n';
     if (bookingDate && bookingTime) {
-        msg += '\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4C5} *Date:* ' + bookingDate + '\n\u{1F550} *Time:* ' + bookingTime + ' (IST)\n';
+        msg += '\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4C5} *Date:* ' + bookingDate + '\n\u{1F550} *Time:* ' + bookingTime + ' (IST)\n';
         if (sessionMode) msg += '\u{1F3A5} *Session Mode:* ' + sessionMode + '\n';
     }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg), '_blank');
@@ -343,7 +357,7 @@ fetchExchangeRate();
 setTimeout(autoDetectLocation, 500);
 document.getElementById('usdNote').style.display = 'none';
 
-// Hamburger toggle only
+// Mobile nav toggle
 document.addEventListener('DOMContentLoaded', function() {
     var navToggle = document.getElementById('navToggle');
     var navMenu = document.getElementById('navMenu');
@@ -352,5 +366,12 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.toggle('active');
             navToggle.innerHTML = navMenu.classList.contains('active') ? '&#10005;' : '&#9776;';
         });
+        var navLinks = navMenu.querySelectorAll('.nav-link');
+        for (var i = 0; i < navLinks.length; i++) {
+            navLinks[i].addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '&#9776;';
+            });
+        }
     }
 });
