@@ -58,7 +58,12 @@
 
 <div class="container">
 
+<!-- NAVIGATION -->
 <nav class="nav-wrapper">
+    <div class="nav-brand">
+        <img src="logo.png" class="nav-logo" alt="Tarot Tells Tales Logo">
+        <span class="nav-brand-text">Tarot Tells Tales</span>
+    </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
     <div class="nav-menu" id="navMenu">
         <a href="#top" class="nav-link" onclick="return smoothScrollTo(event,'#top')">Home</a>
@@ -70,20 +75,21 @@
     </div>
 </nav>
 
+<!-- HERO -->
 <div id="top"></div>
-<h1 style="text-align:center;margin:8px 0 4px 0">&#128302; Tarot Tells Tales</h1>
 <div class="hero-wrap">
-    <img src="logo.png" class="hero-logo" alt="Tarot Tells Tales Logo">
     <img src="your-photo.jpg" class="hero-photo" alt="Seema - Tarot Reader">
     <p class="hero-name">Seema</p>
     <p class="hero-sub">Certified Tarot Reader &bull; 500+ Readings Done</p>
 </div>
 
+<!-- ABOUT -->
 <div class="reveal">
     <h2 id="about">&#127769; About Me</h2>
     <p style="text-align:center;max-width:800px;margin:auto;line-height:1.8">Hi, I'm Seema, the voice behind Tarot Tells Tales. This space was created with a simple intention — to help people feel heard, understood, and guided when life feels overwhelming or unclear. My approach is not just about predictions. It is about clarity, emotional understanding, and honest guidance. Whether you are dealing with relationships, career decisions, personal struggles, or simply feeling lost, each session is designed to help you see your situation more clearly and move forward with confidence. &#10024; Sometimes all we really need is a ray of hope, along with clear direction and meaningful guidance — and that is the very essence of Tarot Tells Tales.</p>
 </div>
 
+<!-- BEGIN JOURNEY -->
 <div class="reveal">
     <h2>&#10024; Begin Your Journey</h2>
     <div class="card">
@@ -94,46 +100,41 @@
     </div>
 </div>
 
+<!-- CATEGORIES -->
 <h2 id="categories">&#128302; Categories</h2>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="health.jpg" alt="Tarot reading for health and wellness insights" loading="lazy"></div>
-        <div class="col card-content">
+<div class="categories-grid">
+    <div class="cat-card reveal">
+        <img src="health.jpg" alt="Tarot reading for health and wellness insights" loading="lazy">
+        <div class="cat-content">
             <h3>&#129495; Health &amp; Wellness</h3>
             <p>Gain insights into emotional and physical well-being and underlying energy blocks.</p>
             <button class="btn" onclick="addToCart('Health',3000,'PDF')">PDF &#8377;3000 ($36)</button>
             <button class="btn" onclick="addToCart('Health',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
-</div>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="selfhelp.jpg" alt="Self improvement tarot reading" loading="lazy"></div>
-        <div class="col card-content">
+    <div class="cat-card reveal">
+        <img src="selfhelp.jpg" alt="Self improvement tarot reading" loading="lazy">
+        <div class="cat-content">
             <h3>&#127793; Self Help</h3>
             <p>Understand yourself better and overcome emotional blocks.</p>
             <button class="btn" onclick="addToCart('Self Help',3000,'PDF')">PDF &#8377;3000 ($36)</button>
         </div>
     </div>
-</div>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="lost.jpg" alt="Tarot guidance for feeling lost in life" loading="lazy"></div>
-        <div class="col card-content">
+    <div class="cat-card reveal">
+        <img src="lost.jpg" alt="Tarot guidance for feeling lost in life" loading="lazy">
+        <div class="cat-content">
             <h3>&#127787;&#65039; Feeling Lost</h3>
             <p>Find direction when life feels uncertain.</p>
             <button class="btn" onclick="addToCart('Feeling Lost',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
-</div>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="relationships.jpg" alt="Love and relationship tarot reading" loading="lazy"></div>
-        <div class="col card-content">
+    <div class="cat-card reveal">
+        <img src="relationships.jpg" alt="Love and relationship tarot reading" loading="lazy">
+        <div class="cat-content">
             <div class="popular-tag">&#11088; MOST POPULAR</div>
             <h3>&#10084;&#65039; Relationships</h3>
             <p>Clarity on love, emotions and partner intentions.</p>
@@ -141,24 +142,20 @@
             <button class="btn" onclick="addToCart('Relationships',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
-</div>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="career.jpg" alt="Career and finance tarot guidance" loading="lazy"></div>
-        <div class="col card-content">
+    <div class="cat-card reveal">
+        <img src="career.jpg" alt="Career and finance tarot guidance" loading="lazy">
+        <div class="cat-content">
             <h3>&#128188; Career &amp; Finance</h3>
             <p>Direction in career and financial decisions.</p>
             <button class="btn" onclick="addToCart('Career',3000,'PDF')">PDF &#8377;3000 ($36)</button>
             <button class="btn" onclick="addToCart('Career',4000,'Live')">Live &#8377;4000 ($48)</button>
         </div>
     </div>
-</div>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="pet-cuddle.jpg" alt="Pet communication and tarot reading" loading="lazy"></div>
-        <div class="col card-content">
+    <div class="cat-card reveal">
+        <img src="pet-cuddle.jpg" alt="Pet communication and tarot reading" loading="lazy">
+        <div class="cat-content">
             <h3>&#128062; Pet Reading</h3>
             <p>Understand your pet's emotions, behaviour and deeper bond with you. This reading also includes communication with departed pets.</p>
             <button class="btn" onclick="addToCart('Pet',3000,'PDF')">PDF &#8377;3000 ($36)</button>
@@ -166,12 +163,13 @@
     </div>
 </div>
 
+<!-- PREMIUM -->
 <h2>&#10024; Premium</h2>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="chakra.jpg" alt="Chakra healing and energy balancing" loading="lazy"></div>
-        <div class="col card-content">
+<div class="categories-grid">
+    <div class="cat-card reveal">
+        <img src="chakra.jpg" alt="Chakra healing and energy balancing" loading="lazy">
+        <div class="cat-content">
             <h3>&#129519; Chakra Healing</h3>
             <p><b>PDF Reading</b> - Deep energy healing and balance.</p>
             <button class="btn" onclick="addToCart('Chakra Healing',4500,'PDF')">PDF &#8377;4500 ($54)</button>
@@ -179,12 +177,10 @@
             <button class="btn" onclick="addToCart('Chakra Combo',5750,'PDF')">Combo &#8377;5750 ($69)</button>
         </div>
     </div>
-</div>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><img src="guidance.jpg" alt="Future guidance tarot reading" loading="lazy"></div>
-        <div class="col card-content">
+    <div class="cat-card reveal">
+        <img src="guidance.jpg" alt="Future guidance tarot reading" loading="lazy">
+        <div class="cat-content">
             <h3>&#128302; Guidance (PDF Reading)</h3>
             <button class="btn" onclick="addToCart('Monthly',1750,'PDF')">Monthly &#8377;1750 ($21)</button>
             <button class="btn" onclick="addToCart('Quarterly',5000,'PDF')">Quarterly &#8377;5000 ($60)</button>
@@ -192,12 +188,10 @@
             <button class="btn" onclick="addToCart('Yearly',17850,'PDF')">Yearly &#8377;17850 ($215)</button>
         </div>
     </div>
-</div>
 
-<div class="card reveal">
-    <div class="row">
-        <div class="col"><video src="name-analysis.mp4" autoplay muted loop playsinline></video></div>
-        <div class="col card-content">
+    <div class="cat-card reveal">
+        <video src="name-analysis.mp4" autoplay muted loop playsinline></video>
+        <div class="cat-content">
             <h3>&#128290; Name Analysis</h3>
             <p>Understand how your name influences your life path.</p>
             <button class="btn" onclick="addToCart('Name Analysis',5000,'PDF')">PDF &#8377;5000 ($60)</button>
@@ -205,11 +199,13 @@
     </div>
 </div>
 
+<!-- COMBO OFFERS -->
 <div class="reveal">
     <h2>&#127873; Combo Offers</h2>
     <p style="text-align:center">2 PDF Readings &rarr; <b>10% OFF</b><br>3 PDF Readings &rarr; <b>15% OFF</b></p>
 </div>
 
+<!-- TRUST -->
 <div class="reveal">
     <h2>&#128274; Why Clients Trust Me</h2>
     <div class="grid-2">
@@ -244,6 +240,7 @@
     </div>
 </div>
 
+<!-- TESTIMONIALS -->
 <div class="reveal">
     <h2>&#128172; Client Experiences</h2>
     <div class="grid-2">
@@ -274,6 +271,7 @@
     </div>
 </div>
 
+<!-- BASKET -->
 <h2 id="basket-section">&#128722; Basket</h2>
 <div class="narrow reveal">
     <div id="cart"></div>
@@ -286,6 +284,7 @@
     <p style="color:#cbd5f5;font-size:12px;margin:0;">&#128222; <b>Live Session:</b> Face-to-face or Google Meet — real-time clarity and interaction.</p>
 </div>
 
+<!-- BOOKING -->
 <h2 id="booking">&#128197; Booking</h2>
 <div class="narrow reveal">
     <p style="text-align:center;color:#cbd5f5;margin-bottom:16px;font-size:13px;">
@@ -366,6 +365,7 @@
     </div>
 </div>
 
+<!-- RESCHEDULE -->
 <h2>&#128260; Reschedule</h2>
 <div class="narrow reveal">
     <div class="form-card">
@@ -377,6 +377,7 @@
     </div>
 </div>
 
+<!-- CANCEL -->
 <h2>&#10060; Cancel</h2>
 <div class="narrow reveal">
     <div class="form-card">
@@ -387,6 +388,7 @@
     </div>
 </div>
 
+<!-- FAQ -->
 <div class="reveal">
     <h2>&#10067; Frequently Asked Questions</h2>
     <div class="narrow">
@@ -407,9 +409,11 @@
     </div>
 </div>
 
+<!-- DISCLAIMER -->
 <h2>&#9888;&#65039; Disclaimer</h2>
 <p style="text-align:center;font-size:13px;color:#cbd5f5;max-width:800px;margin:auto;line-height:1.7;" class="reveal">Tarot readings are based on intuitive guidance and are not absolute or legally binding. Any decisions taken by you after the reading are your sole responsibility. No refunds are applicable once a booking is made for either PDF or live sessions.</p>
 
+<!-- FEEDBACK -->
 <h2>&#128221; Feedback</h2>
 <div class="narrow reveal">
     <div class="form-card">
@@ -420,6 +424,7 @@
     </div>
 </div>
 
+<!-- CONTACT -->
 <h2 id="contact">&#128222; Contact</h2>
 <div class="contact-links">
     <a href="https://wa.me/919892223162">&#128241; WhatsApp: 9892223162</a><br>
