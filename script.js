@@ -305,22 +305,24 @@ function sendWhatsAppConfirmation(bookingId, paymentId, services, symbol, amount
     if (bookingDate && bookingTime) {
         msg += '\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4C5} *Date:* ' + bookingDate + '\n\u{1F550} *Time:* ' + bookingTime + ' (IST)\n';
         if (sessionMode) msg += '\u{1F3A5} *Session Mode:* ' + sessionMode + '\n';
+        if (sessionMode === 'Google Meet') msg += '\u{1F4F9} *Meet Link:* https://meet.google.com/tcz-ojzc-ozr\n';
     }
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg), '_blank');
 }
-
 function showSuccessModal(bookingId, paymentId, amountStr, locationType, sessionMode) {
     var existing = document.getElementById('successModal'); if (existing) existing.remove();
     var modeHTML = '';
     if (sessionMode) {
         modeHTML = '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Session Mode</span><br><span style="font-size:14px;color:#cbd5f5;">' + sessionMode + '</span></div>';
+        if (sessionMode === 'Google Meet') {
+            modeHTML += '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid #7c3aed;"><span style="font-size:11px;color:#aaa;">Google Meet Link</span><br><a href="https://meet.google.com/tcz-ojzc-ozr" target="_blank" style="font-size:14px;color:#a5f3fc;text-decoration:underline;">https://meet.google.com/tcz-ojzc-ozr</a><br><span style="font-size:10px;color:#888;">Join at your scheduled time</span></div>';
+        }
     }
     var modal = document.createElement('div'); modal.id = 'successModal';
     document.body.style.overflow = 'hidden';
     modal.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:15px;"><div class="modal-card" style="background:#1a0f2a;border-radius:18px;padding:24px;max-width:420px;width:100%;text-align:center;border:1px solid #22c55e;"><div style="font-size:60px;margin-bottom:10px;">&#127881;</div><h3 style="color:#22c55e;margin:0 0 12px 0;font-size:22px;">Payment Successful!</h3><p style="color:#cbd5f5;line-height:1.7;font-size:14px;margin:0 0 20px 0;">Your booking <strong style="color:#a5f3fc;">' + bookingId + '</strong> is confirmed.<br><br>A WhatsApp message has been opened. Please <strong style="color:#fcd34d;">send that message</strong> to complete your booking.</p><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Booking ID</span><br><span style="font-size:16px;color:#a5f3fc;font-weight:600;">' + bookingId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Payment ID</span><br><span style="font-size:13px;color:#a5f3fc;word-break:break-all;">' + paymentId + '</span></div><div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Amount Paid</span><br><span style="font-size:16px;color:#fcd34d;font-weight:600;">' + amountStr + '</span></div>' + modeHTML + '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:20px;"><span style="font-size:11px;color:#aaa;">Location</span><br><span style="font-size:14px;color:#cbd5f5;">' + locationType + '</span></div><button class="btn" style="background:#7c3aed;width:100%;padding:14px;font-size:15px;" onclick="document.body.style.overflow=\'\';this.closest(\'div[id]\').remove();resetForm();">Done</button></div></div>';
     document.body.appendChild(modal);
 }
-
 function showErrorModal(errorMsg) {
     var existing = document.getElementById('errorModal'); if (existing) existing.remove();
     var modal = document.createElement('div'); modal.id = 'errorModal';
