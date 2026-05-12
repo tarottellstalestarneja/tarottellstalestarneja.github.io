@@ -1,6 +1,6 @@
 var cart = [];
 var exchangeRate = 0;
-var RAZORPAY_KEY_ID = "rzp_test_SoRqAKjcPUzrGl";
+var RAZORPAY_KEY_ID = "rzp_live_SXP13njJD5Ks9k";
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlPkKukfHC5FbJywmqnDr5IayVrA6o3hal4ZIVFEKpNpik7oKlWRv6CUw7erMN-8AYxw/exec";
 var whatsappNumber = "919892223162";
 
