@@ -1,6 +1,6 @@
 var cart = [];
 var exchangeRate = 0;
-var RAZORPAY_KEY_ID = "rzp_live_SXP13njJD5Ks9k";
+var RAZORPAY_KEY_ID = "rzp_test_SoRqAKjcPUzrGl";
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlPkKukfHC5FbJywmqnDr5IayVrA6o3hal4ZIVFEKpNpik7oKlWRv6CUw7erMN-8AYxw/exec";
 var whatsappNumber = "919892223162";
 
@@ -256,10 +256,35 @@ payBtn.onclick = function() {
         name: "Tarot Tells Tales",
         description: services,
         image: "https://tarottellstales.co.in/logo.png",
-        handler: function(response) {
+                handler: function(response) {
             var bookingId = generateBookingId();
             if (bookingDate && bookingTime) { bookCalendarSlot(bookingId, services, bookingDate, bookingTime, sessionMode); }
             sendWhatsAppConfirmation(bookingId, response.razorpay_payment_id, services, symbol, displayAmount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime, sessionMode);
+            
+            // Send email notification
+            fetch('https://tarot-bookings.tarottellstalestarneja.workers.dev/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    bookingId: bookingId,
+                    paymentId: response.razorpay_payment_id,
+                    name: custName,
+                    email: custEmail,
+                    mobile: custMobile,
+                    services: services,
+                    symbol: symbol,
+                    amount: displayAmount,
+                    locationType: isInternational ? 'International (USD)' : 'Domestic (INR)',
+                    dob: custDob,
+                    query: custQuery,
+                    bookingDate: bookingDate,
+                    bookingTime: bookingTime,
+                    sessionMode: sessionMode
+                })
+            }).then(function(r) { return r.json(); })
+              .then(function(data) { console.log('Email sent:', data); })
+              .catch(function(err) { console.error('Email failed:', err); });
+            
             showSuccessModal(bookingId, response.razorpay_payment_id, symbol + displayAmount, isInternational ? 'International (USD)' : 'Domestic (INR)', sessionMode);
         },
         prefill: { name: custName, email: custEmail, contact: custMobile },
