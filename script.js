@@ -262,7 +262,7 @@ payBtn.onclick = function() {
             sendWhatsAppConfirmation(bookingId, response.razorpay_payment_id, services, symbol, displayAmount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime, sessionMode);
             
             // Send email notification
-            fetch('https://tarot-bookings.tarottellstalestarneja.workers.dev/', {
+            fetch('https://tarot-bookings.afterbiteco.workers.dev/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
