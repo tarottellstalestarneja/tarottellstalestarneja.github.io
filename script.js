@@ -1,7 +1,7 @@
 var cart = [];
 var exchangeRate = 0;
 var RAZORPAY_KEY_ID = "rzp_live_SXP13njJD5Ks9k";
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlPkKukfHC5FbJywmqnDr5IayVrA6o3hal4ZIVFEKpNpik7oKlWRv6CUw7erMN-8AYxw/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAkbVTDenlNbqUZopQ_4qLaDqqkr2Na__3WJfwwY-TSx5uLWD_1BYQLa1jV5BPWmim/exec";
 var whatsappNumber = "919892223162";
 
 var cartDiv = document.getElementById('cart');
@@ -262,24 +262,21 @@ payBtn.onclick = function() {
             sendWhatsAppConfirmation(bookingId, response.razorpay_payment_id, services, symbol, displayAmount, isInternational, custName, custEmail, custMobile, custDob, custQuery, bookingDate, bookingTime, sessionMode);
             
             // Send email notification
-            fetch('https://tarot-bookings.afterbiteco.workers.dev/', {
+            fetch('https://tarot-tells-tales.rahul7n.workers.dev/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    bookingId: bookingId,
-                    paymentId: response.razorpay_payment_id,
                     name: custName,
                     email: custEmail,
-                    mobile: custMobile,
+                    phone: custMobile,
                     services: services,
-                    symbol: symbol,
-                    amount: displayAmount,
-                    locationType: isInternational ? 'International (USD)' : 'Domestic (INR)',
-                    dob: custDob,
-                    query: custQuery,
-                    bookingDate: bookingDate,
-                    bookingTime: bookingTime,
-                    sessionMode: sessionMode
+                    mode: sessionMode,
+                    date: bookingDate,
+                    time: bookingTime,
+                    total: displayAmount,
+                    paymentId: response.razorpay_payment_id,
+                    paymentMethod: 'razorpay',
+                    meetLink: (sessionMode === 'Google Meet') ? 'https://meet.google.com/qzz-hxjw-yud' : ''
                 })
             }).then(function(r) { return r.json(); })
               .then(function(data) { console.log('Email sent:', data); })
@@ -305,7 +302,7 @@ function sendWhatsAppConfirmation(bookingId, paymentId, services, symbol, amount
     if (bookingDate && bookingTime) {
         msg += '\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u{1F4C5} *Date:* ' + bookingDate + '\n\u{1F550} *Time:* ' + bookingTime + ' (IST)\n';
         if (sessionMode) msg += '\u{1F3A5} *Session Mode:* ' + sessionMode + '\n';
-        if (sessionMode === 'Google Meet') msg += '\u{1F4F9} *Meet Link:* https://meet.google.com/tcz-ojzc-ozr\n';
+        if (sessionMode === 'Google Meet') msg += '\u{1F4F9} *Meet Link:* https://meet.google.com/qzz-hxjw-yud\n';
     }
     window._lastWhatsAppUrl = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg);
     window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(msg), '_blank');
@@ -316,7 +313,7 @@ function showSuccessModal(bookingId, paymentId, amountStr, locationType, session
     if (sessionMode) {
         modeHTML = '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;"><span style="font-size:11px;color:#aaa;">Session Mode</span><br><span style="font-size:14px;color:#cbd5f5;">' + sessionMode + '</span></div>';
         if (sessionMode === 'Google Meet') {
-            modeHTML += '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid #7c3aed;"><span style="font-size:11px;color:#aaa;">Google Meet Link</span><br><a href="https://meet.google.com/tcz-ojzc-ozr" target="_blank" style="font-size:14px;color:#a5f3fc;text-decoration:underline;">https://meet.google.com/tcz-ojzc-ozr</a><br><span style="font-size:10px;color:#888;">Join at your scheduled time</span></div>';
+            modeHTML += '<div style="background:#2b1b4e;border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid #7c3aed;"><span style="font-size:11px;color:#aaa;">Google Meet Link</span><br><a href="https://meet.google.com/qzz-hxjw-yud" target="_blank" style="font-size:14px;color:#a5f3fc;text-decoration:underline;">https://meet.google.com/qzz-hxjw-yud</a><br><span style="font-size:10px;color:#888;">Join at your scheduled time</span></div>';
         }
     }
     var modal = document.createElement('div'); modal.id = 'successModal';
